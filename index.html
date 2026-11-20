@@ -450,6 +450,19 @@ h1,h2,h3,.title,.wordmark,.tagline,.wb,.wl,.sh-title{font-family:var(--disp)}
 .pf input{height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);font:inherit;font-size:16px;padding:0 12px;outline:none;min-width:0}
 .pf input:focus{border-color:var(--accent)}
 .pfields .textlink{align-self:flex-start;font-size:12.5px}
+.pf{gap:6px}
+.pf label{display:flex;flex-direction:column;gap:4px}
+.pf input::placeholder{color:color-mix(in srgb,var(--muted) 85%,transparent);opacity:1}
+.pex{display:flex;flex-wrap:wrap;gap:6px}
+.pexc{max-width:100%;min-height:32px;padding:5px 11px;border-radius:99px;border:1px dashed color-mix(in srgb,var(--accent) 55%,transparent);background:transparent;color:var(--accent);font:inherit;font-size:12.5px;font-weight:600;line-height:1.2;text-align:left;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pexc.on{background:color-mix(in srgb,var(--ok) 22%,transparent);border:1px solid var(--ok);color:inherit}
+.pfstat{margin:0;font-size:12.5px;font-weight:700}
+.pfstat .no{color:#c2410c}
+.pfstat .yes{color:var(--ok)}
+.ptext mark{background:color-mix(in srgb,#ff9500 30%,transparent);box-shadow:inset 0 0 0 1px #ff9500;color:inherit}
+.ptext mark.fl{background:color-mix(in srgb,var(--ok) 30%,transparent);box-shadow:inset 0 0 0 1px var(--ok)}
+.ptext.ready{outline:2px solid var(--ok);outline-offset:0}
+
 .ptext mark.fl{background:color-mix(in srgb,var(--ok) 28%,transparent)}
 .quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .quick .btn{padding:10px 4px;font-size:12.5px;white-space:nowrap}
@@ -1651,9 +1664,93 @@ function ptextHTML(text,key){
   while((m=re.exec(text))){out+=esc(text.slice(last,m.index));const val=(v[m[1]]||'').trim();out+=val?'<mark class="fl">'+esc(val)+'</mark>':'<mark>'+esc(m[0])+'</mark>';last=re.lastIndex}
   return out+esc(text.slice(last));
 }
+/* ---------- eksempler til udfyldningsfelter ---------- */
+const PH_TXT=['Vi åbner en ny kaffebar i Aarhus i marts. Den sælger lokale bønner og har hurtig takeaway.','Hej alle. Husk deadline på fredag. Send jeres udkast inden kl. 12.','Tidsstyring handler om at vælge det vigtigste først og sige nej til resten.'];
+const PH_EX=[
+ [/hvor den kom fra|hvorfor/,['Fra en kollega 10. november. Jeg skal bruge den til mit oplæg','Fra mit sidste job. Jeg skal bruge den til en ny ansøgning','Fra en ven. Jeg vil forstå, hvad den betyder']],
+ [/hvad jeg vil at de|succes/,['at de forstår planen og siger ja','at jeg kan løbe 10 km uden pause','at projektet er færdigt til fredag']],
+ [/hvem det er til/,['min chef','mine kolleger','en kunde']],
+ [/konkrete hændelser|præcise ord/,['Han afbrød mig to gange på mødet','Hun skrev: "vi må tale om det her"','Jeg fik først svar efter tre dage']],
+ [/min reaktion/,['Jeg blev stille og irriteret','Jeg trak mig og svarede ikke','Jeg blev ked af det, men sagde ingenting']],
+ [/overbevisning|tror det betyder/,['Jeg tror, de ikke værdsætter mit arbejde','Jeg tror, jeg er for langsom','Jeg tror, jeg er ved at blive for træt']],
+ [/hvad jeg ved|testet/,['Jeg har prøvet at sove mere og træne om morgenen','Jeg har læst om det, men ikke prøvet det endnu','Jeg har spurgt to kolleger og fået forskellige svar']],
+ [/minimum/,['10 minutter om dagen','2 træninger om ugen','100 kr om måneden']],
+ [/det, jeg gerne vil/,['spare 20.000 kr op','få en bedre morgenrutine','lære at lave videoer']],
+ [/^by\b|by\/|afhent/,['Aarhus','København','Odense']],
+ [/dato/,['15. december','næste fredag','1. marts']],
+ [/pris/,['1.500 kr','299 kr','ca. 5.000 kr']],
+ [/valuta/,['DKK','EUR','USD']],
+ [/^vare$/,['en brugt cykel','en iPhone 13','en sofa']],
+ [/^[xyz]$/,['10','25','3']],
+ [/aftaler/,['Mandag kl. 9 møde, onsdag tandlæge, fredag fri','Tirsdag træning, torsdag forældremøde','Fredag kl. 12 frokost med Mette']],
+ [/belysning/,['blødt vinduslys','varmt gyldent lys','klart studielys']],
+ [/bolig/,['2-værelses lejlighed på 58 m²','rækkehus med have','kollegieværelse']],
+ [/ingredienser/,['æg, mel og mælk','kylling, ris og broccoli','pasta, tomat og hvidløg']],
+ [/interesser|erfaring/,['træning, AI og økonomi. 5 års erfaring fra lager','fotografering og rejser. Erfaring med kundeservice','byggeri og teknik. Truckcertifikat']],
+ [/møde, foredrag/,['et møde om budget','et foredrag om ledelse','et interview med en kunde']],
+ [/proces/,['Sådan bestiller en kunde i min webshop','Sådan onboarder jeg en ny kollega','Sådan laver jeg ugens indkøbsliste']],
+ [/farve|foliering/,['mørkegrøn','sort og guld','mat hvid']],
+ [/første ting|anden ting|^ting$/,['ryd skrivebordet','ring til banken','skriv til chefen']],
+ [/holdning|påstand/,['Jeg mener, at fire arbejdsdage er bedre end fem','Jeg tror, at tidlig træning giver mere energi','Jeg synes, vi skal skære ned på møder']],
+ [/budskab/,['Vi åbner nyt sted i marts','Husk tilmelding inden fredag','Tak for en fantastisk sæson']],
+ [/fejl/,['TypeError: Cannot read properties of undefined (reading "name")','Fejl 404: siden blev ikke fundet','Uncaught ReferenceError: total is not defined']],
+ [/kode|^indsæt.*funktion|script/,['function lagTotal(a, b) { return a + b }','def hent_navn(bruger): return bruger["navn"]','const pris = varer.map(v => v.pris)']],
+ [/cv/,['Jonas, 34 år. 8 års erfaring som lagerleder. Uddannet logistikassistent.','Maria, 27 år. Cand.merc. Har arbejdet 3 år med marketing i en startup.','Peter, 45 år. Elektriker med 20 års erfaring og kørekort til lift.']],
+ [/mail|besked/,['Hej Mette, kan vi flytte mødet til torsdag kl. 10? Mvh Jonas','Hej, jeg har ikke modtaget min bestilling endnu. Kan I tjekke den?','Kære alle, tak for et godt møde. Her er de næste skridt.']],
+ [/jobopslag/,['Vi søger en travl butiksassistent til fuld tid i København.','Projektleder til byggeprojekter. Erfaring med budget og planlægning.','Lagermedarbejder til dagvagt. Truckcertifikat er en fordel.']],
+ [/stilling/,['Projektleder','Lagerarbejder','Marketingassistent']],
+ [/noter|stikord|trin/,['Møde mandag: budget, ny leverandør, deadline 15. dec','Idéer: flere videoer, bedre overskrifter, ugentligt nyhedsbrev','1) Tjek priser 2) Ring til leverandør 3) Send tilbud']],
+ [/data|regneark|tal og|beregning|liste/,['Jan 12.400 kr, feb 9.800 kr, mar 15.200 kr','Mandag 5 km, onsdag 8 km, lørdag 12 km','Æbler 12 kr, mælk 9 kr, brød 28 kr']],
+ [/plan/,['Mandag: træning. Tirsdag: møde. Onsdag: fri. Torsdag: aflevering.','1. uge: research. 2. uge: udkast. 3. uge: test og rettelser.','Spar 1.000 kr om måneden i et år']],
+ [/resultat|analyse|arbejde|materiale|oplysninger|artikel|tekst|svar|mailen|teksten|forklaring/,PH_TXT],
+ [/spørgsmål/,['Hvordan kommer jeg i gang med at spare op?','Hvad er forskellen på en ETF og en aktie?','Hvordan bliver jeg bedre til at holde fokus?']],
+ [/problem|situation/,['Jeg udskyder opgaver og når dem først aftenen før deadline','Min chef og jeg misforstår hinanden i mails','Jeg har svært ved at holde mig til min træningsplan']],
+ [/beslutning|mulighed a|mulighed b|mulighed c|værktøj/,['Skifte job eller blive hvor jeg er','Leje en lejlighed eller købe','Notion eller Google Docs']],
+ [/muligheder/,['Leje eller købe bolig','Tage kurset nu eller til foråret','Elbil eller benzinbil']],
+ [/motiv|scene|objekt/,['en rød ræv i sneen','en kaffekop på et træbord','en ung kvinde med solhat']],
+ [/produkt|tjeneste/,['en keramikkop','et par løbesko','en håndlavet sæbe']],
+ [/målgruppe|modtager|person/,['travle småbørnsforældre','studerende på budget','nye iværksættere']],
+ [/virksomhed|brand|niche/,['Café Solsikken','Nordisk Træning','en lille webshop med tøj til hunde']],
+ [/projekt/,['ny hjemmeside til min café','flytning til ny lejlighed','sæsonplan for min løbetræning']],
+ [/opgave|opgaver|type opgaver/,['skrive en rapport inden fredag','rydde op i mine mails','planlægge næste uges træning']],
+ [/idé|ide|funktion|formål/,['En kort video om en ny kaffebar i byen','En app, der minder mig om at drikke vand','Et nyhedsbrev om personlig udvikling']],
+ [/mål/,['løbe 10 km uden pause','spare 20.000 kr op på et år','lære grundlæggende spansk']],
+ [/emne|tema|område|nøgleord|kriterier|vane|færdighed/,['tidsstyring','sund morgenmad','sådan sparer du op']],
+ [/sprog/,['engelsk','tysk','spansk']],
+ [/antal|mængde|beløb/,['3','5','10']],
+ [/stemning/,['rolig og hyggelig','energisk og sjov','dramatisk og filmisk']],
+ [/kanal/,['Instagram','LinkedIn','nyhedsbrev']],
+ [/app|ai-tjeneste|system|telefon/,['ChatGPT','Notion','min telefon']],
+ [/sted/,['en hyggelig café i Aarhus','en strand ved solnedgang','mit hjem']],
+ [/tid/,['30 minutter','2 timer','en uge']],
+ [/størrelse|format/,['lille','A4','1080 x 1080']],
+ [/link|fil|repository/,['https://eksempel.dk/artikel','rapport.pdf','min-app på GitHub']],
+ [/tekst|indsæt/,PH_TXT]
+];
+function phExamples(tok){
+  const t=String(tok||'').toLowerCase().trim();
+  for(const r of PH_EX){if(r[0].test(t))return r[1]}
+  if(/^beskriv/.test(t))return ['En kort video om en ny kaffebar i byen','En app, der minder mig om at drikke vand','Et nyhedsbrev om personlig udvikling'];
+  return ['en kaffebar','tidsstyring','en ny app'];
+}
+const phShort=(x,n)=>x.length>n?x.slice(0,n-1).trimEnd()+'…':x;
+function pfStat(text,key){
+  const toks=phTokens(text),v=PF[key]||{},miss=toks.filter(t=>!(v[t]&&v[t].trim())).length;
+  return miss?'<span class="no">'+miss+(miss===1?' felt mangler':' felter mangler')+' · tryk på et eksempel eller skriv selv</span>':'<span class="yes">✓ Prompten er klar – tryk Kopiér</span>';
+}
+function pfRefresh(key){
+  const text=rawText(key),v=PF[key]||{};
+  const pt=$('#ptext');if(pt){pt.innerHTML=ptextHTML(text,key);pt.classList.toggle('ready',phTokens(text).every(t=>v[t]&&v[t].trim()))}
+  const st=$('#pfstat');if(st)st.innerHTML=pfStat(text,key);
+  document.querySelectorAll('.pexc').forEach(c=>{const ex=phExamples(c.dataset.t)[+c.dataset.i],cur=((PF[c.dataset.k]||{})[c.dataset.t]||'').trim();c.classList.toggle('on',cur===ex)});
+}
 function pfFields(text,key){
   const toks=phTokens(text);if(!toks.length)return '';const v=PF[key]||{};
-  return '<div class="pfields"><h3>Udfyld felterne, så er prompten færdig</h3>'+toks.map(t=>'<label class="pf"><span>'+esc(t)+'</span><input type="text" data-pf="'+esc(key)+'" data-t="'+esc(t)+'" value="'+esc(v[t]||'')+'" placeholder="'+esc(t)+'" autocomplete="off" enterkeyhint="next"></label>').join('')+
+  return '<div class="pfields"><h3>Udfyld felterne, så er prompten færdig</h3>'+toks.map(t=>{
+    const ex=phExamples(t),cur=(v[t]||'').trim();
+    return '<div class="pf"><label><span>'+esc(t)+'</span><input type="text" data-pf="'+esc(key)+'" data-t="'+esc(t)+'" value="'+esc(v[t]||'')+'" placeholder="Fx: '+esc(phShort(ex[0],46))+'" autocomplete="off" enterkeyhint="next"></label>'+
+      '<div class="pex" role="group" aria-label="Eksempler til '+esc(t)+'">'+ex.slice(0,3).map((e,i)=>'<button type="button" class="pexc'+(cur===e?' on':'')+'" data-a="pfex" data-k="'+esc(key)+'" data-t="'+esc(t)+'" data-i="'+i+'" title="'+esc(e)+'">Prøv: '+esc(phShort(e,30))+'</button>').join('')+'</div></div>';
+  }).join('')+'<p class="pfstat" id="pfstat">'+pfStat(text,key)+'</p>'+
     '<button class="textlink" data-a="pfclear" data-k="'+esc(key)+'">Ryd felter</button></div>';
 }
 function aiQuick(src){
@@ -2133,7 +2230,7 @@ function promptSheet(p){
     '<div class="sh-meta">'+lvHTML(p.lvl)+p.tags.map(t=>'<span class="t">'+esc(t)+'</span>').join('')+'</div>'+
     (p.desc?'<p class="note" style="margin-top:-4px">'+esc(p.desc)+'</p>':'')+
     (fill?pfFields(p.text,key):'')+
-    '<div class="ptext'+(p.kind==='kode'?' code':'')+'" id="ptext">'+(fill?ptextHTML(p.text,key):marks(p.text))+'</div>'+
+    '<div class="ptext'+(p.kind==='kode'?' code':'')+(fill&&phTokens(p.text).length&&phTokens(p.text).every(t=>((PF[key]||{})[t]||'').trim())?' ready':'')+'" id="ptext">'+(fill?ptextHTML(p.text,key):marks(p.text))+'</div>'+
     (p.steps?'<h3 class="sec">Sådan bruger du den</h3><ol class="howto">'+p.steps.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol>':'')+
     openLink(key)+aiQuick(key)+
     '<div class="btnrow"><button class="btn ghost" data-a="copy" data-src="'+key+'">'+icon('copy',17)+'Kopiér</button><button class="btn ghost'+(f?' is-on':'')+'" data-a="fav" data-id="'+p.id+'" aria-pressed="'+f+'">'+icon('heart',17)+(f?'Gemt':'Gem')+'</button><button class="btn ghost'+(sp?' is-on':'')+'" data-a="sup" data-id="'+p.id+'" aria-pressed="'+sp+'">'+icon('star',17)+'Super'+'</button></div>'+
@@ -2273,6 +2370,11 @@ document.addEventListener('click',e=>{
     case 'sup':toggleSup(id);refresh();break;
     case 'share':shareCard(id);break;
     case 'pfclear':PF[k]={};renderSheet(false);break;
+    case 'pfex':{
+      const key=b.dataset.k,t=b.dataset.t,ex=phExamples(t)[+b.dataset.i];if(ex==null)break;
+      (PF[key]||(PF[key]={}))[t]=ex;
+      document.querySelectorAll('input[data-pf]').forEach(i=>{if(i.dataset.pf===key&&i.dataset.t===t)i.value=ex});
+      pfRefresh(key);break}
     case 'katcat':katCat=k;katSub='alle';render();break;
     case 'katsub':katSub=k;render();break;
     case 'kattype':katType=k;render();break;
@@ -2340,7 +2442,7 @@ document.addEventListener('input',e=>{
   }
   if(!i||!i.matches||!i.matches('input[data-pf]'))return;
   const key=i.dataset.pf;(PF[key]||(PF[key]={}))[i.dataset.t]=i.value;
-  const pt=$('#ptext');if(pt)pt.innerHTML=ptextHTML(rawText(key),key);
+  pfRefresh(key);
 });
 document.addEventListener('toggle',e=>{if(e.target&&e.target.id==='acc')accOpen=e.target.open},true);
 document.addEventListener('keydown',e=>{
