@@ -2154,7 +2154,7 @@ function vSwipe(v){
   const hdr='<header class="bar"><a class="round" href="#emner" aria-label="Tilbage til emner">'+icon('back',20)+'</a>'+
     '<div class="ttl"><h1>'+esc(t.name)+'</h1><span>Kort <b>'+x+' / '+n+'</b></span></div>'+
     '<button class="round" data-a="undo" aria-label="Fortryd sidste kort"'+(D.hist.length?'':' disabled')+'>'+icon('undo',19)+'</button></header>'+
-    '<div class="prog" role="progressbar" aria-label="Fremskridt" aria-valuemin="0" aria-valuemax="'+n+'" aria-valuenow="'+Math.min(D.idx,n)+'"><i style="width:'+(n?Math.round(Math.min(D.idx,n)/n*100):0)+'%"></i></div>'+(D.topic==='billeder'?'<button class="rlstrip" data-a="roulette">'+icon('shuffle',16)+'🎲 Tilfældig billed- &amp; kode-roulette</button>':(n?'<button class="rlstrip" data-a="rndcard">'+icon('shuffle',16)+'🎲 Tilfældig prompt'+(D.topic==='alle'?'':' fra '+esc(t.name))+'</button>':''));
+    '<div class="prog" role="progressbar" aria-label="Fremskridt" aria-valuemin="0" aria-valuemax="'+n+'" aria-valuenow="'+Math.min(D.idx,n)+'"><i style="width:'+(n?Math.round(Math.min(D.idx,n)/n*100):0)+'%"></i></div>'+(D.topic==='billeder'?'<button class="rlstrip" data-a="roulette">'+icon('shuffle',16)+'🎲 Tilfældig billed- &amp; kode-roulette</button>':'');
   let main;
   if(!n){
     main='<div class="empty"><div class="glyph">'+icon('filter',32)+'</div><h2>Ingen kort her med dine indstillinger</h2><p>Skift niveau eller slå tekniske kort til, så kommer der flere.</p><a class="btn" href="#indstillinger">Åbn indstillinger</a></div>';
@@ -2348,7 +2348,6 @@ function promptSheet(p){
     openLink(key)+aiQuick(key)+
     '<div class="btnrow"><button class="btn ghost" data-a="copy" data-src="'+key+'">'+icon('copy',17)+'Kopiér</button><button class="btn ghost'+(f?' is-on':'')+'" data-a="fav" data-id="'+p.id+'" aria-pressed="'+f+'">'+icon('heart',17)+(f?'Gemt':'Gem')+'</button><button class="btn ghost'+(sp?' is-on':'')+'" data-a="sup" data-id="'+p.id+'" aria-pressed="'+sp+'">'+icon('star',17)+'Super'+'</button></div>'+
     '<button class="btn ghost wide" data-a="share" data-id="'+p.id+'">'+icon('share',17)+'Del kort</button>'+
-    (sheet&&sheet.rnd?'<button class="btn wide" data-a="rndcard">'+icon('shuffle',17)+'🎲 Ny tilfældig prompt</button>':'')+
     '<p class="sh-foot">Åbner '+esc(ai.host)+' i en ny fane · <a href="#indstillinger">Skift standard-AI</a>'+(p.src?' · Kilde: <a href="'+esc(p.src)+'" target="_blank" rel="noopener">mavgpt.ai</a>':'')+'</p>';
 }
 function techSheet(s){
@@ -2498,7 +2497,6 @@ document.addEventListener('click',e=>{
     case 'yes':decide(true);break;
     case 'no':decide(false);break;
     case 'undo':undo();break;
-    case 'rndcard':{const all=(D.order||[]).filter(x=>BY[x]);if(!all.length)break;const cur=sheet&&sheet.rnd?sheet.id:null;const fresh=all.slice(D.idx).filter(x=>x!==cur);const pool=fresh.length?fresh:all.filter(x=>x!==cur);const pick=(pool.length?pool:all)[Math.floor(Math.random()*(pool.length?pool:all).length)];if(sheet&&sheet.rnd){sheet={kind:'prompt',id:pick,rnd:1};renderSheet(true)}else openSheet({kind:'prompt',id:pick,rnd:1});break}
     case 'opentop':if(D.order&&D.order[D.idx])openSheet({kind:'prompt',id:D.order[D.idx]});break;
     case 'open':openSheet({kind:'prompt',id});break;
     case 'fav':toggleFav(id);refresh();break;
