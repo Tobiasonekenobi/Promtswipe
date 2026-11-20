@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#100f13"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PromptSwipe"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"></head><body>
 <title>PromptSwipe</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
 /* Layout: ét mobilformat (max 440px). Velkomst uden tabbar; ellers topbar + scrollbart indhold + glas-tabbar med rund Swipe-knap i midten. Bundark (sheet) til kort, værktøjer og mix. */
 :root{
@@ -13,7 +13,7 @@
   --glass:rgba(41,34,45,.78); --shadow:0 18px 40px -16px rgba(0,0,0,.8);
   --scrim:rgba(0,0,0,.6); --ong:#25140b;
   --grad:linear-gradient(135deg,#ffab51 0%,#ffcf8b 100%);
-  --font:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif; --disp:'Bricolage Grotesque','DM Sans',system-ui,sans-serif;
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif; --disp:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
   color-scheme:dark}
 :root[data-ps="papir"],:root[data-theme="light"]{
   --bg:#fbf4ec; --bg-glow1:rgba(255,171,81,.30); --bg-glow2:rgba(228,169,220,.22);
@@ -83,9 +83,9 @@ h3.sec{font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:upp
 .wel{flex:1; display:flex; flex-direction:column; gap:24px; padding:30px 0 14px}
 .wel-top{display:flex; flex-direction:column; gap:10px}
 .appicon{width:64px; height:64px; border-radius:21px; display:grid; place-items:center; background:var(--grad); color:#fff; box-shadow:0 18px 34px -14px var(--accent); transform:rotate(-6deg)}
-.wordmark{font-size:46px; letter-spacing:-.05em; line-height:1; margin-top:10px}
-.tagline{font-size:23px; font-weight:800; letter-spacing:-.025em; line-height:1.2; text-wrap:balance}
-.sub{color:var(--muted); font-size:15px; max-width:34ch}
+.wordmark{font-size:44px; font-weight:800; letter-spacing:-.035em; line-height:1; margin-top:10px}
+.tagline{font-size:22px; font-weight:800; letter-spacing:-.02em; line-height:1.2; text-wrap:balance}
+.sub{color:var(--muted); font-size:15px; line-height:1.55; font-weight:500; max-width:34ch}
 .eyebrow{font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:10px}
 .gallery{display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; margin:0 -16px; padding:2px 16px 10px; scrollbar-width:none}
 .gallery::-webkit-scrollbar,.packs::-webkit-scrollbar,.chips::-webkit-scrollbar{display:none}
@@ -339,7 +339,7 @@ h1,h2,h3,.title,.wordmark,.tagline,.wb,.wl,.sh-title{font-family:var(--disp)}
 .wm-ic,.round.grad,.appicon,.hero-tile,.mini.on,.chip.on,.act.yes,.glyph,.btn.primary,.seg button.on,.pchip.on,.mixcta .hi,.lvls button.on,.tab.mid .mc{color:var(--ong)}
 .card{background:linear-gradient(165deg,#ffe3a3 0%,#ffd0cf 55%,#ffc2e0 100%); border:0; color:#25140b; border-radius:28px}
 .card .body{padding:14px 18px 16px; gap:6px}
-.card .body h2{font-family:var(--disp); font-style:italic; font-weight:800; font-size:24px; letter-spacing:-.03em; color:#25140b}
+.card .body h2{font-family:var(--disp); font-weight:800; font-size:23px; letter-spacing:-.02em; color:#25140b}
 .card .body p{color:#5a4048}
 .card .tags span.t{background:rgba(37,20,11,.1); color:#5a4048}
 .card .lv{color:#5a4048}.card .lv i{background:rgba(37,20,11,.2)}.card .lv i.on{background:#e5821f}
@@ -359,7 +359,7 @@ h1,h2,h3,.title,.wordmark,.tagline,.wb,.wl,.sh-title{font-family:var(--disp)}
 .tcov{position:relative; display:block; height:128px; overflow:hidden; background:#222}
 .tcov .cov{position:absolute; inset:0; width:100%; height:100%}
 .tmeta{font-size:12px; color:var(--accent); padding:8px 12px 0}
-.ttl2{overflow-wrap:anywhere; hyphens:auto; font-family:var(--disp); font-size:17px; font-weight:800; letter-spacing:-.02em; line-height:1.15; padding:0 12px; color:var(--fg)}
+.ttl2{overflow-wrap:anywhere; hyphens:auto; font-family:var(--disp); font-size:16px; font-weight:800; letter-spacing:-.01em; line-height:1.15; padding:0 12px; color:var(--fg)}
 .tdesc{font-size:13px; color:var(--muted); padding:0 12px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
 .tfav{position:absolute; right:8px; top:8px; width:34px; height:34px; border-radius:50%; display:grid; place-items:center; color:#fff; background:rgba(20,14,25,.5); border:1px solid rgba(255,255,255,.3)}
 .tfav.on{background:var(--grad); color:var(--ong); border-color:transparent}
@@ -830,10 +830,10 @@ const GAL=[
  {t:'Find 20 idéer på 5 minutter',icon:'bulb',h:330,go:'topic:idegenerering'},
  {t:'Lav en billedprompt',icon:'image',h:190,go:'p:gr2'},
  {t:'Planlæg en måneds opslag',icon:'mega',h:305,go:'p:mk5'},
- {t:'Få AI til at holde op med at give dig ret',icon:'brain',h:150,go:'p:truth'},
+ {t:'Få AI til at holde op med at give dig ret',icon:'brain',h:150,go:'p:truth',ph:'c03'},
  {t:'Lav et professionelt portræt',icon:'image',h:320,go:'p:headshot'},
- {t:'Kobl AI til din kalender',icon:'cal',h:160,go:'tool:gcal'},
- {t:'Bland favoritter til én prompt',icon:'shuffle',h:285,go:'fav'}
+ {t:'Kobl AI til din kalender',icon:'cal',h:160,go:'tool:gcal',ph:'sk6'},
+ {t:'Bland favoritter til én prompt',icon:'shuffle',h:285,go:'fav',ph:'id4'}
 ];
 
 /* ---------- tilstand ---------- */
@@ -917,6 +917,7 @@ function openLink(src,label,cls){
 /* ---------- velkomst ---------- */
 function galCover(g,i){
   const t=g.go.split(':'),x=t.slice(1).join(':');
+  if(g.ph&&PHOTO[g.ph])return '<img class="cov" alt="" src="'+PHOTO[g.ph]+'">';
   if(t[0]==='p'&&BY[x])return coverSVG(BY[x]);
   if(t[0]==='topic'){const r=P.find(p=>p.cat===x&&PHOTO[p.id])||P.find(p=>p.cat===x);if(r)return coverSVG(r)}
   return artCover({id:'gal'+i,cat:t[0]==='tool'?'automatisering':'sosial',title:g.t,tags:[],desc:''});
@@ -932,7 +933,7 @@ function vWelcome(v){
   v.innerHTML='<div class="wel">'+heroArt()+'<div class="wel-top"><span class="appicon">'+icon('cards',34)+'</span>'+
     '<h1 class="wordmark"><span class="wl">Prompt</span><span class="wb">Swipe</span></h1>'+
     '<p class="tagline">Giv dine idéer liv med AI</p>'+
-    '<p class="sub">Find inspiration, prøv prompts og koder, og opdag værktøjer — samlet ét sted.</p><p class="stats"><b>'+P.length+'</b> kort · <b>'+Object.keys(CAT).length+'</b> emner · <b>'+TOOLS.length+'</b> værktøjer</p></div>'+
+    '<p class="sub">Find inspiration, prøv prompts og koder, og opdag værktøjer. Alt samlet ét sted.</p><p class="stats"><b>'+P.length+'</b> kort · <b>'+Object.keys(CAT).length+'</b> emner · <b>'+TOOLS.length+'</b> værktøjer</p></div>'+
     '<section aria-labelledby="gal-h"><h2 id="gal-h" class="eyebrow">Eksempler på muligheder i PromptSwipe</h2><div class="gallery">'+
     GAL.map((g,i)=>'<button class="gcard" style="--h:'+g.h+'" data-a="gal" data-go="'+g.go+'"><span class="gimg">'+galCover(g,i)+'</span><span class="gorb">'+icon(g.icon,26)+'</span><b>'+esc(g.t)+'</b></button>').join('')+
     '</div></section>'+
@@ -1078,8 +1079,55 @@ function artCover(p){
   for(let i=0;i<4;i++){const x=r()*400,y=r()*260,z=3+r()*5;o+='<path d="M'+x.toFixed(0)+' '+(y-z).toFixed(0)+' L'+(x+z*.3).toFixed(0)+' '+(y-z*.3).toFixed(0)+' L'+(x+z).toFixed(0)+' '+y.toFixed(0)+' L'+(x+z*.3).toFixed(0)+' '+(y+z*.3).toFixed(0)+' L'+x.toFixed(0)+' '+(y+z).toFixed(0)+' L'+(x-z*.3).toFixed(0)+' '+(y+z*.3).toFixed(0)+' L'+(x-z).toFixed(0)+' '+y.toFixed(0)+' L'+(x-z*.3).toFixed(0)+' '+(y-z*.3).toFixed(0)+'Z" fill="#fff" fill-opacity="'+(.4+r()*.4).toFixed(2)+'"/>'}
   return o+'</svg>';
 }
+
+const PH_RULES=[
+ [/portræt|headshot|ansigt|selfie|frisure|briller|statue|tatovering|magasinforside|magazinecover|pethuman|haircut|glasses|openeyes/,['i05','i04','i03','i18','i07','g08','i20']],
+ [/gammelt foto|restore|timemachine|1890|falmet|colorenhance|sort-hvid|unblur|familytree|familiehistorie/,['i17','i32','i02']],
+ [/anime|tegneserie|comic|lego|miniature|diorama|stickers|snowglobe/,['i10','i09','i11','i39']],
+ [/hund|pet|plushie|ræv/,['i46']],
+ [/interior|værelse|repaint|vægge|furnish|sofa|tvsize|landscape|forhave|bolig|house|rental|homevideo/,['i40','i39','c67']],
+ [/hologram|xray|blueprint|surreal|dreamcar|drøm|giant|dollyzoom|timemachine/,['i36','id2','i24','i25']],
+ [/carwrap|bilfarve|camg7x|camdisp|portra|kamera|blitz|droneorbit|drone/,['i27','i20','i26','i21']],
+ [/logo|brand|appicon|palette|farve|colors|identitet/,['gr1','gr2','gr5','c25']],
+ [/billboard|adcreative|metaads|reklame|annonce|commercial|ad\b|mockup|package|indpakning|paper/,['c74','gr5','gr6','c25']],
+ [/product|produkt|showcase|studioshot|lifestyle|floating|macro|nature|handheld|exploded|explosion|spin|ugc/,['gr6','i37','c25','gr5','c74']],
+ [/infographic|carousel|mav-social|slides|gamma/,['c13','c14','c28']],
+ [/thumbnail|reel|teaser|shortclip|vertical|beforeafter|appdemo/,['c79','g07','g02','c73']],
+ [/sound|voice|podcast|captions|lyd|indtaling/,['g03','g05','g02']],
+ [/film|animation|effects|logoanimation|pause|steps|remotion/,['c73','c79','g07']],
+ [/quiz|matching|quiztime/,['c34','c55','c32']],
+ [/mindmap|flowchart|timeline|diagram|blueprint/,['c16','c96','c59','c19']],
+ [/sticky|stickynotes|idea-colors/,['id3','c91','c80']],
+ [/factcheck|research|truth|pressure|quality|agreeaudit|missing|numbers|kilder|differ/,['c03','c14','c09']],
+ [/studyguide|guide|eli5|practice|foundation|teachback|language/,['c37','c54','c32']],
+ [/cv|cover|ansøgning|linkedin|ats|headline|salary|løn/,['c07','c23','c22']],
+ [/interview|mentor|behavior|followup|sparring/,['br6','pr3','br1']],
+ [/debug|app|workflow|webapp|website|blueprint/,['ko1','ko4','c78','g04']],
+ [/mail|gmail|outlook|inbox|message|formulering/,['sk2','sk3','sk1']],
+ [/docs|sheets|regneark|edit|draft|human|summary|notes/,['sk1','c07','c04','sk6']],
+ [/checklist|handlingsliste|nextstep|oneday|weight|todo|tasks|planlæg|week/,['c54','c52','c53','c55','c57']],
+ [/leaks|abonnement|sellprice|selllisting|hiddenmoney|penge|salg|sell|buyer|scam/,['mk6','c13','c58']],
+ [/fridge|aftensmad/,['i42']],
+ [/health|aktivitet/,['c69','c60']],
+ [/privacy|konti|data|tilladelser|indstillinger/,['c67','c58','c60']],
+ [/energy|patterns|mønstre|honestfriend|reveal|stored|twofutures|whynot|lifechanger|interpret/,['br2','id1','id4','c89']],
+ [/options|decision|perspective|milestones|tenminutes|council/,['id4','c89','id6','c30']]
+];
+const PH_POOL={billeder:['i03','i04','i05','i07','i10','i11','i12','i18','i20','i21','i22','i26','i27','i37','i39','i40','i42','i46','g08','i02'],grafik:['gr1','gr2','gr5','gr6','c25','c74'],video:['c73','g07','g05','g03','g02','c79','c95'],laering:['c37','c54','c55','c43','c11','c16'],skrivning:['sk1','sk2','sk3','sk6','c07','c04','c09'],hverdag:['c53','c54','c52','c55','c57','c58'],job:['br6','pr3','c07','c23','c22'],idegenerering:['id1','id3','id4','id6','br2','c16'],privat:['c67','c58','c60']};
+function photoOf(p){
+  if(PHOTO[p.id])return {src:PHOTO[p.id],own:true};
+  if(p.desc===undefined)return null;
+  const t=(p.id+' '+p.title).toLowerCase(),h=hash(p.id);
+  let pool=null;
+  for(const r of PH_RULES){if(r[0].test(t)){pool=r[1];break}}
+  if(!pool)pool=PH_POOL[p.cat]||PH_POOL.hverdag;
+  const id=pool[h%pool.length];
+  return PHOTO[id]?{src:PHOTO[id],own:false,h:h}:null;
+}
 function coverSVG(p){
-  if(PHOTO[p.id])return '<img class="cov" alt="" src="'+PHOTO[p.id]+'">';
+  const ph=photoOf(p);
+  if(ph&&ph.own)return '<img class="cov" alt="" src="'+ph.src+'">';
+  if(ph){const a=(ph.h>>3)%100,b=(ph.h>>9)%60+20,z=1+((ph.h>>5)%4)*.1;return '<img class="cov" alt="" src="'+ph.src+'" style="object-position:'+a+'% '+b+'%;transform:scale('+z.toFixed(2)+')">'}
   if(p.desc!==undefined)return artCover(p);
   const c=CAT[p.cat],s=hash(p.id),r=rng(s),ci=catIdx(p),h=(c.h+ci*47+(s%30)+360)%360,id='cv'+p.id;
   const C={dark:'hsl('+h+',60%,16%)',mid:'hsl('+((h+25)%360)+',62%,34%)',light:'hsl('+((h+40)%360)+',90%,76%)',acc:'hsl('+((h+150)%360)+',92%,62%)',paper:'hsl('+h+',60%,96%)',ink:'hsl('+h+',50%,18%)'};
