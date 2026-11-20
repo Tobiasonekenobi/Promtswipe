@@ -387,7 +387,7 @@ input[type=range]::-moz-range-thumb{width:14px; height:14px; border-radius:50%; 
 .gup{display:flex;flex-direction:column;gap:10px}.gup>div{display:flex;gap:10px;align-items:center}.gup img{width:72px;height:72px;object-fit:cover;border-radius:14px;flex:none}.gup .note{margin:2px 0 0;font-size:12px}
 .gfile{cursor:pointer}
 .gwarn{display:flex;gap:8px;align-items:flex-start;margin:0;padding:10px 12px;border-radius:14px;font-size:12.5px;line-height:1.4;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--fg)}.gwarn .ic{flex:none;margin-top:1px;color:var(--accent)}
-.gnav{display:flex;gap:8px;position:sticky;bottom:-2px;padding:10px 0 2px;background:linear-gradient(0deg,var(--surface) 70%,transparent)}.gnav .btn{flex:1}.gnav .btn:last-child{flex:1.4}.gnav .btn[disabled]{opacity:.45}
+.gtopbtn{align-self:center;padding:9px 16px;font-size:13px;margin:0 auto 4px}.gnav{display:flex;gap:8px;position:sticky;bottom:-2px;padding:10px 0 2px;background:linear-gradient(0deg,var(--surface) 70%,transparent)}.gnav .btn{flex:1}.gnav .btn:last-child{flex:1.4}.gnav .btn[disabled]{opacity:.45}
 .gsum{display:flex;flex-wrap:wrap;gap:6px}.gchip{padding:7px 11px;border-radius:99px;font-size:12px;background:var(--surface-2);color:var(--muted);border:1.5px solid transparent}.gchip b{color:var(--fg)}.gchip.on{border-color:var(--accent)}.gchip.on b{color:var(--accent)}
 .gtext{width:100%;box-sizing:border-box;border-radius:16px;padding:12px;font:12.5px/1.5 var(--font);background:var(--surface-2);color:var(--fg);border:1.5px solid var(--line);resize:vertical;min-height:180px}.gtext:focus{border-color:var(--accent);outline:none}
 @media (prefers-reduced-motion:reduce){.card,#toast,.act,.sheet,.switch,.switch::after,.prog i{transition:none; animation:none}}
@@ -2217,6 +2217,7 @@ function vSwipe(v){
       '<div class="actions"><button class="act no" data-a="no" aria-label="Spring over">'+icon('x',28)+'</button>'+
       '<button class="act sm" data-a="opentop" aria-label="Åbn kortet">'+icon('open',20)+'</button>'+
       '<button class="act sup" data-a="super" aria-label="Super-gem, øverst i Favoritter">'+icon('star',24)+'</button><button class="act yes" data-a="yes" aria-label="Gem som favorit">'+icon('heart',27)+'</button></div>'+
+      (BY[D.order[D.idx]].cat==='billeder'&&BY[D.order[D.idx]].kind!=='kodebog'?'<button class="btn ghost gtopbtn" data-a="gtop">'+icon('spark',16)+'Billedguide til dette kort</button>':'')+
       '<p class="hint">Højre = gem · op = super-gem · venstre = spring over · tryk for at åbne</p>';
   }
   const aib='<div class="aibar" role="radiogroup" aria-label="Vælg AI-platform">'+Object.keys(AIS).map(k=>'<button class="chip'+(S.ai===k?' on':'')+'" role="radio" aria-checked="'+(S.ai===k)+'" data-a="ai" data-k="'+k+'">'+AIS[k].name+'</button>').join('')+'</div>';
@@ -2638,6 +2639,7 @@ document.addEventListener('change',e=>{
   G.photo=URL.createObjectURL(file);G.photoName=file.name.slice(0,40);gRerender(false);
 });
 document.addEventListener('input',e=>{if(e.target&&e.target.id==='gtext'){G.edit=e.target.value;G.dirty=true}});
+function gStart(id){Object.assign(G,{id:id,step:0,mode:null,style:null,angle:null,frame:null,light:null,edit:null,dirty:false});if(G.photo){try{URL.revokeObjectURL(G.photo)}catch(_){}}G.photo=null;G.photoName='';openSheet({kind:'guide'});}
 function openSheet(s){
   if(!sheet)lastFocus=document.activeElement;
   sheet=s;renderSheet(true);
@@ -2755,7 +2757,8 @@ document.addEventListener('click',e=>{
     case 'rllock':{const i=+b.dataset.i;RL.lock[i]=RL.lock[i]?0:1;renderSheet(false);break}
     case 'rlall':rlRollAll();renderSheet(false);break;
     case 'hfcopy':copyText('Higgsfield på 2 minutter:\n'+KB_HF.map((x,i)=>(i+1)+'. '+x).join('\n'),'Higgsfield-guiden er kopieret','Kunne ikke kopiere guiden');break;
-    case 'gopen':Object.assign(G,{id:id,step:0,mode:null,style:null,angle:null,frame:null,light:null,edit:null,dirty:false});if(G.photo){try{URL.revokeObjectURL(G.photo)}catch(_){}}G.photo=null;G.photoName='';openSheet({kind:'guide'});break;
+    case 'gtop':{const t=D.order&&BY[D.order[D.idx]];if(t&&t.cat==='billeder'&&t.kind!=='kodebog')gStart(t.id)}break;
+    case 'gopen':gStart(id);break;
     case 'gmode':G.mode=k;gRerender(false);break;
     case 'gstyle':gSet('style',k);gRerender(false);break;
     case 'gang':gSet('angle',k);gRerender(false);break;
