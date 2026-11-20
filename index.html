@@ -455,6 +455,13 @@ button.kbbtn{border:0;width:100%;text-align:left;font:inherit;cursor:pointer}
 .rlstrip{display:flex;align-items:center;justify-content:center;gap:8px;min-height:40px;border-radius:14px;border:1px dashed var(--accent);background:transparent;color:var(--accent);font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;flex:none}
 .kvid{display:inline-flex;vertical-align:-2px;margin-left:6px;color:var(--accent)}
 .kchip b .ic{vertical-align:-2px;color:var(--accent)}
+.kbhow{border-radius:14px;border:1px solid var(--line);background:var(--surface-2);font-size:13.5px;line-height:1.5}
+.kbhow summary{cursor:pointer;padding:12px 14px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:8px;min-height:44px;align-items:center}
+.kbhow summary::-webkit-details-marker{display:none}
+.kbhow summary:after{content:'▾';color:var(--accent)}
+.kbhow[open] summary:after{content:'▴'}
+.kbhow div{padding:0 14px 12px;display:flex;flex-direction:column;gap:8px}
+.kbhow code{font-family:ui-monospace,monospace;font-size:12.5px;word-break:break-all}
 .kbinfo{display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:14px;font-size:13.5px;line-height:1.45;margin:0}
 .kbinfo b{display:block;font-size:13.5px}
 .kbinfo.ok{background:color-mix(in srgb,var(--ok) 16%,transparent);border:1px solid var(--ok)}
@@ -1529,7 +1536,7 @@ function rlSheet(){
   const ai=AIS[S.ai],key='rl:x',y=rlType();
   return '<div class="sh-head"><span class="pill2" style="--h:330"><span class="ico">'+icon('shuffle',14)+'</span>Kode-roulette</span><button class="round sm" data-a="close" aria-label="Luk">'+icon('x',18)+'</button></div>'+
     '<h2 id="sh-t" class="sh-title">Tilfældig billed- og kode-roulette</h2>'+
-    '<p class="note" style="margin-top:-4px">Vælg, hvad der er på dit foto. Få derefter 1–3 tilfældige koder, der passer til det.</p>'+
+    '<p class="note" style="margin-top:-4px">Vælg, hvad der er på dit foto. Få derefter 1–3 tilfældige koder, der passer til det.</p>'+kbHow(false)+
     '<h3 class="sec">Hvad er der på dit foto?</h3><div class="rlty" role="group" aria-label="Motivtype">'+Object.keys(RL_TY).map(k=>'<button class="'+(RL.ty===k?'on':'')+'" data-a="rlty" data-k="'+k+'" aria-pressed="'+(RL.ty===k)+'"><span>'+RL_TY[k][1]+'</span>'+esc(RL_TY[k][0])+'</button>').join('')+'</div>'+
     (RL.ty==='sted'?'<div class="rlty sub" role="group" aria-label="Hvilket sted">'+RL_SUB.map(([k,l])=>'<button class="'+((RL.sub||'andet')===k?'on':'')+'" data-a="rlsub" data-k="'+k+'" aria-pressed="'+((RL.sub||'andet')===k)+'">'+l+'</button>').join('')+'</div>':'')+
     '<div class="rlown"><span>'+icon('image',30)+'</span><b>Vedhæft dit eget foto</b><small>Vedhæft det i '+esc(ai.name)+', før du sender prompten</small></div>'+
@@ -1584,9 +1591,16 @@ function kbRows(){
   $('#kbn').textContent=rows.length+' af '+KB.length+' koder';
   $('#kbl').innerHTML=rows.length?rows.map(c=>'<div class="krow"><button class="kmain" data-a="kbcopy" data-k="'+esc(c[0])+'" aria-label="Kopiér '+esc(c[0])+'"><b>'+esc(c[0])+(c[3]?'<span class="kvid" title="Videokode" aria-label="Videokode">'+icon('video',14)+'</span>':'')+'</b><span>'+esc(c[1])+'</span></button><button class="mini" data-a="kbcopy" data-k="'+esc(c[0])+'" aria-label="Kopiér '+esc(c[0])+'">'+icon('copy',17)+'</button></div>').join(''):'<p class="note" style="padding:8px 2px">Ingen koder matcher «'+esc(kbQ)+'».</p>';
 }
+function kbHow(open){
+  return '<details class="kbhow"'+(open?' open':'')+'><summary>Sådan bruger du koderne</summary><div>'+
+  '<p><b>1. Foto + kode.</b> Vedhæft dit udgangsfoto (fx en selfie eller et produktfoto), skriv koden, og tilføj evt. én linje med dine egne detaljer. Fx <code>/staticad</code> til mit kaffebrand, mørkegrøn stil, overskrift: Vågn bedre op.</p>'+
+  '<p><b>ChatGPT og Higgsfield.</b> Koderne virker direkte i ChatGPT og i Higgsfield. Vil du bruge Claude til billeder eller video, så tilføj Higgsfield under <i>Customize → Connectors → Add custom connector</i> med adressen <code>https://mcp.higgsfield.ai/mcp</code>, og log ind på din konto hos higgsfield.ai.</p>'+
+  '<p><b>Canva.</b> Canva bruger ikke slash-koder automatisk. Kopiér både koden og den danske beskrivelse af effekten ind i tekstfeltet sammen med dit motiv.</p>'+
+  '</div></details>';
+}
 function vKodebog(v){
   v.innerHTML='<div class="stack"><header class="bar"><a class="round" href="#katalog" aria-label="Tilbage til kataloget">'+icon('back',20)+'</a><h1>Kodebog</h1><span class="sp"></span></header>'+
-    '<p class="note" style="margin:0">Alle '+KB.length+' koder samlet ét sted. Billedkoder virker direkte i ChatGPT uden plugins: vedhæft et foto, og indsæt koden. Videokoder har et videoikon og kræver Higgsfield.</p>'+
+    '<p class="note" style="margin:0">Alle '+KB.length+' koder samlet ét sted. Billedkoder virker direkte i ChatGPT uden plugins: vedhæft et foto, og indsæt koden. Videokoder har et videoikon og kræver Higgsfield.</p>'+kbHow(false)+
     '<button class="kbbtn" data-a="roulette"><span class="ic">'+icon('shuffle',20)+'</span><span><b>🎲 Tilfældig billed- &amp; kode-roulette</b><span class="s">Vælg dit foto-motiv og få tilfældige koder</span></span></button>'+
     '<label class="search">'+icon('search',19)+'<input id="kbq" type="search" placeholder="Søg i alle '+KB.length+' koder" value="'+esc(kbQ)+'" autocomplete="off" aria-label="Søg i koderne"></label>'+
     '<div class="chips" role="group" aria-label="Filtrér på type">'+[['alle','Alle'],['billede','Billede'],['video','Video']].map(([k,l])=>'<button class="chip'+(kbType===k?' on':'')+'" data-a="kbtype" data-k="'+k+'" aria-pressed="'+(kbType===k)+'">'+l+'</button>').join('')+'</div>'+
@@ -2140,7 +2154,7 @@ function vSwipe(v){
   const hdr='<header class="bar"><a class="round" href="#emner" aria-label="Tilbage til emner">'+icon('back',20)+'</a>'+
     '<div class="ttl"><h1>'+esc(t.name)+'</h1><span>Kort <b>'+x+' / '+n+'</b></span></div>'+
     '<button class="round" data-a="undo" aria-label="Fortryd sidste kort"'+(D.hist.length?'':' disabled')+'>'+icon('undo',19)+'</button></header>'+
-    '<div class="prog" role="progressbar" aria-label="Fremskridt" aria-valuemin="0" aria-valuemax="'+n+'" aria-valuenow="'+Math.min(D.idx,n)+'"><i style="width:'+(n?Math.round(Math.min(D.idx,n)/n*100):0)+'%"></i></div>'+(D.topic==='billeder'?'<button class="rlstrip" data-a="roulette">'+icon('shuffle',16)+'🎲 Tilfældig billed- &amp; kode-roulette</button>':'');
+    '<div class="prog" role="progressbar" aria-label="Fremskridt" aria-valuemin="0" aria-valuemax="'+n+'" aria-valuenow="'+Math.min(D.idx,n)+'"><i style="width:'+(n?Math.round(Math.min(D.idx,n)/n*100):0)+'%"></i></div>'+(D.topic==='billeder'?'<button class="rlstrip" data-a="roulette">'+icon('shuffle',16)+'🎲 Tilfældig billed- &amp; kode-roulette</button>':(n?'<button class="rlstrip" data-a="rndcard">'+icon('shuffle',16)+'🎲 Tilfældig prompt'+(D.topic==='alle'?'':' fra '+esc(t.name))+'</button>':''));
   let main;
   if(!n){
     main='<div class="empty"><div class="glyph">'+icon('filter',32)+'</div><h2>Ingen kort her med dine indstillinger</h2><p>Skift niveau eller slå tekniske kort til, så kommer der flere.</p><a class="btn" href="#indstillinger">Åbn indstillinger</a></div>';
@@ -2334,6 +2348,7 @@ function promptSheet(p){
     openLink(key)+aiQuick(key)+
     '<div class="btnrow"><button class="btn ghost" data-a="copy" data-src="'+key+'">'+icon('copy',17)+'Kopiér</button><button class="btn ghost'+(f?' is-on':'')+'" data-a="fav" data-id="'+p.id+'" aria-pressed="'+f+'">'+icon('heart',17)+(f?'Gemt':'Gem')+'</button><button class="btn ghost'+(sp?' is-on':'')+'" data-a="sup" data-id="'+p.id+'" aria-pressed="'+sp+'">'+icon('star',17)+'Super'+'</button></div>'+
     '<button class="btn ghost wide" data-a="share" data-id="'+p.id+'">'+icon('share',17)+'Del kort</button>'+
+    (sheet&&sheet.rnd?'<button class="btn wide" data-a="rndcard">'+icon('shuffle',17)+'🎲 Ny tilfældig prompt</button>':'')+
     '<p class="sh-foot">Åbner '+esc(ai.host)+' i en ny fane · <a href="#indstillinger">Skift standard-AI</a>'+(p.src?' · Kilde: <a href="'+esc(p.src)+'" target="_blank" rel="noopener">mavgpt.ai</a>':'')+'</p>';
 }
 function techSheet(s){
@@ -2483,6 +2498,7 @@ document.addEventListener('click',e=>{
     case 'yes':decide(true);break;
     case 'no':decide(false);break;
     case 'undo':undo();break;
+    case 'rndcard':{const all=(D.order||[]).filter(x=>BY[x]);if(!all.length)break;const cur=sheet&&sheet.rnd?sheet.id:null;const fresh=all.slice(D.idx).filter(x=>x!==cur);const pool=fresh.length?fresh:all.filter(x=>x!==cur);const pick=(pool.length?pool:all)[Math.floor(Math.random()*(pool.length?pool:all).length)];if(sheet&&sheet.rnd){sheet={kind:'prompt',id:pick,rnd:1};renderSheet(true)}else openSheet({kind:'prompt',id:pick,rnd:1});break}
     case 'opentop':if(D.order&&D.order[D.idx])openSheet({kind:'prompt',id:D.order[D.idx]});break;
     case 'open':openSheet({kind:'prompt',id});break;
     case 'fav':toggleFav(id);refresh();break;
