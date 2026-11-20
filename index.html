@@ -952,7 +952,8 @@ function vEmner(v){
       '<span class="track"><i class="bar-i" style="width:'+Math.round((D.idx+1)/D.order.length*100)+'%"></i></span></a>';
   }
   const repOf=k=>P.find(p=>p.cat===k&&PHOTO[p.id])||P.find(p=>p.cat===k&&p.kind!=='kode')||P.find(p=>p.cat===k);
-  const tcv=k=>{const r=repOf(k);return r?'<span class="tcv">'+coverSVG(r).replace('<svg','<svg preserveAspectRatio="xMidYMid slice"')+'</span>':''};
+  const TOPH={hverdag:'c53',job:'br6',skrivning:'sk1',marketing:'c74',grafik:'gr2',billeder:'i04',video:'g07',idegenerering:'id1',brainstorming:'br1',produkt:'pr2',koncepter:'kk2',research:'c03',business:'c07',laering:'c37',produktivitet:'c57',analyse:'mk2',strategi:'id4',automatisering:'c91',privat:'c67',kodning:'ko1',genveje:'c95'};
+  const tcv=k=>{const id=TOPH[k];if(id&&PHOTO[id])return '<span class="tcv"><img class="cov" alt="" src="'+PHOTO[id]+'"></span>';const r=repOf(k);return r?'<span class="tcv">'+coverSVG(r).replace('<svg','<svg preserveAspectRatio="xMidYMid slice"')+'</span>':''};
   const tiles=Object.keys(CAT).map(k=>{
     const c=CAT[k],cnt=P.filter(p=>p.cat===k&&visible(p)).length,locked=k==='kodning'&&!S.tech;
     if(locked)return '<button class="topic locked" style="--h:'+c.h+'" data-a="techlock">'+tcv(k)+'<span class="lockb">'+icon('lock',18)+'</span><span class="ico">'+icon(c.icon,22)+'</span><span><b>'+esc(c.name)+'</b><small>Tekniske kort er slået fra</small></span></button>';
