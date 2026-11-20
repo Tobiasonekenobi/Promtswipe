@@ -1,5 +1,5 @@
 /* PromptSwipe service worker: hurtig start og offline-brug */
-const V='ps-v5',F='ps-fonts';
+const V='ps-v6',F='ps-fonts';
 const CORE=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png','apple-touch-icon.png'];
 self.addEventListener('install',e=>{
   e.waitUntil(caches.open(V).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()));
@@ -11,6 +11,7 @@ self.addEventListener('fetch',e=>{
   const r=e.request;
   if(r.method!=='GET')return;
   const u=new URL(r.url);
+  if(/\.mp4$/.test(u.pathname))return;
   if(r.mode==='navigate'){
     e.respondWith(fetch(r).then(res=>{const cp=res.clone();caches.open(V).then(c=>c.put('index.html',cp));return res})
       .catch(()=>caches.match('index.html').then(x=>x||caches.match('./'))));
