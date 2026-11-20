@@ -2131,7 +2131,7 @@ function buildPHV(){
     if(best)PHV[p.id]={src:PHOTO[best],k:use(PHOTO[best]),own:false};
   });
 }
-function photoOf(p){if(!PHV)buildPHV();return PHV[p.id]||null}
+function photoOf(p){if(!PHV)buildPHV();const h=PHV[p.id]||null;return h&&!h.k?h:null}
 const PHVAR=[[1,50,50,0,0],[1.7,15,20,0,-18],[1.9,85,75,0,20],[2.2,80,15,0,12],[1.6,20,85,0,-25],[2.4,50,50,0,30],[2.0,10,55,0,8],[1.8,90,40,0,-10]];
 function coverSVG(p){
   if(p.kind==='kodebog')return kbCover(p);
