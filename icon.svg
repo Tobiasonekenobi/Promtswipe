@@ -1,20 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 <defs>
-<radialGradient id="bg" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="#2a1d14"/><stop offset="1" stop-color="#100f13"/></radialGradient>
-<linearGradient id="c1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc47a"/><stop offset="1" stop-color="#ff8a2b"/></linearGradient>
-<linearGradient id="c2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9a3c"/><stop offset="1" stop-color="#d9531a"/></linearGradient>
-<linearGradient id="c3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6ea"/><stop offset="1" stop-color="#ffe2c2"/></linearGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb457"/><stop offset=".55" stop-color="#ff7a3d"/><stop offset="1" stop-color="#e2453c"/></linearGradient>
 </defs>
 <rect width="512" height="512" fill="url(#bg)"/>
-<circle cx="256" cy="256" r="150" fill="#ff8a2b" opacity=".10"/>
-<g transform="translate(256 262)">
-<rect x="-84" y="-118" width="168" height="236" rx="30" fill="url(#c2)" transform="rotate(-18 0 0) translate(-34 4)" opacity=".75"/>
-<rect x="-84" y="-118" width="168" height="236" rx="30" fill="url(#c1)" transform="rotate(-6 0 0) translate(-6 0)"/>
-<g transform="rotate(9 0 0) translate(26 -4)">
-<rect x="-84" y="-118" width="168" height="236" rx="30" fill="url(#c3)"/>
-<path d="M0 -62 C4 -30 14 -20 46 -16 C14 -12 4 -2 0 30 C-4 -2 -14 -12 -46 -16 C-14 -20 -4 -30 0 -62 Z" fill="#ff8a2b"/>
-<path d="M44 40 C30 74 -4 84 -44 74" fill="none" stroke="#2a1608" stroke-width="13" stroke-linecap="round"/>
-<path d="M-26 56 L-46 76 L-20 90" fill="none" stroke="#2a1608" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(256 262) rotate(-8)">
+<rect x="-128" y="-118" width="256" height="236" rx="52" fill="#1a1013" opacity=".25" transform="translate(8 14)"/>
+<path d="M-128 -66 a52 52 0 0 1 52 -52 h152 a52 52 0 0 1 52 52 v112 a52 52 0 0 1 -52 52 h-70 l-46 46 v-46 h-36 a52 52 0 0 1 -52 -52 z" fill="#fff4e6"/>
+<path d="M-66 -34 L-12 12 L-66 58" fill="none" stroke="#1a1013" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10 62 H74" fill="none" stroke="#ff7a3d" stroke-width="26" stroke-linecap="round"/>
 </g>
-</g>
+<path d="M392 96 C395 122 404 130 430 133 C404 136 395 144 392 170 C389 144 380 136 354 133 C380 130 389 122 392 96 Z" fill="#fff4e6"/>
 </svg>
