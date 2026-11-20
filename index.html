@@ -461,6 +461,16 @@ button.kbbtn{border:0;width:100%;text-align:left;font:inherit;cursor:pointer}
 .kbbtn+.kbbtn{margin-top:-4px}
 /* Roulette midlertidigt skjult (kode beholdt). Fjern næste linje for at tænde den igen. */
 [data-a=roulette]{display:none!important}
+.katsel{display:flex;align-items:center;gap:10px;min-height:48px;padding:8px 14px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);font:inherit;width:100%;text-align:left}
+.katsel span:first-child{color:var(--muted);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.katsel b{flex:1}
+.katsel .kn{color:var(--muted);font-size:12.5px}
+.kcgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kcgrid button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:56px;padding:10px 12px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);font:inherit;text-align:left}
+.kcgrid button b{font-size:14px}
+.kcgrid button small{color:var(--muted);font-size:12px}
+.kcgrid button.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 20%,transparent)}
+.kcgrid button.wide{grid-column:1/-1}
 .rlstrip{display:flex;align-items:center;justify-content:center;gap:8px;min-height:40px;border-radius:14px;border:1px dashed var(--accent);background:transparent;color:var(--accent);font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;flex:none}
 .kvid{display:inline-flex;vertical-align:-2px;margin-left:6px;color:var(--accent)}
 .kchip b .ic{vertical-align:-2px;color:var(--accent)}
@@ -1964,6 +1974,13 @@ function vEmner(v){
 }
 
 /* ---------- katalog ---------- */
+function katCatsSheet(){
+  const keys=Object.keys(CAT).filter(k=>k!=='kodning'||S.tech),cnt=k=>P.filter(p=>visible(p)&&(k==='alle'||p.cat===k)).length;
+  return '<div class="sh-head"><span class="pill2" style="--h:30"><span class="ico">'+icon('list',14)+'</span>Emner</span><button class="round sm" data-a="close" aria-label="Luk">'+icon('x',18)+'</button></div>'+
+    '<h2 id="sh-t" class="sh-title">Vælg emne</h2>'+
+    '<div class="kcgrid"><button class="wide'+(katCat==='alle'?' on':'')+'" data-a="katcat2" data-k="alle"><b>Alle emner</b><small>'+cnt('alle')+' kort</small></button>'+
+    keys.map(k=>'<button class="'+(katCat===k?'on':'')+'" data-a="katcat2" data-k="'+k+'"><b>'+esc(CAT[k].name)+'</b><small>'+cnt(k)+' kort</small></button>').join('')+'</div>';
+}
 function katRows(){
   const q=query.trim().toLowerCase();
   const rows=P.filter(p=>visible(p)&&(katCat==='alle'||p.cat===katCat)&&(katCat!=='billeder'||katSub==='alle'||p.sub===katSub)&&(katType==='alle'||(katType==='kode')===(p.kind==='kode'||p.kind==='kodebog'))&&(!q||(p.title+' '+p.text+' '+(p.desc||'')+' '+p.tags.join(' ')+' '+CAT[p.cat].name).toLowerCase().includes(q)));
@@ -1977,7 +1994,7 @@ function vKatalog(v){
     '<button class="kbbtn" data-a="roulette"><span class="ic">'+icon('shuffle',20)+'</span><span><b>🎲 Tilfældig billed- &amp; kode-roulette</b><span class="s">Tilfældige koder til dit eget foto</span></span></button>'+
     '<label class="search">'+icon('search',19)+'<input id="q" type="search" placeholder="Søg i alle kort" value="'+esc(query)+'" autocomplete="off" aria-label="Søg i alle kort"></label>'+
     '<div class="chips" role="group" aria-label="Filtrér på type">'+[['alle','Alle typer'],['prompt','Prompts'],['kode','Koder']].map(([k,l])=>'<button class="chip'+(katType===k?' on':'')+'" data-a="kattype" data-k="'+k+'" aria-pressed="'+(katType===k)+'">'+l+'</button>').join('')+'</div>'+
-    '<div class="chips" role="group" aria-label="Filtrér på emne">'+['alle'].concat(Object.keys(CAT)).filter(k=>k!=='kodning'||S.tech).map(k=>'<button class="chip'+(katCat===k?' on':'')+'" data-a="katcat" data-k="'+k+'" aria-pressed="'+(katCat===k)+'">'+(k==='alle'?'Alle':CAT[k].name)+'</button>').join('')+'</div>'+
+    '<button class="katsel" data-a="katcats" aria-haspopup="dialog"><span>Emne</span><b>'+(katCat==='alle'?'Alle emner':esc(CAT[katCat].name))+'</b><span class="kn">'+P.filter(p=>visible(p)&&(katCat==='alle'||p.cat===katCat)).length+' kort</span>'+icon('chev',18)+'</button>'+
     (katCat==='billeder'?'<div class="chips" role="group" aria-label="Filtrér billeder">'+[['alle','Alle billeder'],['stil','Billedstilkoder'],['foto','Fotoredigering']].map(([k,l])=>'<button class="chip'+(katSub===k?' on':'')+'" data-a="katsub" data-k="'+k+'" aria-pressed="'+(katSub===k)+'">'+l+'</button>').join('')+'</div>':'')+
     '<p class="note" id="cnt"></p><div class="grid2" id="results"></div></div>';
   katRows();
@@ -2426,6 +2443,7 @@ function renderSheet(first){
   else if(sheet.kind==='tool'&&TB[sheet.id])html=toolSheet(TB[sheet.id]);
   else if(sheet.kind==='tech')html=techSheet(sheet);
   else if(sheet.kind==='rl')html=rlSheet();
+  else if(sheet.kind==='katcats')html=katCatsSheet();
   else if(sheet.kind==='mix')html=mixSheet();
   else if(sheet.kind==='savedmix'){const m=S.mixes.find(x=>x.id===sheet.id);if(m)html=savedMixSheet(m)}
   if(!html){closeSheet();return}
@@ -2501,6 +2519,8 @@ document.addEventListener('click',e=>{
       document.querySelectorAll('input[data-pf]').forEach(i=>{if(i.dataset.pf===key&&i.dataset.t===t)i.value=ex});
       pfRefresh(key);break}
     case 'katcat':katCat=k;katSub='alle';render();break;
+    case 'katcats':openSheet({kind:'katcats'});break;
+    case 'katcat2':katCat=k;katSub='alle';closeSheet();render();break;
     case 'katsub':katSub=k;render();break;
     case 'kattype':katType=k;render();break;
     case 'restart':D={topic:D.topic,order:buildOrder(D.topic),idx:0,hist:[]};render();break;
