@@ -367,6 +367,29 @@ input[type=range]::-moz-range-thumb{width:14px; height:14px; border-radius:50%; 
 #toast.show{opacity:1; transform:translate(-50%,0)}
 .app.has-sheet #toast{bottom:auto; top:16px; transform:translate(-50%,-16px)}
 .app.has-sheet #toast.show{transform:translate(-50%,0)}
+
+/* Billedguide */
+.sheet.gsheet{max-height:94%;min-height:70%}
+.gdots{display:flex;gap:6px;justify-content:center;margin:2px 0 4px}.gdots i{height:5px;flex:1;max-width:46px;border-radius:99px;background:var(--track)}.gdots i.done{background:color-mix(in srgb,var(--accent) 55%,transparent)}.gdots i.cur{background:var(--accent)}
+.gtop{display:flex;align-items:center;justify-content:space-between;gap:10px}.gtop .sh-title{margin:0}
+.gsurp{flex:none;display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:99px;font-weight:800;font-size:13px;background:var(--grad);color:#fff;box-shadow:0 10px 22px -12px var(--accent)}
+.ggrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.gopt{position:relative;display:flex;flex-direction:column;gap:5px;text-align:left;padding:8px;border-radius:18px;background:var(--surface-2);border:2px solid transparent;color:var(--fg);min-width:0}
+.gopt.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--surface-2));box-shadow:0 10px 24px -14px var(--accent)}
+.gopt.big{padding:14px}.gopt.big .gn{gap:8px}
+.gth{aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:var(--surface);display:block}.gth svg{width:100%;height:100%;display:block}
+.ggrid.lt .gth{aspect-ratio:16/10}.ggrid.fr{grid-template-columns:repeat(3,1fr)}.ggrid.fr .gd{display:none}.ggrid.fr .gn{font-size:12px}
+.gth.gico{display:grid;place-items:center;color:var(--fg);background:var(--surface);aspect-ratio:1.5/1}.gth.gico svg{width:62%;height:100%}
+.gn{display:flex;align-items:center;gap:6px;font-weight:800;font-size:13.5px;line-height:1.2;padding:0 2px}
+.gd{font-size:11.5px;line-height:1.35;color:var(--muted);padding:0 2px 2px}
+.gtick{margin-left:auto;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--ong);flex:none}
+.gmode{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gup{display:flex;flex-direction:column;gap:10px}.gup>div{display:flex;gap:10px;align-items:center}.gup img{width:72px;height:72px;object-fit:cover;border-radius:14px;flex:none}.gup .note{margin:2px 0 0;font-size:12px}
+.gfile{cursor:pointer}
+.gwarn{display:flex;gap:8px;align-items:flex-start;margin:0;padding:10px 12px;border-radius:14px;font-size:12.5px;line-height:1.4;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--fg)}.gwarn .ic{flex:none;margin-top:1px;color:var(--accent)}
+.gnav{display:flex;gap:8px;position:sticky;bottom:-2px;padding:10px 0 2px;background:linear-gradient(0deg,var(--surface) 70%,transparent)}.gnav .btn{flex:1}.gnav .btn:last-child{flex:1.4}.gnav .btn[disabled]{opacity:.45}
+.gsum{display:flex;flex-wrap:wrap;gap:6px}.gchip{padding:7px 11px;border-radius:99px;font-size:12px;background:var(--surface-2);color:var(--muted);border:1.5px solid transparent}.gchip b{color:var(--fg)}.gchip.on{border-color:var(--accent)}.gchip.on b{color:var(--accent)}
+.gtext{width:100%;box-sizing:border-box;border-radius:16px;padding:12px;font:12.5px/1.5 var(--font);background:var(--surface-2);color:var(--fg);border:1.5px solid var(--line);resize:vertical;min-height:180px}.gtext:focus{border-color:var(--accent);outline:none}
 @media (prefers-reduced-motion:reduce){.card,#toast,.act,.sheet,.switch,.switch::after,.prog i{transition:none; animation:none}}
 
 /* V18-look: varm mørk palet, orange accent, display-skrift og fersken-kort */
@@ -2372,6 +2395,7 @@ function promptSheet(p){
     (fill?pfFields(p.text,key):'')+
     '<div class="ptext'+(p.kind==='kode'?' code':'')+(fill&&phTokens(p.text).length&&phTokens(p.text).every(t=>((PF[key]||{})[t]||'').trim())?' ready':'')+'" id="ptext">'+(fill?ptextHTML(p.text,key):marks(p.text))+'</div>'+
     (p.steps?'<h3 class="sec">Sådan bruger du den</h3><ol class="howto">'+p.steps.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol>':'')+
+    (p.cat==='billeder'?'<button class="btn ghost wide gbtn" data-a="gopen" data-id="'+p.id+'">'+icon('spark',17)+'Billedguide: find stil, vinkel og lys</button>':'')+
     openLink(key)+aiQuick(key)+
     '<div class="btnrow"><button class="btn ghost" data-a="copy" data-src="'+key+'">'+icon('copy',17)+'Kopiér</button><button class="btn ghost'+(f?' is-on':'')+'" data-a="fav" data-id="'+p.id+'" aria-pressed="'+f+'">'+icon('heart',17)+(f?'Gemt':'Gem')+'</button><button class="btn ghost'+(sp?' is-on':'')+'" data-a="sup" data-id="'+p.id+'" aria-pressed="'+sp+'">'+icon('star',17)+'Super'+'</button></div>'+
     '<button class="btn ghost wide" data-a="share" data-id="'+p.id+'">'+icon('share',17)+'Del kort</button>'+
@@ -2431,6 +2455,189 @@ function savedMixSheet(m){
     openLink('m:'+m.id)+
     '<div class="btnrow"><button class="btn ghost" data-a="copy" data-src="m:'+esc(m.id)+'">'+icon('copy',17)+'Kopiér</button><button class="btn ghost" data-a="delmix" data-id="'+esc(m.id)+'">'+icon('trash',17)+'Slet</button></div>';
 }
+/* ---------- Billedguide: stil, vinkel, udsnit og lys ---------- */
+const G={id:null,step:0,mode:null,photo:null,photoName:'',style:null,angle:null,frame:null,light:null,edit:null,dirty:false,fresh:false};
+const G_STYLES=[
+['realistisk','Realistisk','Ligner et rigtigt foto med naturlige farver og detaljer.','i realistisk fotostil med naturlige farver og fine detaljer'],
+['filmisk','Filmisk','Som et still fra en film: dybde, dramatisk farvegrading og sorte striber.','i filmisk stil med cinematisk farvegrading og lav skarphedsdybde'],
+['tegnefilm','Tegnefilm','Kraftige streger og flade, stærke farver som i en tegneserie.','i tegnefilmsstil med tydelige streger og flade, mættede farver'],
+['anime','Anime','Japansk animestil med bløde pasteller og glødende lys.','i anime-stil med bløde pastelfarver og glødende lys'],
+['clay','Modellervoks / clay 3D','Bløde, runde former, som om alt er lavet i modellervoks.','som en clay 3D-scene af modellervoks med bløde, runde former og fingeraftryk i overfladen'],
+['pixel','Pixel art','Retro-spilgrafik bygget af store firkantede pixels.','som pixel art i retro-spilstil med store, tydelige pixels og begrænset farvepalet'],
+['lowpoly','Low poly','Motivet er bygget af få, flade trekanter.','i low poly 3D-stil bygget af flade trekantede facetter'],
+['akvarel','Akvarel','Gennemsigtige farver, der flyder blødt ud på papir.','som en akvarelmaling med gennemsigtige farver, bløde kanter og synligt papir'],
+['olie','Oliemaleri','Tykke penselstrøg og rige, varme farver.','som et oliemaleri med tykke penselstrøg og rige farver'],
+['papir','Papirklip','Lag af klippet papir med bløde skygger imellem.','som papirklip i lag med bløde skygger mellem lagene'],
+['blueprint','Blueprint / teknisk tegning','Hvide streger på blåt papir, som en ingeniørtegning.','som en blueprint-tegning med hvide tekniske linjer på blå baggrund og målangivelser'],
+['riso','Risograph','Trykt med to farver, forskudte lag og grov kornet struktur.','som risograph-tryk med to-tre farver, let forskudte lag og kornet struktur']];
+const G_ANG=[
+['oje','Øjenhøjde','Som når du står foran og kigger lige på det.','set fra øjenhøjde'],
+['oppe','Oppefra','Fugleperspektiv, hvor man kigger ned på motivet.','set oppefra i fugleperspektiv'],
+['nede','Nedefra','Frøperspektiv, der får motivet til at virke stort og stærkt.','set nedefra i frøperspektiv'],
+['skulder','Over skulderen','Man kigger med over en persons skulder.','set over skulderen på en person'],
+['pov','Førsteperson / POV','Som om det er dine egne øjne.','set i førsteperson (POV), som var det betragterens egne øjne'],
+['skraa','Skrå og dramatisk','Kameraet er vippet, så det føles dynamisk og spændt.','set fra en skrå, dramatisk vinkel med vippet kamera'],
+['drone','Droneperspektiv','Højt oppe og langt væk, med overblik over hele stedet.','set fra en drone højt oppe med overblik']];
+const G_FR=[['hel','Hele motivet','Alt er med i billedet.','med hele motivet i billedet'],['naer','Nærbillede','Tæt på detaljerne.','som nærbillede med fokus på detaljerne'],['vid','Vidvinkel','Bredt, med masser af omgivelser.','i vidvinkel med masser af omgivelser']];
+const G_LT=[['nat','Naturligt lys','Blødt dagslys.','med naturligt, blødt dagslys'],['guld','Gyldent sollys','Varmt lys lige efter solopgang eller før solnedgang.','i varmt, gyldent sollys (golden hour)'],['dram','Dramatisk lys','Stærke kontraster og dybe skygger.','med dramatisk lys, stærke kontraster og dybe skygger'],['neon','Neonlys','Farverige lysskilte i pink og blå.','badet i farverigt neonlys i pink og blå']];
+const gFind=(L,k)=>L.find(x=>x[0]===k);
+const G_STEPS=['Start','Stil','Vinkel','Udsnit og lys','Din prompt'];
+function gSvgMotif(k){
+  /* samme motiv i alle stile: bjerge, sol, hytte, træer og sø. Små illustrationer, ikke AI-genererede billeder */
+  const P={
+  realistisk:{sky:['#8ec5f0','#f6e3c3'],sun:'#fff3c4',m1:'#6b7f93',m2:'#8d9aa6',h:'#a0522d',r:'#5b3a29',t:'#2f6b3a',l:'#6aa6c8',g:'#5f8f4a'},
+  filmisk:{sky:['#16324a','#e9a15a'],sun:'#ffd9a0',m1:'#1c2a3a',m2:'#2c4157',h:'#6b3b26',r:'#2a1a14',t:'#10261f',l:'#1d4a63',g:'#17302a',bars:1},
+  tegnefilm:{sky:['#7fd3ff','#7fd3ff'],sun:'#ffe14d',m1:'#a07cf0',m2:'#7ad07a',h:'#ff8a4d',r:'#e23d4a',t:'#2fb85a',l:'#38b6ff',g:'#5fd16f',stroke:'#1a1a2e',sw:2.6},
+  anime:{sky:['#a9d8ff','#ffd6ec'],sun:'#fff7d6',m1:'#9db6ff',m2:'#c8b6ff',h:'#fff1e3',r:'#ff9ab8',t:'#6fd1a4',l:'#9be4ff',g:'#9be8b5',glow:1},
+  clay:{sky:['#bfe3f2','#d8eefa'],sun:'#ffd36b',m1:'#c9a4e0',m2:'#8fd0a3',h:'#f4a66a',r:'#e86a6a',t:'#4fbf7a',l:'#7cc3e8',g:'#9edc9a',round:1},
+  pixel:{sky:['#5ec0ff','#a4e7ff'],sun:'#ffe14d',m1:'#6a5acd',m2:'#3e8e41',h:'#c8782f',r:'#a02c2c',t:'#1f7a3a',l:'#2d7de0',g:'#58b84a',pixel:1},
+  lowpoly:{sky:['#6fb6e8','#f7d9a8'],sun:'#fff0b8',m1:'#5a6f9a',m2:'#7d8fb8',h:'#d07a4a',r:'#8a3f2a',t:'#2c7a54',l:'#4aa0c4',g:'#4f9a5e',facet:1},
+  akvarel:{sky:['#cfe8f7','#f9ead4'],sun:'#ffe9a8',m1:'#a8b8d8',m2:'#b9d4b0',h:'#e8b48a',r:'#d98a8a',t:'#7fb98a',l:'#9fd0e6',g:'#c4dfb0',wc:1},
+  olie:{sky:['#f2c36b','#6ea0c8'],sun:'#fff0a0',m1:'#6a4f8a',m2:'#3f7a5a',h:'#c8672f',r:'#7a2a1f',t:'#1f5a3a',l:'#2c5f9a',g:'#4a8a3a',oil:1},
+  papir:{sky:['#ffd7a8','#ffd7a8'],sun:'#fff4d0',m1:'#e7886b',m2:'#cf5c6a',h:'#5aa7a0',r:'#2f6f73',t:'#3a8a5a',l:'#4aa0c4',g:'#7ac28a',paper:1},
+  blueprint:{sky:['#143c8c','#143c8c'],sun:'none',m1:'none',m2:'none',h:'none',r:'none',t:'none',l:'none',g:'none',stroke:'#e6f0ff',sw:1.4,bp:1},
+  riso:{sky:['#f9efe0','#f9efe0'],sun:'#ff5c8a',m1:'#2a9d9d',m2:'#2a9d9d',h:'#ff5c8a',r:'#2a9d9d',t:'#2a9d9d',l:'#7fd0d0',g:'#ff9fb8',riso:1}
+  }[k];
+  const sw=P.stroke?' stroke="'+P.stroke+'" stroke-width="'+P.sw+'" stroke-linejoin="round"':'';
+  const rr=P.round?' rx="6"':'';
+  const id='gm'+k;
+  let defs='<linearGradient id="'+id+'s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+P.sky[0]+'"/><stop offset="1" stop-color="'+P.sky[1]+'"/></linearGradient>';
+  if(P.wc)defs+='<filter id="'+id+'f"><feTurbulence baseFrequency=".04" numOctaves="3" seed="3"/><feDisplacementMap in="SourceGraphic" scale="7"/><feGaussianBlur stdDeviation=".7"/></filter>';
+  if(P.oil)defs+='<filter id="'+id+'f"><feTurbulence baseFrequency=".09" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="9"/></filter>';
+  if(P.paper)defs+='<filter id="'+id+'f" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2.2" stdDeviation="1.6" flood-opacity=".45"/></filter>';
+  if(P.riso)defs+='<filter id="'+id+'f"><feTurbulence baseFrequency=".9" numOctaves="1" seed="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.35" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in"/></filter>';
+  if(P.clay||P.round)defs+='<radialGradient id="'+id+'c" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></radialGradient>';
+  const shapes=
+  '<rect x="0" y="0" width="100" height="100" fill="url(#'+id+'s)"'+(P.bp?' ':'')+'/>'+
+  (P.bp?'<path d="M0 20H100M0 40H100M0 60H100M0 80H100M20 0V100M40 0V100M60 0V100M80 0V100" stroke="#6f93d8" stroke-width=".4" fill="none"/>':'')+
+  (P.glow?'<circle cx="72" cy="24" r="22" fill="#fff" opacity=".35"/>':'')+
+  '<circle cx="72" cy="24" r="'+(P.round?10:9)+'" fill="'+P.sun+'"'+sw+'/>'+
+  '<polygon points="-5,70 25,30 52,70" fill="'+P.m1+'"'+sw+'/>'+
+  '<polygon points="30,70 62,36 105,70" fill="'+P.m2+'"'+sw+'/>'+
+  (P.facet?'<polygon points="25,30 38,70 52,70" fill="#000" opacity=".16"/><polygon points="62,36 75,70 105,70" fill="#000" opacity=".15"/><polygon points="25,30 12,52 -5,70 15,70" fill="#fff" opacity=".12"/>':'')+
+  '<rect x="-2" y="68" width="104" height="14" fill="'+P.l+'"'+sw+'/>'+
+  '<rect x="-2" y="80" width="104" height="22" fill="'+P.g+'"'+sw+'/>'+
+  '<rect x="22" y="58" width="22" height="18" fill="'+P.h+'"'+sw+rr+'/>'+
+  '<polygon points="19,58 33,45 47,58" fill="'+P.r+'"'+sw+'/>'+
+  (P.bp?'<rect x="30" y="64" width="6" height="12" fill="none"'+sw+'/><path d="M22 84H44M22 82V86M44 82V86" stroke="#e6f0ff" stroke-width=".8" fill="none"/>':'<rect x="30" y="64" width="6" height="12" fill="'+P.r+'"'+sw+'/>')+
+  '<polygon points="60,80 68,56 76,80" fill="'+P.t+'"'+sw+'/><polygon points="72,82 79,62 86,82" fill="'+P.t+'"'+sw+'/>'+
+  (P.clay||P.round?'<rect width="100" height="100" fill="url(#'+id+'c)"/>':'')+
+  (P.bars?'<rect width="100" height="12" fill="#000"/><rect y="88" width="100" height="12" fill="#000"/><rect width="100" height="100" fill="url(#'+id+'v)" opacity=".5"/>':'')+
+  (P.riso?'<g style="mix-blend-mode:multiply" opacity=".85"><circle cx="75" cy="27" r="9" fill="#ff5c8a"/></g>':'');
+  if(P.bars)defs+='<radialGradient id="'+id+'v"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000"/></radialGradient>';
+  const f=(P.wc||P.oil||P.paper||P.riso)?' filter="url(#'+id+'f)"':'';
+  return '<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"'+(P.pixel?' data-px="1"':'')+'><defs>'+defs+'</defs>'+(f?'<rect width="100" height="100" fill="url(#'+id+'s)"/>':'')+'<g'+f+'>'+shapes+'</g></svg>';
+}
+function gSvgAngle(k){
+  const sub='<circle cx="30" cy="30" r="5" fill="currentColor"/><rect x="25" y="35" width="10" height="14" rx="3" fill="currentColor"/>';
+  const cam=(x,y,r)=>'<g transform="translate('+x+' '+y+') rotate('+r+')"><rect x="-8" y="-5" width="13" height="10" rx="2" fill="var(--accent)"/><polygon points="5,-3 11,-6 11,6 5,3" fill="var(--accent)"/></g>';
+  const ray=(x1,y1,x2,y2)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="3 3"/>';
+  const g='<line x1="4" y1="52" x2="56" y2="52" stroke="currentColor" stroke-width="1" opacity=".45"/>';
+  const m={
+  oje:g+sub+ray(50,32,36,34)+cam(50,32,180),
+  oppe:g+sub+ray(46,8,36,28)+cam(46,8,145),
+  nede:g+'<rect x="25" y="25" width="10" height="3" fill="currentColor"/><rect x="26" y="30" width="8" height="18" rx="3" fill="currentColor"/>'+ray(48,56,36,40)+cam(48,56,-140),
+  skulder:g+'<circle cx="20" cy="30" r="6" fill="currentColor" opacity=".55"/><rect x="13" y="36" width="14" height="14" rx="4" fill="currentColor" opacity=".55"/><circle cx="46" cy="32" r="4" fill="currentColor"/>'+ray(24,24,44,31)+cam(10,24,0),
+  pov:g+'<path d="M6 46Q12 34 22 38" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M6 52Q16 40 26 44" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/><circle cx="46" cy="28" r="6" fill="currentColor"/>'+ray(10,22,38,27)+'<circle cx="8" cy="22" r="4" fill="var(--accent)"/>',
+  skraa:'<g transform="rotate(-16 30 30)">'+g+sub+ray(50,30,36,34)+cam(50,30,180)+'</g>',
+  drone:g+'<rect x="26" y="45" width="8" height="6" rx="1" fill="currentColor"/><circle cx="30" cy="42" r="2.6" fill="currentColor"/>'+ray(46,8,32,38)+'<g transform="translate(46 8)"><circle cx="0" cy="0" r="4" fill="var(--accent)"/><line x1="-9" y1="-3" x2="9" y2="-3" stroke="var(--accent)" stroke-width="1.6"/><circle cx="-9" cy="-3" r="2.6" fill="none" stroke="var(--accent)"/><circle cx="9" cy="-3" r="2.6" fill="none" stroke="var(--accent)"/></g>'
+  }[k];
+  return '<svg viewBox="0 0 60 60" aria-hidden="true">'+m+'</svg>';
+}
+function gSvgFrame(k){
+  const s={hel:'<rect x="6" y="6" width="48" height="48" rx="6" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="30" cy="22" r="6" fill="currentColor"/><rect x="21" y="30" width="18" height="16" rx="5" fill="currentColor"/>',
+  naer:'<rect x="6" y="6" width="48" height="48" rx="6" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="30" cy="30" r="15" fill="currentColor"/><circle cx="25" cy="27" r="2.4" fill="var(--surface)"/><circle cx="35" cy="27" r="2.4" fill="var(--surface)"/>',
+  vid:'<rect x="3" y="14" width="54" height="32" rx="5" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="30" cy="30" r="3.4" fill="currentColor"/><rect x="26" y="34" width="8" height="8" rx="2" fill="currentColor"/><path d="M6 44l9-9 7 6 8-8 10 10 11-8" stroke="currentColor" stroke-width="1.4" fill="none" opacity=".6"/>'}[k];
+  return '<svg viewBox="0 0 60 60" aria-hidden="true">'+s+'</svg>';
+}
+const G_LTCSS={nat:'linear-gradient(160deg,#cfe9ff,#fff8ea 60%,#d8e9c9)',guld:'linear-gradient(160deg,#ffb347,#ffd98a 50%,#ff8a4d)',dram:'linear-gradient(160deg,#0c0c14,#4a3a66 55%,#ffd9a0 56%,#10101a)',neon:'linear-gradient(135deg,#ff2bd6,#3a1c7a 50%,#18c6ff)'};
+function gPrompt(){
+  const p=BY[G.id];if(!p)return '';
+  const st=gFind(G_STYLES,G.style),an=gFind(G_ANG,G.angle),fr=gFind(G_FR,G.frame),lt=gFind(G_LT,G.light);
+  const base=p.text.replace(/\s+$/,'');
+  let out=base;
+  const ch=[];
+  if(st)ch.push('- Stil: '+st[3]);
+  if(an)ch.push('- Kameravinkel: '+an[3]);
+  if(fr)ch.push('- Udsnit: '+fr[3]);
+  if(lt)ch.push('- Lys: '+lt[3]);
+  if(ch.length)out+='\n\nMine valg til billedet (brug dem allerede i det første billede):\n'+ch.join('\n');
+  if(G.mode==='photo')out+='\n\nMit vedhæftede billede er udgangspunktet. Bevar personens eller motivets vigtigste kendetegn, så det stadig kan genkendes, og skift kun det, jeg har bedt om.';
+  else if(G.mode==='idea')out+='\n\nJeg har ikke et billede. Lav motivet ud fra beskrivelsen ovenfor, og spørg ikke først.';
+  return out;
+}
+function gSum(){
+  const it=[['Stil',G_STYLES,G.style,1],['Vinkel',G_ANG,G.angle,2],['Udsnit',G_FR,G.frame,3],['Lys',G_LT,G.light,3]];
+  return '<div class="gsum" aria-label="Dine valg">'+it.map(x=>{const f=x[2]&&gFind(x[1],x[2]);return '<button class="gchip'+(f?' on':'')+'" data-a="gstep" data-k="'+x[3]+'">'+x[0]+': <b>'+(f?esc(f[1]):'Ikke valgt')+'</b></button>'}).join('')+'</div>';
+}
+function gOpts(L,cur,act,kind){
+  return '<div class="ggrid '+kind+'" role="group">'+L.map(x=>{
+    const on=cur===x[0];
+    const vis=kind==='sty'?'<div class="gth" '+(x[0]==='pixel'?'data-pixel="1"':'')+'>'+gSvgMotif(x[0])+'</div>':kind==='ang'?'<div class="gth gico">'+gSvgAngle(x[0])+'</div>':kind==='fr'?'<div class="gth gico">'+gSvgFrame(x[0])+'</div>':'<div class="gth" style="background:'+G_LTCSS[x[0]]+'"></div>';
+    return '<button class="gopt'+(on?' on':'')+'" data-a="'+act+'" data-k="'+x[0]+'" aria-pressed="'+on+'">'+vis+'<span class="gn">'+esc(x[1])+(on?'<i class="gtick">'+icon('check',14)+'</i>':'')+'</span><span class="gd">'+esc(x[2])+'</span></button>'}).join('')+'</div>';
+}
+function guideSheet(){
+  const p=BY[G.id];if(!p)return '';
+  const close='<button class="round sm" data-a="close" aria-label="Luk">'+icon('x',18)+'</button>';
+  const dots='<div class="gdots" role="img" aria-label="Trin '+(G.step+1)+' af '+G_STEPS.length+'">'+G_STEPS.map((s,i)=>'<i class="'+(i===G.step?'cur':i<G.step?'done':'')+'"></i>').join('')+'</div>';
+  const surp='<button class="gsurp" data-a="gsurp">'+icon('spark',16)+'Overrask mig</button>';
+  const nav=(next,skip)=>'<div class="gnav">'+(G.step>0?'<button class="btn ghost" data-a="gback">Tilbage</button>':'')+(skip?'<button class="btn ghost" data-a="gskip">Spring over</button>':'')+'<button class="btn" data-a="gnext"'+(next===false?' disabled':'')+'>'+(next||'Næste')+'</button></div>';
+  let body='';
+  const head='<div class="sh-head"><span class="pill2" style="--h:285"><span class="ico">'+icon('spark',14)+'</span>Billedguide</span>'+close+'</div>'+dots;
+  if(G.step===0){
+    body='<h2 id="sh-t" class="sh-title">Find din stil til “'+esc(p.title)+'”</h2><p class="note">Vælg stil, vinkel og lys med små eksempler. Du kan springe alt over, og til sidst får du en færdig prompt.</p>'+
+    '<h3 class="sec">Har du et billede?</h3><div class="gmode" role="group">'+
+    '<button class="gopt big'+(G.mode==='photo'?' on':'')+'" data-a="gmode" data-k="photo" aria-pressed="'+(G.mode==='photo')+'"><span class="gn">'+icon('image',20)+'Jeg har et billede</span><span class="gd">Det bliver udgangspunktet</span></button>'+
+    '<button class="gopt big'+(G.mode==='idea'?' on':'')+'" data-a="gmode" data-k="idea" aria-pressed="'+(G.mode==='idea')+'"><span class="gn">'+icon('spark',20)+'Kun en idé</span><span class="gd">Uden billede</span></button></div>'+
+    (G.mode==='photo'?'<div class="gup">'+(G.photo?'<img src="'+G.photo+'" alt="Dit valgte billede"><div><b>'+esc(G.photoName||'Dit billede')+'</b><p class="note">Billedet bliver kun vist her i appen. Det bliver ikke uploadet nogen steder.</p></div>':'')+
+      '<label class="btn ghost wide gfile">'+icon('plus',17)+(G.photo?'Vælg et andet billede':'Vælg billede fra din enhed')+'<input type="file" accept="image/*" data-g="file" hidden></label>'+
+      '<p class="gwarn">'+icon('bulb',15)+'Husk: Når du kopierer prompten, følger billedet ikke med. Du skal selv vedhæfte det i ChatGPT eller dit billedværktøj.</p></div>':'')+
+    '<div class="gnav"><button class="btn" data-a="gnext"'+(G.mode&&(G.mode!=='photo'||G.photo)?'':' disabled')+'>Start guiden</button></div>';
+  }else if(G.step===1){
+    body='<div class="gtop"><h2 id="sh-t" class="sh-title">Vælg en stil</h2>'+surp+'</div><p class="note">Samme motiv i 12 stile, så du kan se forskellen.</p>'+gOpts(G_STYLES,G.style,'gstyle','sty')+nav('Næste',true);
+  }else if(G.step===2){
+    body='<div class="gtop"><h2 id="sh-t" class="sh-title">Vælg kameravinkel</h2>'+surp+'</div><p class="note">Hvor står kameraet i forhold til motivet?</p>'+gOpts(G_ANG,G.angle,'gang','ang')+nav('Næste',true);
+  }else if(G.step===3){
+    body='<div class="gtop"><h2 id="sh-t" class="sh-title">Udsnit og lys</h2>'+surp+'</div><h3 class="sec">Udsnit</h3>'+gOpts(G_FR,G.frame,'gfr','fr')+'<h3 class="sec">Lys</h3>'+gOpts(G_LT,G.light,'glt','lt')+nav('Se min prompt',true);
+  }else{
+    const txt=(G.edit!==null&&G.dirty)?G.edit:gPrompt();
+    body='<div class="gtop"><h2 id="sh-t" class="sh-title">Din færdige prompt</h2>'+surp+'</div>'+gSum()+
+    (G.mode==='photo'?'<p class="gwarn">'+icon('bulb',15)+'Vedhæft selv dit billede'+(G.photoName?' ('+esc(G.photoName)+')':'')+' i ChatGPT. Kopiering af prompten overfører ikke billedet.</p>':'')+
+    '<label class="lbl" for="gtext"><span>Redigér prompten, hvis du vil</span></label><textarea id="gtext" class="gtext" rows="12" spellcheck="false">'+esc(txt)+'</textarea>'+
+    (G.dirty?'<button class="textlink" data-a="greset">Nulstil til mine valg</button>':'')+
+    openLink('g:')+aiQuick('g:')+
+    '<div class="btnrow"><button class="btn" data-a="copy" data-src="g:">'+icon('copy',17)+'Kopiér prompten</button><button class="btn ghost" data-a="gstep" data-k="1">Ret valg</button></div>';
+  }
+  return head+body;
+}
+function gSet(k,v){G[k]=G[k]===v?null:v;G.dirty=false;G.edit=null}
+function gRerender(top){renderSheet(false);if(top)$('#sheet').scrollTop=0}
+function gGo(n){G.step=Math.max(0,Math.min(G_STEPS.length-1,n));gRerender(true)}
+function gSurprise(){
+  const r=L=>L[Math.floor(Math.random()*L.length)][0];
+  const prev=[G.style,G.angle,G.frame,G.light].join();let n=0;
+  do{G.style=r(G_STYLES);G.angle=r(G_ANG);G.frame=r(G_FR);G.light=r(G_LT);n++}while([G.style,G.angle,G.frame,G.light].join()===prev&&n<5);
+  G.dirty=false;G.edit=null;G.step=4;gRerender(true);
+  const s=gFind(G_STYLES,G.style);toast('Overraskelse: '+s[1]+' · '+gFind(G_ANG,G.angle)[1]+' · '+gFind(G_LT,G.light)[1]);
+}
+function gPixelate(){
+  document.querySelectorAll('#sheet [data-pixel] svg').forEach(sv=>{
+    if(sv.dataset.done)return;sv.dataset.done=1;
+    const x=new XMLSerializer().serializeToString(sv).replace('<svg ','<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" ');
+    const im=new Image();im.onload=()=>{
+      const c=document.createElement('canvas'),N=26;c.width=c.height=N;const cx=c.getContext('2d');cx.imageSmoothingEnabled=false;cx.drawImage(im,0,0,N,N);
+      const d=cx.getImageData(0,0,N,N),q=51;for(let i=0;i<d.data.length;i+=4){for(let j=0;j<3;j++)d.data[i+j]=Math.round(d.data[i+j]/q)*q}cx.putImageData(d,0,0);
+      c.style.cssText='width:100%;height:100%;image-rendering:pixelated;display:block';sv.replaceWith(c)};
+    im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(x);
+  });
+}
+document.addEventListener('change',e=>{
+  const f=e.target.closest&&e.target.closest('[data-g="file"]');if(!f||!f.files||!f.files[0])return;
+  const file=f.files[0];if(!/^image\//.test(file.type)){toast('Vælg en billedfil');return}
+  if(G.photo)try{URL.revokeObjectURL(G.photo)}catch(_){}
+  G.photo=URL.createObjectURL(file);G.photoName=file.name.slice(0,40);gRerender(false);
+});
+document.addEventListener('input',e=>{if(e.target&&e.target.id==='gtext'){G.edit=e.target.value;G.dirty=true}});
 function openSheet(s){
   if(!sheet)lastFocus=document.activeElement;
   sheet=s;renderSheet(true);
@@ -2445,9 +2652,11 @@ function renderSheet(first){
   else if(sheet.kind==='rl')html=rlSheet();
   else if(sheet.kind==='katcats')html=katCatsSheet();
   else if(sheet.kind==='mix')html=mixSheet();
+  else if(sheet.kind==='guide')html=guideSheet();
   else if(sheet.kind==='savedmix'){const m=S.mixes.find(x=>x.id===sheet.id);if(m)html=savedMixSheet(m)}
   if(!html){closeSheet();return}
   const sh=$('#sheet');sh.innerHTML='<div class="grab" aria-hidden="true"></div>'+html;
+  sh.classList.toggle('gsheet',sheet.kind==='guide');if(sheet.kind==='guide')gPixelate();
   if(first)sh.scrollTop=0;
   $('#scrim').hidden=false;$('#view').inert=true;$('#tabs').inert=true;$('#app').classList.add('has-sheet');
   if(sheet.kind==='mix'&&!MX.result){
@@ -2471,6 +2680,7 @@ function rawText(src){
   if(k==='p')return BY[id]?(BY[id].kind==='kodebog'?kbPrompt(BY[id]):BY[id].text):'';
   if(k==='t')return TB[id]?promptFor(TB[id]):'';
   if(k==='rl')return rlText();
+  if(k==='g')return $('#gtext')?$('#gtext').value:gPrompt();
   if(k==='mix')return MX.result?MX.result.text:'';
   if(k==='m'){const m=S.mixes.find(x=>x.id===id);return m?m.text:''}
   return '';
@@ -2545,6 +2755,18 @@ document.addEventListener('click',e=>{
     case 'rllock':{const i=+b.dataset.i;RL.lock[i]=RL.lock[i]?0:1;renderSheet(false);break}
     case 'rlall':rlRollAll();renderSheet(false);break;
     case 'hfcopy':copyText('Higgsfield på 2 minutter:\n'+KB_HF.map((x,i)=>(i+1)+'. '+x).join('\n'),'Higgsfield-guiden er kopieret','Kunne ikke kopiere guiden');break;
+    case 'gopen':Object.assign(G,{id:id,step:0,mode:null,style:null,angle:null,frame:null,light:null,edit:null,dirty:false});if(G.photo){try{URL.revokeObjectURL(G.photo)}catch(_){}}G.photo=null;G.photoName='';openSheet({kind:'guide'});break;
+    case 'gmode':G.mode=k;gRerender(false);break;
+    case 'gstyle':gSet('style',k);gRerender(false);break;
+    case 'gang':gSet('angle',k);gRerender(false);break;
+    case 'gfr':gSet('frame',k);gRerender(false);break;
+    case 'glt':gSet('light',k);gRerender(false);break;
+    case 'gnext':gGo(G.step+1);break;
+    case 'gskip':gGo(G.step+1);break;
+    case 'gback':gGo(G.step-1);break;
+    case 'gstep':gGo(+k);break;
+    case 'gsurp':gSurprise();break;
+    case 'greset':G.edit=null;G.dirty=false;gRerender(false);break;
     case 'copy':copyText(getText(b.dataset.src),'Kopieret til udklipsholder');break;
     case 'copyopen':copyText(getText(b.dataset.src),'Kopieret · sæt ind i '+AIS[b.dataset.ai||S.ai].name,'Åbnet. Kopiér teksten, og sæt den ind');break;
     case 'mixopen':MX.result=null;MX.savedId=null;MX.sel=S.favs.filter(x=>BY[x]&&mixable(BY[x])).slice(0,3);openSheet({kind:'mix'});break;
