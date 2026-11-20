@@ -123,6 +123,13 @@ h3.sec{font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:upp
     radial-gradient(circle at 85% 80%,hsl(calc(var(--h) + 70) 90% 62%/.85),transparent 58%),
     linear-gradient(160deg,hsl(var(--h) 55% 32%),hsl(calc(var(--h) + 50) 60% 16%))}
 .gorb{position:absolute; left:14px; top:14px; width:52px; height:52px; border-radius:17px; display:grid; place-items:center; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); transform:rotate(-6deg)}
+.kcard{background:linear-gradient(160deg,hsl(var(--h) 52% 34%),hsl(calc(var(--h) + 40) 48% 15%));width:160px;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;padding:14px;height:188px}
+.kcard .kl{position:absolute;right:12px;top:16px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:99px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);z-index:1}
+.kcard .kc{position:static;padding:0;background:none;font-family:ui-monospace,monospace;font-size:17px;font-weight:800;word-break:break-all;z-index:1}
+.kcard .kd{font-size:12.5px;line-height:1.35;opacity:.92;z-index:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.kcard .kt{font-size:11px;font-weight:700;opacity:.8;z-index:1}
+.galnote{margin:-2px 0 6px;font-size:12.5px;color:var(--muted)}
+.galnote a{color:var(--accent);font-weight:700}
 .gcard b{position:absolute; left:0; right:0; bottom:0; padding:34px 14px 14px; font-size:14.5px; font-weight:800; line-height:1.25; letter-spacing:-.01em; background:linear-gradient(transparent,rgba(12,8,30,.6))}
 .wel-cta{margin-top:auto; display:flex; flex-direction:column; gap:10px}
 .fine{text-align:center; font-size:12.5px; color:var(--muted)}
@@ -1688,6 +1695,10 @@ function stepsOf(t){
     'Test med eksempelprompten.'
   ];
 }
+const GALK=[
+ ['/headshot','Portræt',320,'image'],['/staticad','Reklame',305,'mega'],['/thumbnail','YouTube',15,'video'],['/outfitswap','Portræt',190,'image'],
+ ['/moodboard','Bolig',150,'bulb'],['/origami','Kunststil',265,'image'],['/insidethebox','Produkt',285,'cards'],['/turntostone','Video',20,'video']
+];
 const GAL=[
  {t:'Svar roligt på en sur mail',icon:'mail',h:265,go:'p:sk4'},
  {t:'Find 20 idéer på 5 minutter',icon:'bulb',h:330,go:'topic:idegenerering'},
@@ -1916,8 +1927,8 @@ function vWelcome(v){
     '<p class="tagline">Giv dine idéer liv med AI</p>'+
     '<p class="sub">Find inspiration, prøv prompts og koder, og opdag værktøjer. Alt samlet ét sted.</p><p class="stats"><b>'+P.length+'</b> kort · <b>'+Object.keys(CAT).length+'</b> emner · <b>'+TOOLS.length+'</b> værktøjer</p></div>'+
     '<button class="hero-tile rltile" data-a="roulette"><span class="hi">'+icon('shuffle',22)+'</span><span class="txt"><b>🎲 Tilfældig billed- &amp; kode-roulette</b><small>Tilfældige billedkoder til dit eget foto</small></span>'+icon('chev',20)+'</button>'+
-    '<section aria-labelledby="gal-h"><h2 id="gal-h" class="eyebrow">Eksempler på muligheder i PromptSwipe</h2><div class="gallery">'+
-    GAL.map((g,i)=>'<button class="gcard" style="--h:'+g.h+'" data-a="gal" data-go="'+g.go+'"><span class="gimg">'+galCover(g,i)+'</span><span class="gorb">'+icon(g.icon,26)+'</span><b>'+esc(g.t)+'</b></button>').join('')+
+    '<section aria-labelledby="gal-h"><h2 id="gal-h" class="eyebrow">Eksempler på koder</h2><p class="galnote">Tryk på en kode for at kopiere den. <a href="#kodebog">Se alle '+KB.length+' koder</a></p><div class="gallery">'+
+    GALK.map(g=>{const r=KB.find(c=>c[0]===g[0]);if(!r)return '';return '<button class="gcard kcard" style="--h:'+g[2]+'" data-a="kbcopy" data-k="'+esc(g[0])+'" aria-label="Kopiér '+esc(g[0])+'"><span class="gorb">'+icon(g[3],26)+'</span><span class="kl">'+esc(g[1])+'</span><b class="kc">'+esc(g[0])+'</b><span class="kd">'+esc(r[1])+'</span><span class="kt">'+(r[3]?'Kræver Higgsfield':'Tryk for at kopiere')+'</span></button>'}).join('')+
     '</div></section>'+
     '<div class="wel-cta"><label class="field wname"><input id="wn" type="text" maxlength="30" placeholder="Hvad skal vi kalde dig? (valgfrit)" value="'+esc(S.name)+'" autocomplete="given-name" enterkeyhint="go" aria-label="Hvad skal vi kalde dig?"></label><button class="btn wide" data-a="start">Kom i gang</button><button class="btn ghost wide" data-a="browse">Bare kig rundt</button><button class="textlink" data-a="startcat">Se hele kataloget</button>'+
     '<p class="fine">Gratis · intet login · alt gemmes kun på din enhed</p>'+credit()+'</div></div>';
