@@ -1,4 +1,28 @@
-<!doctype html><html lang="da"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#100f13"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PromptSwipe"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"></head><body>
+<!doctype html><html lang="da"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+.kchips{flex:none;display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto;padding:2px;border-radius:16px;overscroll-behavior:contain}
+.kchip{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:var(--glass);color:var(--fg);flex:none;width:100%}
+.kchip[hidden]{display:none}
+.kchip b{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:14.5px;font-weight:700}
+.kchip span{font-size:12.5px;color:var(--muted);line-height:1.35}
+.kchip.on{background:var(--grad);border-color:transparent}
+.kchip.on b,.kchip.on span{color:#fff}
+.kbsel{margin:0;font-size:14px;line-height:1.4}
+.kbsel b{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace}
+.kbsearch{height:42px}
+.kbhelp{border:1px solid var(--line);border-radius:16px;background:var(--glass);padding:12px 14px}
+.kbhelp summary{font-weight:700;font-size:14px;cursor:pointer}
+.kbhelp .howto{margin-top:10px}
+.kbbtn{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--grad);color:#fff;text-decoration:none;flex:none}
+.kbbtn b{display:block;font-size:15px}
+.kbbtn span.s{display:block;font-size:12.5px;opacity:.9}
+.kbbtn .ic{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.2);display:grid;place-items:center;flex:none}
+.klist{display:flex;flex-direction:column;gap:6px}
+.krow{display:flex;align-items:center;gap:8px;padding:8px 8px 8px 14px;border-radius:16px;background:var(--glass);border:1px solid var(--line);min-width:0}
+.kmain{flex:1;min-width:0;text-align:left;display:flex;flex-direction:column;gap:2px;color:var(--fg)}
+.kmain b{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:14.5px}
+.kmain span{font-size:12.5px;color:var(--muted);line-height:1.35}
+.kvid{font-style:normal;font-family:'Plus Jakarta Sans',sans-serif;font-size:10.5px;font-weight:800;margin-left:8px;padding:2px 7px;border-radius:99px;background:color-mix(in srgb,var(--accent) 26%,transparent);color:var(--accent);vertical-align:1px}
+</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#100f13"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PromptSwipe"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"></head><body>
 <title>PromptSwipe</title>
 <meta name="description" content="PromptSwipe: swipe gennem danske AI-prompts, gem dine favoritter og sæt dine værktøjer op.">
 <meta property="og:title" content="PromptSwipe">
@@ -793,10 +817,680 @@ const INK=[["headshot","billeder","Professionelt portræt","Brug mit vedhæftede
 INK.forEach(r=>P.push({id:r[0],cat:r[1],title:r[2],text:r[3],desc:r[4],l:r[5],kind:r[6],tags:r[7],tech:!!r[8],steps:r[9],src:r[10],role:ROLE[r[1]],core:null}));
 const FOTOKORT=[["fe-hvidbalance", "Ret hvidbalancen", "Ret hvidbalancen i mit vedhæftede billede, så hvide flader bliver neutrale og hudtoner ser naturlige ud. Belysningen i billedet er [belysning]. Bevar motivet uændret, og giv mig det rettede billede.", "Fjern gule eller blålige farveskær fra et foto.", 1], ["fe-hojlys", "Redd højlys og skygger", "Justér højlys og skygger i mit vedhæftede billede: Hent detaljer tilbage i de overeksponerede områder, og løft de mørkeste skygger uden at billedet bliver fladt. Fokus på [område]. Giv mig det færdige billede.", "Få detaljer frem i for lyse og for mørke områder.", 2], ["fe-baggrund", "Fjern baggrunden", "Fjern baggrunden fra mit vedhæftede billede, så [motiv] står frit med rene, naturlige kanter, også omkring hår og fine detaljer. Giv mig billedet med gennemsigtig baggrund.", "Frilæg et motiv til produktfoto, logo eller profil.", 1], ["fe-opskal", "Opskalér og gør skarpere", "Opskalér mit vedhæftede billede til [størrelse], og gør det skarpere uden at tilføje kunstige detaljer eller ændre farverne. Fjern støj og kompressionsfejl.", "Gør et lille eller sløret billede brugbart i stor størrelse.", 2], ["fe-retouch", "Naturlig retouchering", "Retouchér mit vedhæftede portræt naturligt: Udjævn små pletter og skinnende områder, men bevar hudens struktur, ansigtstræk og udtryk. Retouchér [mængde]. Giv mig det færdige billede.", "Pæn og troværdig retouchering uden plastikhud.", 2], ["fe-farve", "Farvekorrektion og stemning", "Farvekorrigér mit vedhæftede billede, så det får en [stemning] udstråling. Justér kontrast, mætning og farvetone, og bevar naturlige hudtoner.", "Giv dine fotos en ensartet, flot stemning.", 2], ["fe-objekt", "Fjern uønsket objekt", "Fjern [objekt] fra mit vedhæftede billede, og udfyld området, så det passer til resten af billedet i lys, farve og struktur. Rør ikke ved resten af billedet.", "Slet en person, et skilt eller en ledning fra et foto.", 2], ["fe-beskaer", "Beskær og ret op", "Beskær og ret mit vedhæftede billede op til formatet [format]. Placér [motiv] efter tredjedelsreglen, ret horisonten, og bevar alle vigtige detaljer.", "Få billedet i det rigtige format, uden at miste motivet.", 1]];
 FOTOKORT.forEach(r=>P.push({id:r[0],cat:'billeder',sub:'foto',title:r[1],text:r[2],desc:r[3],l:r[4],kind:null,tags:['Fotoredigering'],tech:false,steps:['Vedhæft dit billede i din AI-tjeneste.','Indsæt prompten, og udfyld felterne.','Gentag med en lille justering, til du er tilfreds.'],src:null,role:ROLE.billeder||'fotograf',core:null}));
+
+/* ---------- Kodebog: alle koder i ét kompakt array ---------- */
+/* format: [kode, danskBeskrivelse, kategoriId, erVideo] */
+const KBC=[
+{
+"id": 0,
+"key": "udvalgte",
+"name": "Udvalgte fra videoer",
+"cat": "billeder",
+"intro": "Mavericks mest brugte koder: lys, kameravinkler, frisurer, æstetikker, årtier og GTA 6. Vælg en kode, vedhæft dit foto og send."
+},
+{
+"id": 1,
+"key": "portraetter",
+"name": "Portrætter & Headshots",
+"cat": "billeder",
+"intro": "Fra LinkedIn-portræt til forfatterfoto. Vedhæft en selfie, vælg stilen, og få et færdigt portræt tilbage."
+},
+{
+"id": 2,
+"key": "sjov",
+"name": "Sjov & Personligt",
+"cat": "billeder",
+"intro": "Gør dig selv til actionfigur, superhelt eller filmplakat. Sjove billeder til deling og gaver."
+},
+{
+"id": 3,
+"key": "produktfoto",
+"name": "Produktfoto",
+"cat": "billeder",
+"intro": "Studiefoto, flat lay, vandplask og luksus-look af dit produkt uden fotograf. Vedhæft et helt almindeligt produktbillede."
+},
+{
+"id": 4,
+"key": "3d",
+"name": "3D & Produkt-nedbrydning",
+"cat": "billeder",
+"intro": "Vis dit produkt i 3D: lerrender, trådnet, samletrin og alle delene lagt pænt ud."
+},
+{
+"id": 5,
+"key": "reklamer",
+"name": "Reklamer & Marketing",
+"cat": "billeder",
+"intro": "Annoncer fra statiske reklamer og story-ads til billboards og App Store-billeder, klar til test."
+},
+{
+"id": 6,
+"key": "branding",
+"name": "Branding & Logoer",
+"cat": "billeder",
+"intro": "Logoretninger, visitkort, brandboard og merchandise ud fra dit brandnavn."
+},
+{
+"id": 7,
+"key": "sociale",
+"name": "Sociale Medier",
+"cat": "billeder",
+"intro": "Færdig grafik til TikTok, Instagram, LinkedIn og YouTube i de rigtige størrelser."
+},
+{
+"id": 8,
+"key": "mockups",
+"name": "Mockups & Emballage",
+"cat": "billeder",
+"intro": "Se dit design på æsker, dåser, t-shirts og telefonskærme, før noget bliver trykt."
+},
+{
+"id": 9,
+"key": "bolig",
+"name": "Bolig & Mad",
+"cat": "billeder",
+"intro": "Madfotos, boligbilleder og indretning: fra restaurantfoto til virtuel møblering."
+},
+{
+"id": 10,
+"key": "illustration",
+"name": "Illustration & Kunststile",
+"cat": "billeder",
+"intro": "Dit motiv som akvarel, pixelkunst, 3D-figur eller papirklip. Skift stil med ét ord."
+},
+{
+"id": 11,
+"key": "infografik",
+"name": "Infografik & Forklaringer",
+"cat": "billeder",
+"intro": "Processer, tidslinjer, pristabeller og tjeklister som pæne grafikker uden designprogram."
+},
+{
+"id": 12,
+"key": "videokoder",
+"name": "Videokoder",
+"cat": "video",
+"intro": "Korte videoklip ud fra ét foto: produktreels, forvandlinger og filmiske effekter. Kræver Higgsfield."
+}
+];
+const KB_RAW=[
+["/headshot","Professionelt LinkedIn-klart portræt ud fra din selfie",0,0],
+["/productexplosion","Dit produkt i 3D med alle dele sprængt udad",0,0],
+["/adcreative","En færdig reklame bygget omkring dit produkt",0,0],
+["/ugc","En UGC-video af høj kvalitet med dit produkt",0,1],
+["/productspin","En dynamisk 360-graders video af dit produkt",0,1],
+["/animated","Animerer dit produkt til et flot visuelt udtryk",0,1],
+["/3dbillboard","En ultrarealistisk udendørs billboard med dit produkt",0,0],
+["/metaads","Flot reklamegrafik til dine sociale medier",0,0],
+["/showcase","Gør dit produktfoto til et professionelt shoot",0,0],
+["/360view","Dit produktfoto som et komplet rundt-om-billede",0,0],
+["/lifestyleshot","Stiller dit produkt ind i det virkelige liv uden fotoshoot",0,0],
+["/ghostwalk","Spøgelsesagtige spor af dig, mens du går gennem billedet",0,0],
+["/paparazzieditorial","Et foto, der ser ud, som om paparazzierne har taget det af dig",0,0],
+["/anime","En komplet anime-version af dit billede",0,0],
+["/wormseyewide","Et vildt vidvinkelbillede fra lavt nede",0,0],
+["/firefade","En cool ild-udtoning henover dit foto",0,0],
+["/crowdmotionblur","Tilføjer en menneskemængde omkring dig i fed bevægelsesuskarphed",0,0],
+["/nighttimeflash","Gør dag til nat med et kamera-blitz-look",0,0],
+["/backangleview","Vender dig om, så du går væk fra kameraet",0,0],
+["/blurmotionview","Slører baggrunden, så du står knivskarp",0,0],
+["/goldenhour","Genbelyser hele dit foto, som om det var taget ved solnedgang",0,0],
+["/restore","Reparerer alle revner og falmede steder på et gammelt foto",0,0],
+["/haircut","Prøv enhver frisure på dit eget ansigt",0,0],
+["/remove","Fjerner alt eller alle og genskaber baggrunden",0,0],
+["/miniature","Gør dit hus til et lille håndlavet diorama",0,0],
+["/carwrap","Din bil i enhver farve eller folie, før du bruger en krone",0,0],
+["/repaint","Dine vægge i enhver farve, før du køber malingen",0,0],
+["/glasses","Prøv helt andre briller på ud fra en selfie",0,0],
+["/furnish","En vilkårlig sofa eller et bord i dit eget rum",0,0],
+["/tvsize","Præcis hvor stort et tv ser ud på din væg",0,0],
+["/landscape","Din forhave helt lavet om",0,0],
+["/blueprint","Tegner alt om til en detaljeret arkitekttegning",0,0],
+["/anatomy","En anatomisk gennemgang i lærebogsstil af ethvert billede",0,0],
+["/impossibleangle","Tager dit foto om fra en vinkel, intet kamera kan nå",0,0],
+["/xray","Viser det indre af alt, som en sikkerhedsscanner i lufthavnen",0,0],
+["/microscopicview","Zoomer ind på en genstand, som lå den under et mikroskop",0,0],
+["/explodedview","Splitter ethvert produkt i svævende dele som en tegning",0,0],
+["/colorenhance","Bringer et falmet eller sort-hvidt foto tilbage i fulde farver",0,0],
+["/interiormakeover","Giver ethvert rum en komplet designer-forvandling",0,0],
+["/surreal","Gør ethvert foto til en drømmeagtig version af sig selv",0,0],
+["/cutaway","Skærer alt over på midten for at vise lagene indeni",0,0],
+["/lego","Bygger alt om til et Lego-sæt, der ser officielt ud",0,0],
+["/timemachine","Dit foto, som var det taget i 1890, 1950 og 1980",0,0],
+["/hologram","Projicerer alt som et lysende sci-fi-hologram",0,0],
+["/pethuman","Viser, hvordan din hund ville se ud som menneske",0,0],
+["/statue","Mejler dig ud som en marmorstatue",0,0],
+["/logo","Et professionelt logo ud fra et foto eller en grov skitse",0,0],
+["/unblur","Gør ethvert sløret foto skarpt",0,0],
+["/openeyes","Retter den ene person, der blinkede på gruppebilledet",0,0],
+["/tattoo","Se en tatovering på din egen arm, før du får den",0,0],
+["/giant","Dig, 90 meter høj, stående over din egen by",0,0],
+["/droneshot","Et luftfoto af dit hus taget med drone",0,0],
+["/magazinecover","Dig eller dit produkt på en hel magasinforside",0,0],
+["/thumbnail","Et YouTube-thumbnail, der faktisk bliver klikket på",0,0],
+["/passportphoto","Et perfekt pasfoto uden at forlade hjemmet",0,0],
+["/droneview","Et dronebillede ovenfra af dig",0,0],
+["/camerashake","Et sløret natblitz-snapshot-look",0,0],
+["/fisheye","Et vildt vidvinkel-fisheye-look",0,0],
+["/ghosttrail","Spøgelsesagtige spor af dig, mens du bevæger dig gennem scenen",0,1],
+["/floatingfall","Dig, der falder baglæns med genstande svævende omkring dig",0,0],
+["/bullettime","Fryser dig, mens kameraet drejer rundt om dig",0,1],
+["/nightsky","Placerer dig under en stjerneklar nattehimmel",0,0],
+["/identity-lock","Retter hele fotoet uden at ændre ét eneste træk i dit ansigt",0,0],
+["/studio-quality","Bedre lys og skarphed, som havde en professionel taget det",0,0],
+["/upscale","Forbedrer klarhed og opløsning på ethvert foto",0,0],
+["/clean-up","Fjerner den rodede baggrund, så hele fotoet bliver renere",0,0],
+["/pose-only","Ændrer kun din positur uden at røre dit ansigt",0,0],
+["/directflash","Hård kamerablitz som et point-and-shoot om natten",0,0],
+["/phantom","Spøgelseskopier af dig, der breder sig ud til begge sider",0,0],
+["/animation","Genbelyser dit foto til et varmt, filmisk stillbillede",0,0],
+["/petalstormeditorial","En storm af lyserøde blade hvirvler omkring dig i magasinstil",0,0],
+["/throughglasseditorial","Et redaktionelt billede af dig gennem et cafévindue",0,0],
+["/crowdframecloseup","Dig skarp midt i en sløret, hastig menneskemængde",0,0],
+["/overheadcrowdflow","Dronebillede af dig, der står stille, mens en menneskemængde strømmer forbi",0,0],
+["/liquidchrome","Gaden omkring dig smelter til flydende krom",0,0],
+["/instagramnewfeed","Dit foto som et Instagram-opslag med stories-række og det hele",0,0],
+["/floatingmusic","Musikafspiller-widgets svæver i luften omkring dig",0,0],
+["/slidetoanswer","En POV indefra en lomme med et indgående opkald på skærmen",0,0],
+["/airdrops","En AirDrop-pop-up, der deler dit foto",0,0],
+["/scrapbookcollage","Et rejsescrapbook-collage af dig og din by",0,0],
+["/photoselected","Dine fotos i et iPhone-delingsark, hvor din sko popper ud",0,0],
+["/pov","Et POV-billede af dig, der trækker seeren med i hånden",0,0],
+["/wide","En bredere linse, så mere af scenen kommer med",0,0],
+["/motionblur","Stribet bevægelsesuskarphed hele vejen rundt om dig, mens du er skarp",0,0],
+["/ultracloseup","Et tæt close-up af dit ansigt",0,0],
+["/bokeh","Smelter baggrunden til bløde runde lys",0,0],
+["/lowangle","Taget fra lavt nede, så man ser op på dig",0,0],
+["/35mm","Det naturlige look fra en 35 mm-linse",0,0],
+["/moody","Mørkere, kontrastfulde, filmiske farver",0,0],
+["/walkingcandidpose","Et ærligt billede midt i et skridt, som om en ven tog det",0,0],
+["/redflash","Et rødt lys, der gløder på dig og væggen bag dig",0,0],
+["/coldambient","Koldt blåt lys i skyggerne og baggrunden",0,0],
+["/hardflash","Direkte blitz med en skarp, hård skygge",0,0],
+["/flashshadow","En blitz, der kaster din skygge op på væggen bag dig",0,0],
+["/wideangle","En vidvinkellinse med lidt stræk i kanterne",0,0],
+["/highcontrast","Lys dig, dybe sorte toner og punchy kontrast",0,0],
+["/fisheyestreet","Et fisheye-billede af en natgade med billygtespor",0,0],
+["/convexmirrorselfie","En spejlselfie i et rundt, konvekst sikkerhedsspejl",0,0],
+["/wormview","En ekstrem frøperspektiv fra jorden med din sko kæmpestor forrest",0,0],
+["/digicam","Et snapshot fra et digitalkamera fra starten af 2000'erne med blitz",0,0],
+["/flashnight","Gør dit foto til et natbillede oplyst af blitz",0,0],
+["/fullimage","Træder et skridt tilbage og viser hele scenen fra top til tå",0,0],
+["/longexposure","Lysspor, der suser forbi dig, som ved lang lukketid",0,0],
+["/nightflash","Et natfoto, hvor du er frosset skarp af blitzen",0,0],
+["/zerogravity","Dig, der svæver midt i luften på samme sted",0,0],
+["/lookatcamera","Dig med ansigtet mod linsen og et smil direkte til kameraet",0,0],
+["/bwwhipcloseup","Et sort-hvidt close-up med et whip-pan-sløret baggrund",0,0],
+["/spin-off","Fanger dig midt i en drejning, mens du ser tilbage over skulderen",0,0],
+["/securitycamera","Et fisheye-CCTV-billede med tidsstempel",0,0],
+["/sideneonnightmotion","Dig set fra siden, mens du går forbi neonlysstriber om natten",0,0],
+["/taxiwindowmotion","Taget indefra en taxa, mens du går forbi i en sløret trafik",0,0],
+["/highangleescalatorcrowdfreeze","Dig frosset skarp på en rulletrappe, mens mængden slører",0,0],
+["/birthdayalbum","Fire af dine fotos som et dobbelteksponeret fødselsdagsalbum-cover",0,0],
+["/storyboard","Et storyboard med 8 billeder af dig, ét filmisk skud pr. sekund",0,0],
+["/storyboardvideo","Gør dit storyboard til én filmisk video",0,1],
+["/spotify","Dit foto som en Spotify-skærm med \"Spiller nu\"",0,0],
+["/plushie","En blød plysfigur af dig",0,0],
+["/tiltshift","Tilt-shift-sløring, der får scenen til at ligne en lille model",0,0],
+["/diorama","Din scene som en bordmodel, hvor du er en lille figur",0,0],
+["/unboxing","Hænder pakker din actionfigur ud foran kameraet",0,1],
+["/royalportrait","Dit kæledyr som et kongeligt oliemaleri med krone og det hele",0,0],
+["/petashuman","Dit kæledyr som det menneske, det ville være",0,0],
+["/petpassport","Et kæledyrspas med dit dyrs foto og oplysninger",0,0],
+["/3dcartoon","Dit kæledyr som en 3D-animeret filmkarakter",0,0],
+["/droneorbit","En drone kredser om dig med udgangspunkt i dit foto",0,1],
+["/dollyzoom","Svimmelhedseffekten: du står stille, mens baggrunden strækkes",0,1],
+["/studioshot","Dit produkt som et professionelt studiebillede på en piedestal",0,0],
+["/lifestyle","Dit produkt i en hyggelig scene fra hverdagen",0,0],
+["/commercial","En filmisk reklamefilm for dit produkt",0,1],
+["/corporateheadshot","Studieportræt på neutral grå baggrund i jakkesæt og slips",1,0],
+["/casualheadshot","Afslappet portræt med blødt, naturligt vinduslys",1,0],
+["/graduationportrait","Portræt med studenterhue og kappe foran en campus-baggrund",1,0],
+["/founderportrait","Redaktionelt portræt af en stifter til en pressehistorie",1,0],
+["/actorheadshot","Casting-headshot med rolig øjenkontakt",1,0],
+["/teamphoto","En ensartet portrætstil til hele dit team",1,0],
+["/doctorportrait","Klinikportræt i hvid kittel, roligt og tillidsvækkende",1,0],
+["/bwportrait","Tidløst sort-hvidt portræt med filmkorn",1,0],
+["/realtorheadshot","Ejendomsmæglerportræt med et lyst hjem bag dig",1,0],
+["/fitnessportrait","Træningsportræt med dramatisk sidelys",1,0],
+["/speakerphoto","Dig på en konferencescene med spotlys og publikum",1,0],
+["/podcastportrait","Portræt med mikrofon i billedet til din podcast-forside",1,0],
+["/authorphoto","Forfatterportræt til bogomslag, eftertænksomt og varmt",1,0],
+["/vintageportrait","Dig i en filmfoto-stil fra 1970'erne",1,0],
+["/datingprofile","Et flatterende, naturligt profilbillede, der ser ægte ud",1,0],
+["/outfitswap","Samme portræt i fem forskellige outfits at vælge imellem",1,0],
+["/actionfigure","Dig som en samlerfigur i æske",2,0],
+["/superhero","Dig som en original superhelt i dragt",2,0],
+["/movieposter","Dig på en storfilms-plakat",2,0],
+["/babyphoto","Et fotokort med nyfødt-meddelelse",2,0],
+["/weddinginvite","En designet bryllupsinvitation",2,0],
+["/tradingcard","Et samlekort med dig og statistikker",2,0],
+["/holidaycard","Familiens julekort med dit foto",2,0],
+["/petportrait","Dit kæledyr malet som kongelig",2,0],
+["/caricature","En venlig, overdrevet karikatur af dig",2,0],
+["/ageprogression","Dig som 20-, 40-, 60- og 80-årig",2,0],
+["/dreamcar","Dig ved siden af en hvilken som helst bil et hvilket som helst sted",2,0],
+["/fantasyme","Dig som fantasy-figur i fuldt kostume",2,0],
+["/snowglobe","Krymper enhver scene til en snekugle på en hylde",2,0],
+["/thermal","En varmekamera-version af ethvert foto",2,0],
+["/productshot","Rent studiefoto af produktet på ensfarvet hvid baggrund",3,0],
+["/ghostmannequin","Webshop-billede af tøj med spøgelsesdukke-effekt",3,0],
+["/handheld","Dit produkt i en hånd, så man ser størrelsen",3,0],
+["/heroimage","Stort hero-billede til hjemmesiden med plads til overskrift",3,0],
+["/naturebackdrop","Produktet placeret i en skov-, strand- eller ørkenscene",3,0],
+["/flatlay","Flat lay set ovenfra med passende rekvisitter",3,0],
+["/podiumshot","Produktet på en stenpodie med kantlys",3,0],
+["/floatingproduct","Produktet svævende i luften med bløde skygger",3,0],
+["/glassreflection","Produktet på glas med en spejlklar refleksion",3,0],
+["/splashshot","Produktet frosset i et vand- eller væskeplask",3,0],
+["/backgroundswap","Samme produktfoto, ny baggrund, samme lys",3,0],
+["/macroshot","Ekstremt nærbillede af tekstur og materiale",3,0],
+["/catalogset","Et sammenhængende sæt katalogbilleder til hele din serie",3,0],
+["/luxuryshot","Redaktionelt luksus-look: marmor, guld og blødt lys",3,0],
+["/beforeafterproduct","Før-og-efter-panel, der viser resultatet",3,0],
+["/colorways","Dit produkt vist i seks farvevalg",3,0],
+["/seasonalshot","Dit produkt stylet til jul, sommer eller efterår",3,0],
+["/onmodel","Dit tøjprodukt båret af en realistisk model",3,0],
+["/amazonready","Amazon-godkendt hovedbillede med hvid baggrund og fyldt ramme",3,0],
+["/vendingmachine","Dit produkt til salg i en japansk automat",3,0],
+["/clayrender","Gråt 3D-lerrender, der viser den rene form",4,0],
+["/partslist","Alle dele lagt pænt ud som et samlesæt",4,0],
+["/wireframerender","3D-trådnet-visning af dit produkt",4,0],
+["/materialswap","Dit produkt vist i træ, metal og glas",4,0],
+["/turntable","Seks vinkler af dit produkt i ét gitter",4,0],
+["/assemblysteps","Trin-for-trin-paneler med samling af dit produkt",4,0],
+["/isometricproduct","Isometrisk 3D-render på ren baggrund",4,0],
+["/insidethebox","Unboxing-layout med alt, hvad der ligger i pakken",4,0],
+["/staticad","En skrollestoppende statisk reklame med overskrift og knap",5,0],
+["/offerad","Rabat- eller lanceringstilbud med hastværk i",5,0],
+["/storyad","9:16 Instagram-story-reklame med tryk-videre-layout",5,0],
+["/retargetad","Påmindelsesreklame til folk, der forlod kurven",5,0],
+["/carouselad","En karrusel-reklame med fem slides, én fordel pr. slide",5,0],
+["/adset","Fem reklamevarianter med forskellige kroge til test",5,0],
+["/bannerad","Webbannere i flere størrelser: leaderboard, kvadrat og skyscraper",5,0],
+["/emailheader","Hero-grafik i størrelse til toppen af en e-mail",5,0],
+["/billboard","Din reklame som mockup på en rigtig motorvejsbillboard",5,0],
+["/landingmock","Landingpage-mockup med dit produkt over folden",5,0],
+["/busstopad","Din reklame i et busstoppested i byen om natten",5,0],
+["/appstoreshots","App Store-skærmbilleder med billedtekster",5,0],
+["/magazinead","Helsides reklame i blankt magasin",5,0],
+["/subwayad","Din reklame som plakat på en metroperron",5,0],
+["/comparisonad","Os mod dem: reklame med side-om-side-sammenligning",5,0],
+["/uglyad","Bevidst rå reklame i naturlig stil, der falder ind",5,0],
+["/testimonialad","Reklame bygget om et kundecitat og et foto",5,0],
+["/adstoryboard","Storyboard med seks billeder til et videoreklame-koncept",5,0],
+["/bts","Bag-kulisserne-billeder, der får et enkeltmandsbrand til at ligne et team",5,0],
+["/productlaunch","Lanceringsdagsreklame med dit produkt i centrum",5,0],
+["/logoconcepts","Seks logoretninger til dit brandnavn",6,0],
+["/letterhead","Brandet brevpapir og kuvertsæt",6,0],
+["/wordmark","Et rent typografisk ordmærke-logo",6,0],
+["/brandmerch","Dit logo på t-shirts, kasketter, krus og tasker",6,0],
+["/iconlogo","Et enkelt logo, kun med symbol",6,0],
+["/storefront","Dit brand på et rigtigt butiksskilt og en rigtig butiksrude",6,0],
+["/mascotdesign","En brand-maskot med personlighed",6,0],
+["/appicon","Et app-ikon i iOS- og Android-stil",6,0],
+["/brandboard","Komplet brandboard: logo, farver, skrift og billeder",6,0],
+["/favicon","En lille, læsbar favicon-version af dit logo",6,0],
+["/colorpalette","Et farveark med fem farver og hex-koder",6,0],
+["/monogram","Et elegant initial-monogram",6,0],
+["/patterndesign","Et gentaget brandmønster til emballage og tryk",6,0],
+["/logomotion","Nøglebilleder, der viser, hvordan dit logo kunne animeres",6,0],
+["/businesscard","Mockup af visitkort for og bag",6,0],
+["/rebrand","Dit nuværende logo moderniseret i tre retninger",6,0],
+["/tiktokcover","TikTok-videoforside med stor, læsbar tekst",7,0],
+["/carouselcover","Instagram-karrusel-forside, der stopper scrollet",7,0],
+["/memeformat","Din idé som et rent meme-layout",7,0],
+["/quotecard","En delbar citatgrafik i din brandstil",7,0],
+["/announcementpost","Grafik til lancering eller nyhed",7,0],
+["/instagrid","Ni opslag designet til at se godt ud som ét gitter",7,0],
+["/eventflyer","Eventflyer med dato, sted og overskrift",7,0],
+["/storycover","Highlight-ikoner til din Instagram-profil",7,0],
+["/countdownpost","Nedtællingsgrafik: 3 dage, 2 dage, 1 dag",7,0],
+["/linkedinbanner","LinkedIn-banner i den rigtige størrelse",7,0],
+["/statgraphic","Ét stort tal med en kort billedtekst",7,0],
+["/youtubebanner","YouTube-kanalbanner med respekt for sikre zoner",7,0],
+["/podcastcover","Kvadratisk podcast-cover med programmets navn",7,0],
+["/twitterheader","Headerbillede til X-profil",7,0],
+["/profilepic","Et rent, genkendeligt profilbillede i alle størrelser",7,0],
+["/pinterestpin","Høj Pinterest-pin med titeltekst",7,0],
+["/reelcover","Reels-forside, der matcher dit feed",7,0],
+["/beforeafterpost","Et før-og-efter-delt opslag til dit feed",7,0],
+["/packagingdesign","Komplet emballagedesign til dit produkt",8,0],
+["/laptopmockup","Din hjemmeside vist på en laptop på et skrivebord",8,0],
+["/boxmockup","Dit design på en realistisk forsendelseskasse",8,0],
+["/tshirtmockup","Dit design trykt på en båret t-shirt",8,0],
+["/bottlelabel","En flaske- eller glasetiket vist på produktet",8,0],
+["/postermockup","Din plakat indrammet på en rigtig væg",8,0],
+["/bagmockup","Brandet pose eller taske med dit design",8,0],
+["/menudesign","Et menulayout til en restaurant i din stil",8,0],
+["/canmockup","Drikkedåse med din etiket hele vejen rundt",8,0],
+["/shelfshot","Dit produkt på en butikshylde ved siden af konkurrenterne",8,0],
+["/bookcover","Forsidedesign til din bog eller e-bog",8,0],
+["/giftbox","Premium-gaveæske med præsentation af dit produkt",8,0],
+["/phonemockup","Din app eller side vist på en telefonskærm",8,0],
+["/stickersheet","Et ark med udstansede klistermærker af dine brandikoner",8,0],
+["/foodshot","Restaurantkvalitet på foto af enhver ret",9,0],
+["/floorplan3d","En 3D-plantegning ud fra en skitse eller beskrivelse",9,0],
+["/menuphoto","Menufoto ovenfra med ren anretning",9,0],
+["/gardenplan","Din baghave lavet om til en anlagt have",9,0],
+["/drinkshot","Cocktail- eller kaffebillede med kondens og damp",9,0],
+["/kitchenreno","Dit køkken med nye skabe og bordplader",9,0],
+["/recipecard","Et visuelt opskriftskort med den færdige ret",9,0],
+["/listingphoto","Lyst, bredt boligfoto af ethvert rum",9,0],
+["/roomredesign","Dit rum indrettet på ny i en stil, du vælger",9,0],
+["/officespace","Din arbejdsplads indrettet til fokus",9,0],
+["/virtualstaging","Tomt rum møbleret til et boligfoto",9,0],
+["/nightshot","Samme bygning i skumringen med lys tændt",9,0],
+["/exteriorrender","Visualisering af et hus' facade med kantstensappel",9,0],
+["/moodboard","Et stylet moodboard til et rum eller projekt",9,0],
+["/watercolor","Dit motiv malet i løs akvarel",10,0],
+["/stainedglass","Dit motiv som et glasmosaikvindue",10,0],
+["/oilpainting","Klassisk oliemaleri med synlige penselstrøg",10,0],
+["/tattoodesign","Et tatoveringsdesign på rent papir, klar som skabelon",10,0],
+["/pixelart","Retro 16-bit pixelkunst-version",10,0],
+["/childrensbook","Blød børnebogsillustration",10,0],
+["/lineart","Minimal tegning med én sort stregføring",10,0],
+["/graffiti","Dit ord eller logo som gadekunst på en mur",10,0],
+["/popart","Fed pop-art-plakat med halvtoner",10,0],
+["/vectorflat","Flad vektorillustration med enkle former",10,0],
+["/sketchbook","Blyantsskitse med let skygge",10,0],
+["/cartoonme","Dig som en ren tegneseriefigur",10,0],
+["/lowpoly","Lowpoly geometrisk 3D-illustration",10,0],
+["/3dcharacter","En stiliseret 3D-figur af dit motiv",10,0],
+["/claymation","Stop-motion-look med lerfigurer",10,0],
+["/papercut","Lagdelt papirklip-illustration",10,0],
+["/embroidery","Dit design som et broderet stofmærke",10,0],
+["/origami","Folder enhver genstand eller ethvert dyr som papirorigami",10,0],
+["/infographic","En ren infografik, der viser dine hovedpunkter",11,0],
+["/orgchart","Visuelt organisationsdiagram med pladser til fotos",11,0],
+["/processdiagram","Hvordan-det-virker-diagram i fire trin",11,0],
+["/roadmapgraphic","Produktfærdsplan som grafik pr. kvartal",11,0],
+["/comparisonchart","Visuelt sammenligningsdiagram side om side",11,0],
+["/pricingtable","Designet pristabel med tre niveauer",11,0],
+["/statposter","Dataplakat med store tal og ikoner",11,0],
+["/checklistgraphic","En visuel tjekliste, der kan printes",11,0],
+["/timelineposter","Visuel tidslinje over din virksomhed eller historie",11,0],
+["/howtoillustration","Illustrerede how-to-paneler til en opgave",11,0],
+["/iconset","Tolv matchende ikoner til din app eller side",11,0],
+["/anatomyof","En mærket \"anatomi af\"-gennemgang af alt muligt",11,0],
+["/mapgraphic","En stylet kortgrafik med dine steder markeret",11,0],
+["/slidevisual","Ét præsentationsslide-billede uden punktopstilling",11,0],
+["/productreel","En 15 sekunders lodret produktreel med tekstoverlæg",12,1],
+["/livingphoto","Et stillfoto animeret med blid bevægelse",12,1],
+["/unboxingvideo","En unboxing-klip af dit produkt i POV-stil",12,1],
+["/adsequence","Tre klip af samme reklame til forskellige platforme",12,1],
+["/testimonialvideo","Et kundeanmeldelses-klip i talking-head-stil",12,1],
+["/tutorialvideo","Et hurtigt demo-klip, der viser hvordan det bruges",12,1],
+["/cinematicproduct","Langsomt, filmisk produktmateriale med lens flares",12,1],
+["/dronefootage","Flyvning over et sted eller en ejendom fra luften",12,1],
+["/logoreveal","En kort animeret logo-afsløring",12,1],
+["/timelapse","En timelapse af en opbygning eller forvandling",12,1],
+["/beforeaftervideo","En før-og-efter-overgangsvideo",12,1],
+["/facelessvideo","En ansigtsløs b-roll-video til en speak",12,1],
+["/explainerclip","En kort animeret forklaring af, hvordan det virker",12,1],
+["/stickmanexplainer","En stregmandstegnefilm, der forklarer din idé",12,1],
+["/motionposter","Din plakat vækket til live med diskret bevægelse",12,1],
+["/loopvideo","En sømløs loop-video til din hjemmeside",12,1],
+["/earthzoomout","Kameraet trækker sig tilbage fra dig helt ud i rummet",12,1],
+["/earthzoom","Kameraet dykker fra rummet gennem skyerne ned til dig",12,1],
+["/eyesin","Kameraet dykker ind i dit øje og ud i en ny verden",12,1],
+["/vanish","Din krop forsvinder, og dit tøj falder ned på gulvet",12,1],
+["/infiniteclones","Kopier af dig bliver ved med at vælte ud af en lille bil",12,1],
+["/cutout","Verden omkring dig splittes i lag af papirudklip",12,1],
+["/disintegrate","Du smuldrer til støv og svævende partikler",12,1],
+["/facepunch","Et slowmotion-slag rammer lige i dit ansigt",12,1],
+["/atomic","En kæmpe eksplosion går af bag dig, og vinden rammer dig",12,1],
+["/buildingexplosion","En bygning eksploderer bag dig med flyvende murbrokker",12,1],
+["/studioslide","Kopier af dig glider forbi hinanden i 3D-lag",12,1],
+["/wildride","Et hurtigt snurrende kamera, der piler rundt om dig",12,1],
+["/smashandgrab","Du smadrer en bilrude, snupper produktet og løber",12,1],
+["/incline","Verden vipper, og ting glider forbi, mens du står stille",12,1],
+["/highflip","Kameraet vender over dit hoved ind i en ny scene",12,1],
+["/streetcolossus","Du bliver en kæmpe, der rejser sig over gaderne",12,1],
+["/selfception","Et endeløst zoom ind i en lille dig, som du holder i hånden",12,1],
+["/actnatural","Du fryser midt i en bevægelse, mens verden kører videre",12,1],
+["/worldmorph","Landskabet løfter sig og folder sig op omkring dig",12,1],
+["/lacewalker","En lille dig, der balancerer på line mellem kæmpe genstande",12,1],
+["/burningman","Et flammende dobbeltgænger rækker ud for at give dig hånden",12,1],
+["/melt","Du smelter til en skinnende vandpyt på jorden",12,1],
+["/boardingpass","Gå gennem kæmpe flybilletter ind i nye byer",12,1],
+["/monsterdab","Et kæmpe væsen styrter ned fra himlen bag dig",12,1],
+["/architecturewave","Bygninger bag dig bøjer og bølger som vand",12,1],
+["/clones","Kloner af dig kopierer dine bevægelser, mens du går mod kameraet",12,1],
+["/scrapbook","En collage-video med nærbilleder af dit outfit",12,1],
+["/pigeons","Du glider gennem byen på duer som rulleskøjter",12,1],
+["/skatedog","Du rider på en gravhund som på et skateboard og laver tricks",12,1],
+["/dolphinride","Du surfer på en delfin, som var den et surfbræt",12,1],
+["/superstar","Dit ansigt fylder en stadionskærm, mens publikum filmer",12,1],
+["/moonwalk","Du går hen over Månen med Jorden bag dig",12,1],
+["/stickerpeel","En kæmpehånd piller dig af væggen som et klistermærke",12,1],
+["/selfietwin","Din tvilling kommer ind, tager en selfie med dig og forsvinder",12,1],
+["/racetrack","En selfie-gåtur på en racerbane, mens biler suser forbi",12,1],
+["/orbitalpresence","Dig som en kosmisk kæmpe siddende på Jorden mellem stjernerne",12,1],
+["/y2kpaparazzi","Et kornet paparazzi-klip fra 2000'erne af dig, der forlader et hotel",12,1],
+["/flameon","Du bryder i brand i en flammende forvandling",12,1],
+["/thundergod","Dine øjne gløder, mens lyn knitrer omkring dig",12,1],
+["/turningmetal","Din hud bliver til blankt krom eller guld",12,1],
+["/levitate","Du svæver langsomt op fra jorden",12,1],
+["/agentreveal","Du glitcher og forvandles til en skarp hemmelig agent i jakkesæt",12,1],
+["/turntostone","Du bliver hård og revner til en grå stenstatue",12,1],
+["/angelwings","Vinger folder sig ud bag dine skuldre",12,1],
+["/moneyrain","Kontanter falder omkring dig i slowmotion",12,1],
+["/giantgrab","En kæmpehånd rækker ned fra himlen og griber dig",12,1],
+["/crashzoom","Et hurtigt, dramatisk zoom lige ind i dit ansigt",12,1],
+["/turntoice","Du fryser langsomt til og bliver til is",12,1],
+["/redcarpet","Din røde løber-entré med blitzende kameraer",12,1],
+["/kpopidol","Dig som K-pop-idol, der optræder på en oplyst scene",12,1],
+["/cloudsurf","Du surfer gennem drømmeagtige lyserøde skyer",12,1],
+["/thisisfine","Dig i det brændende rum fra This Is Fine-memet",12,1],
+["/neonsign","Genbelyser dit foto af pink og blåt neonlys om natten",0,0],
+["/darkroom","Dit foto i et mørkekammer med rødt sikkerhedslys",0,0],
+["/poollight","Rislende blåt vandlys fra en swimmingpool henover dig",0,0],
+["/disco","Et mørkt rum oplyst af en roterende diskokugle",0,0],
+["/sunset","Dyb solnedgang med orange lys og pink-magenta baggrund",0,0],
+["/silhouette","Mørk silhuet af dig foran en lysende baggrund",0,0],
+["/dappled","Sollys, der filtrerer gennem løv med pletter af lys og skygge",0,0],
+["/rimlight","Stærkt kantlys bagfra, der tegner din kontur",0,0],
+["/softbox","Studieportræt med ét stort, blødt softbox-lys",0,0],
+["/blinds","Hårdt sollys gennem persienner med skarpe striber",0,0],
+["/screenglow","Koldt blåligt skærmlys på ansigtet nedefra",0,0],
+["/prism","Regnbuelys og spektrumstråler gennem et glasprisme",0,0],
+["/candlelight","Varmt stearinlys-skær nedefra i et mørkt rum",0,0],
+["/tealorange","Filmisk teal-og-orange look som fra en storfilm",0,0],
+["/spotlight","Ét hårdt spotlys ovenfra som på en teaterscene",0,0],
+["/windowlight","Blødt dagslys fra et stort vindue på den ene side",0,0],
+["/rainywindow","Regnfuld nat med dråbeskygger fra et vådt vindue",0,0],
+["/flash","Direkte kamerablitz om natten, som et tidligt digitalkamera",0,0],
+["/streetlight","Natlys fra en orange gadelygte, der skinner ned gennem vinduet",0,0],
+["/bluehour","Dyb blå skumringstime, der fylder rummet",0,0],
+["/rembrandt","Klassisk Rembrandt-lys med trekant af lys på kinden",0,0],
+["/godrays","Lysstråler gennem et vindue i et let diset rum",0,0],
+["/moonlight","Nat oplyst kun af måneskin gennem et vindue",0,0],
+["/wormseye","Genoptaget fra frøperspektiv helt nede ved fødderne",0,0],
+["/drone","Genoptaget som et dronebillede fra omkring 40 meters højde",0,0],
+["/closeup","Genoptaget som portræt tæt på med 85 mm-linse",0,0],
+["/panning","Genoptaget som mitføl-optagelse, mens du går tværs over billedet",0,0],
+["/profile","Genoptaget som sidebillede i øjenhøjde",0,0],
+["/reflection","Genoptaget som spejling i en vandpyt",0,0],
+["/extremecloseup","Genoptaget som ekstremt close-up af ansigtet",0,0],
+["/cctv","Genoptaget som et overvågningskamera-billede oppefra",0,0],
+["/telephoto","Genoptaget med 600 mm tele fra langt væk",0,0],
+["/tinyplanet","Genoptaget som en lille planet i 360-kamera",0,0],
+["/selfie","Genoptaget som en selfie med telefonen på strakt arm",0,0],
+["/backview","Genoptaget bagfra, mens du står med ryggen til",0,0],
+["/highangle","Genoptaget fra høj vinkel, kameraet ca. fem meter oppe",0,0],
+["/throughglass","Genoptaget gennem et regnplettet vindue",0,0],
+["/overtheshoulder","Genoptaget over skulderen lige bag dig",0,0],
+["/wideshot","Genoptaget som totale med kameraet langt tilbage",0,0],
+["/dutchangle","Genoptaget med skæv, hollandsk vinkel",0,0],
+["/paparazzi","Genoptaget som paparazzi-billede med langt objektiv",0,0],
+["/framed","Genoptaget indrammet gennem en mørk buegang",0,0],
+["/birdseye","Genoptaget fra fugleperspektiv lige oven over",0,0],
+["/butterflycut","Frisure: butterfly cut med lange, fyldige lag og korte pandelokker",0,0],
+["/buzzcut","Frisure: buzz cut, kortklippet jævnt over det hele",0,0],
+["/curtainbangs","Frisure: lange, bløde lag med gardinpandehår",0,0],
+["/pixie","Frisure: tekstureret pixie cut",0,0],
+["/curlyshag","Frisure: krøllet shag med hoppende, definerede krøller",0,0],
+["/bob","Frisure: glat, skarp og blank hagelang bob",0,0],
+["/braids","Frisure: to stramme hollandske fletninger",0,0],
+["/mullet","Frisure: moderne mullet med korte, hakkede lag",0,0],
+["/longlayers","Frisure: meget langt hår ned til taljen med bløde lag",0,0],
+["/taperfade","Frisure: kort tekstureret klip med taper fade",0,0],
+["/90sblowout","Frisure: stor 90'er-føntørring med fyldigt, hoppende hår",0,0],
+["/himecut","Frisure: hime cut med lige, blankt hår og skarpe sidelokker",0,0],
+["/curlypixie","Frisure: krøllet pixie med fjedrende krøller",0,0],
+["/lob","Frisure: lob, en lang bob til kravebenet med løse bølger",0,0],
+["/undercut","Frisure: sideundercut med barberet side",0,0],
+["/frenchbob","Frisure: fransk bob i kæbehøjde med let rodet tekstur",0,0],
+["/jellyfish","Frisure: jellyfish cut med kort lag øverst og lange spidser",0,0],
+["/bixie","Frisure: bixie, mellem bob og pixie, blød og shaggy",0,0],
+["/fingerwaves","Frisure: 1920'er finger waves i en blank, kort bob",0,0],
+["/hushcut","Frisure: koreansk hush cut med luftige, fjerlette lag",0,0],
+["/spacebuns","Frisure: to space buns højt oppe på hver side",0,0],
+["/shag","Frisure: 70'er-shag med hakkede, fjerlette lag",0,0],
+["/microbangs","Frisure: skulderlangt glat hår med mikro-pandehår",0,0],
+["/wolfcut","Frisure: wolf cut, shaggy og kraftigt lagdelt",0,0],
+["/cyberpunk","Restyler dig i cyberpunk-æstetik med sort techwear",0,0],
+["/cleangirl","Restyler dig i clean girl-æstetik med glat, bagudredt hår",0,0],
+["/mobwife","Restyler dig i mob wife-æstetik med stor pels",0,0],
+["/eurosummer","Restyler dig i Euro summer-æstetik med hvidt hørsæt",0,0],
+["/goth","Restyler dig i gotisk æstetik med sort fløjl",0,0],
+["/cottagecore","Restyler dig i cottagecore-æstetik med hvid bomuldskjole",0,0],
+["/darkacademia","Restyler dig i dark academia-æstetik med tweed",0,0],
+["/apresski","Restyler dig i après-ski-æstetik med nordisk strik",0,0],
+["/indiesleaze","Restyler dig i indie sleaze-æstetik med læderjakke",0,0],
+["/balletcore","Restyler dig i balletcore-æstetik med lyserød wrap-top",0,0],
+["/grunge","Restyler dig i 90'er-grunge med stor flannelskjorte",0,0],
+["/coastalgrandma","Restyler dig i coastal grandmother-æstetik med hvid lin",0,0],
+["/boho","Restyler dig i boheme-æstetik med rustorange broderet bluse",0,0],
+["/gorpcore","Restyler dig i gorpcore-æstetik med teknisk skaljakke",0,0],
+["/y2k","Restyler dig i Y2K-æstetik med babylyserød crop top",0,0],
+["/quietluxury","Restyler dig i quiet luxury-æstetik med kamelfarvet kashmirfrakke",0,0],
+["/pilatesprincess","Restyler dig i Pilates princess-æstetik med matchende sæt",0,0],
+["/western","Restyler dig i western-æstetik med frynsejakke i ruskind",0,0],
+["/officesiren","Restyler dig i office siren-æstetik med skræddersyet blazer",0,0],
+["/oldmoney","Restyler dig i old money-æstetik med cremefarvet kabelstrik",0,0],
+["/coquette","Restyler dig i coquette-æstetik med blondebluse og sløjfer",0,0],
+["/frenchgirl","Restyler dig i French girl-æstetik med stribet bretagne-trøje",0,0],
+["/royalcore","Restyler dig i royalcore-æstetik med elfenbensfarvet balkjole",0,0],
+["/streetwear","Restyler dig i streetwear-æstetik med oversized dunjakke",0,0],
+["/1920s","Dit foto som et ægte billede fra 1920'erne",0,0],
+["/1930s","Dit foto som et Hollywood-glamourportræt fra 1930'erne",0,0],
+["/1940s","Dit foto som et farvebillede fra 1940'erne",0,0],
+["/1950s","Dit foto som et mættet Kodachrome-snapshot fra 1950'erne",0,0],
+["/1960s","Dit foto som et farvebillede fra 1960'erne",0,0],
+["/1970s","Dit foto med varme Kodacolor-farver fra 1970'erne",0,0],
+["/1980s","Dit foto som et skoleårbogsportræt fra 1980'erne",0,0],
+["/1990s","Dit foto som et engangskamera-billede fra 1990'erne",0,0],
+["/2000s","Dit foto fra et tidligt 3-megapixel-kamera fra 2000'erne",0,0],
+["/2010s","Dit foto som et Instagram-billede med varmt filter fra 2010'erne",0,0],
+["/2020s","Dit foto som taget med en moderne iPhone fra 2020'erne",0,0],
+["/2080s","Dit foto taget med fremtidens kamera i 2080'erne",0,0],
+["/removestranger","Fjerner fremmede bag dig og fylder pladsen naturligt ud",0,0],
+["/fixclosedeyes","Åbner dine lukkede øjne, så du kigger ind i kameraet",0,0],
+["/changeoutfit","Skifter kun dit tøj, så ansigt og positur forbliver uændret",0,0],
+["/expandphoto","Zoomer ud og udvider fotoet til lodret 9:16",0,0],
+["/newbackground","Skifter baggrunden bag dig, mens du forbliver uændret",0,0],
+["/fixlighting","Retter lyset, så du er jævnt og naturligt oplyst",0,0],
+["/gta6","Dig som GTA-agtig loading-screen-illustration",0,0],
+["/sunsetdrive","Dig i en åben cabriolet ved solnedgang i samme GTA-stil",0,0],
+["/bringtolife","Vækker illustrationen til live som en kort video",0,1]
+];
+function kbClean(raw){
+  const seen=new Set(),out=[];
+  raw.forEach(r=>{
+    if(!r||!r[0])return;
+    let c=String(r[0]).trim().toLowerCase().replace(/\s+/g,'').replace(/^[\/\\]+/,'');
+    if(!c)return;
+    c='/'+c;
+    if(seen.has(c))return;
+    seen.add(c);
+    out.push([c,String(r[1]||'').trim(),+r[2]||0,r[3]?1:0]);
+  });
+  return out;
+}
+const KB=kbClean(KB_RAW);
+const KS={};
+const kbOf=p=>KB.filter(c=>c[2]===p.kb);
+function kbState(p){return KS[p.id]||(KS[p.id]={code:(kbOf(p)[0]||[''])[0],extra:'',q:''})}
+function kbPrompt(p){const s=kbState(p);return s.code+(s.extra.trim()?' '+s.extra.trim():'')}
+const KB_STEPS=['Vælg en kode herunder.','Vedhæft dit foto eller produktbillede i ChatGPT eller Claude. Vil du ikke bruge et foto, så beskriv motivet i stedet.','Kopiér koden her, indsæt den i beskedfeltet, og tryk send.','Vil du have det anderledes? Skriv fx «samme, men bredere» eller «lav tre versioner» bagefter.'];
+const KB_HF=['Opret en Higgsfield-konto på higgsfield.ai. Videokoder bruger Higgsfield-kreditter, så start med prøveperioden.','I Claude: tryk Customize, så Connectors, så +, og vælg Tilføj brugerdefineret connector. Kald den Higgsfield, indsæt linket https://mcp.higgsfield.ai/mcp, og tryk Tilføj.','Tryk Connect, log ind på din Higgsfield-konto, og godkend. Det gør du kun én gang.','Åbn en ny chat, tryk + ved beskedfeltet, og slå Higgsfield til under Connectors. Vedhæft en selfie, og skriv /headshot. Kommer der et billede, er du klar.'];
+(function(){
+  const CP=(KBC||[]);
+  CP.forEach(k=>{
+    const n=KB.filter(c=>c[2]===k.id).length;
+    P.push({id:'kb-'+k.key,kb:k.id,cat:k.cat,sub:'kodebog',kind:'kodebog',title:'Kodepakke: '+k.name,
+      text:k.intro+' '+KB.filter(c=>c[2]===k.id).map(c=>c[0]).join(' '),desc:k.intro,l:1,lvl:1,tech:false,
+      tags:['Kodepakke',n+' koder'].concat(k.cat==='video'?['Video']:[]),steps:null,src:null,role:'billedkunstner',core:null});
+  });
+})();
+function kbCover(p){
+  const list=kbOf(p),h=(CAT[p.cat].h+p.kb*29)%360,id='kbc'+p.kb,n=list.length;
+  const pick=[0,1,2,3,4].map(i=>list[Math.floor(i*n/5)%n]).filter(Boolean);
+  const pos=[[34,50],[150,86],[60,128],[176,164],[44,200]];
+  let o='';
+  pick.forEach((c,i)=>{
+    const w=Math.min(250,c[0].length*11+34),x=pos[i][0]+(i%2?40:0),y=pos[i][1];
+    o+='<g transform="translate('+x+' '+y+')"><rect width="'+w+'" height="38" rx="19" fill="'+(i===1?'hsl('+((h+150)%360)+',92%,62%)':'hsl('+h+',60%,96%)')+'" opacity="'+(i===1?1:.92)+'"/><text x="17" y="25.5" font-family="JetBrains Mono,ui-monospace,Menlo,monospace" font-weight="700" font-size="17" fill="hsl('+h+',55%,18%)">'+esc(c[0])+'</text></g>';
+  });
+  return '<svg class="cov" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="hsl('+h+',62%,28%)"/><stop offset="1" stop-color="hsl('+((h+40)%360)+',66%,14%)"/></linearGradient></defs><rect width="400" height="260" fill="url(#'+id+')"/><text x="300" y="232" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,monospace" font-weight="700" font-size="250" fill="#fff" opacity=".09">/</text>'+o+'<text x="372" y="244" text-anchor="end" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="22" fill="#fff" opacity=".95">'+n+' koder</text></svg>';
+}
+function kodebogSheet(p){
+  const c=CAT[p.cat],f=isFav(p.id),sp=isSup(p.id),ai=AIS[S.ai],key='p:'+p.id,st=kbState(p),list=kbOf(p),vid=p.cat==='video';
+  const d=list.find(x=>x[0]===st.code);
+  return '<div class="sh-head"><span class="pill2" style="--h:'+c.h+'"><span class="ico">'+icon(c.icon,14)+'</span>'+esc(c.name)+'</span><button class="round sm" data-a="close" aria-label="Luk">'+icon('x',18)+'</button></div>'+
+    '<div class="shcov">'+kbCover(p)+'</div>'+
+    '<h2 id="sh-t" class="sh-title">'+esc(p.title)+'</h2>'+
+    '<div class="sh-meta">'+p.tags.map(t=>'<span class="t">'+esc(t)+'</span>').join('')+'</div>'+
+    '<p class="note" style="margin-top:-4px">'+esc(p.desc)+'</p>'+
+    '<h3 class="sec">Vælg en kode</h3>'+
+    (list.length>12?'<label class="search kbsearch">'+icon('search',17)+'<input type="search" data-kq="'+p.id+'" placeholder="Søg i '+list.length+' koder" autocomplete="off" aria-label="Søg i koderne" value="'+esc(st.q)+'"></label>':'')+
+    '<div class="kchips" id="kchips" role="group" aria-label="Koder">'+list.map(x=>'<button class="kchip'+(x[0]===st.code?' on':'')+'" data-a="kcode" data-id="'+p.id+'" data-k="'+esc(x[0])+'" aria-pressed="'+(x[0]===st.code)+'"><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></button>').join('')+'</div>'+
+    '<p class="note" id="kbcnt"></p>'+
+    '<div class="pfields kbx"><h3>Valgt kode</h3><p class="kbsel" id="kbsel"><b>'+esc(st.code)+'</b> — '+esc(d?d[1]:'')+'</p>'+
+    '<label class="pf"><span>Ekstra detaljer (valgfrit)</span><input type="text" data-kx="'+p.id+'" value="'+esc(st.extra)+'" placeholder="fx farve, stil eller tekst: mørkegrøn, overskrift Vågn bedre" autocomplete="off"></label></div>'+
+    '<div class="ptext code" id="ptext">'+esc(kbPrompt(p))+'</div>'+
+    '<h3 class="sec">Sådan bruger du den</h3><ol class="howto">'+KB_STEPS.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol>'+
+    '<details class="kbhelp"'+(vid?' open':'')+'><summary>'+(vid?'Videokoder kræver Higgsfield: sæt det op på 2 minutter':'Bruger du Claude? Sæt Higgsfield op på 2 minutter')+'</summary><ol class="howto">'+KB_HF.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol><p class="note">Gratis plan i Claude giver kun én brugerdefineret connector. I ChatGPT skal billedkoder ikke bruge Higgsfield.</p></details>'+
+    openLink(key,'Kopiér kode og åbn i '+ai.name)+aiQuick(key)+
+    '<div class="btnrow"><button class="btn ghost" data-a="copy" data-src="'+key+'">'+icon('copy',17)+'Kopiér</button><button class="btn ghost'+(f?' is-on':'')+'" data-a="fav" data-id="'+p.id+'" aria-pressed="'+f+'">'+icon('heart',17)+(f?'Gemt':'Gem')+'</button></div>'+
+    '<button class="btn ghost wide" data-a="kbbook" data-k="'+p.kb+'">'+icon('search',17)+'Åbn i Kodebogen</button>'+
+    '<p class="sh-foot">Åbner '+esc(ai.host)+' i en ny fane · <a href="#indstillinger">Skift standard-AI</a></p>';
+}
+function kbUpdate(id){
+  const p=BY[id];if(!p)return;const st=kbState(p),d=KB.find(x=>x[0]===st.code);
+  document.querySelectorAll('#sheet .kchip').forEach(b=>{const on=b.dataset.k===st.code;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+  const s=$('#kbsel');if(s)s.innerHTML='<b>'+esc(st.code)+'</b> — '+esc(d?d[1]:'');
+  const pt=$('#ptext');if(pt)pt.textContent=kbPrompt(p);
+}
+function kbFilterChips(id){
+  const p=BY[id];if(!p)return;const st=kbState(p),q=st.q.trim().toLowerCase();let n=0;
+  document.querySelectorAll('#sheet .kchip').forEach(b=>{const ok=!q||(b.dataset.k+' '+b.lastChild.textContent).toLowerCase().includes(q);b.hidden=!ok;if(ok)n++});
+  const c=$('#kbcnt');if(c)c.textContent=q?(n?n+(n===1?' kode matcher':' koder matcher'):'Ingen koder matcher «'+st.q.trim()+'»'):'';
+}
+let kbQ='',kbCatF='alle',kbType='alle';
+function kbRows(){
+  const q=kbQ.trim().toLowerCase();
+  const rows=KB.filter(c=>(kbCatF==='alle'||c[2]===+kbCatF)&&(kbType==='alle'||(kbType==='video')===!!c[3])&&(!q||(c[0]+' '+c[1]).toLowerCase().includes(q)));
+  $('#kbn').textContent=rows.length+' af '+KB.length+' koder';
+  $('#kbl').innerHTML=rows.length?rows.map(c=>'<div class="krow"><button class="kmain" data-a="kbcopy" data-k="'+esc(c[0])+'" aria-label="Kopiér '+esc(c[0])+'"><b>'+esc(c[0])+(c[3]?'<em class="kvid">Video</em>':'')+'</b><span>'+esc(c[1])+'</span></button><button class="mini" data-a="kbcopy" data-k="'+esc(c[0])+'" aria-label="Kopiér '+esc(c[0])+'">'+icon('copy',17)+'</button></div>').join(''):'<p class="note" style="padding:8px 2px">Ingen koder matcher «'+esc(kbQ)+'».</p>';
+}
+function vKodebog(v){
+  v.innerHTML='<div class="stack"><header class="bar"><a class="round" href="#katalog" aria-label="Tilbage til kataloget">'+icon('back',20)+'</a><h1>Kodebog</h1><span class="sp"></span></header>'+
+    '<p class="note" style="margin:0">Alle '+KB.length+' koder samlet ét sted. Tryk på en kode for at kopiere den, og indsæt den i ChatGPT eller Claude sammen med dit foto.</p>'+
+    '<label class="search">'+icon('search',19)+'<input id="kbq" type="search" placeholder="Søg i alle '+KB.length+' koder" value="'+esc(kbQ)+'" autocomplete="off" aria-label="Søg i koderne"></label>'+
+    '<div class="chips" role="group" aria-label="Filtrér på type">'+[['alle','Alle'],['billede','Billede'],['video','Video']].map(([k,l])=>'<button class="chip'+(kbType===k?' on':'')+'" data-a="kbtype" data-k="'+k+'" aria-pressed="'+(kbType===k)+'">'+l+'</button>').join('')+'</div>'+
+    '<div class="chips" role="group" aria-label="Filtrér på kategori"><button class="chip'+(kbCatF==='alle'?' on':'')+'" data-a="kbcat" data-k="alle" aria-pressed="'+(kbCatF==='alle')+'">Alle kategorier</button>'+KBC.map(k=>'<button class="chip'+(kbCatF===String(k.id)?' on':'')+'" data-a="kbcat" data-k="'+k.id+'" aria-pressed="'+(kbCatF===String(k.id))+'">'+esc(k.name)+'</button>').join('')+'</div>'+
+    '<p class="note" id="kbn"></p><div class="klist" id="kbl"></div></div>';
+  kbRows();
+  $('#kbq').addEventListener('input',e=>{kbQ=e.target.value;kbRows()});
+}
+
 P.forEach(p=>{if(p.cat==='billeder'&&!p.sub)p.sub='stil'});
 P.forEach(p=>{p.lvl=LV[p.id]||p.l||1;p.tech=!!p.tech||p.cat==='kodning'});
 Object.keys(CAT).forEach(k=>{if(!P.some(p=>p.cat===k))delete CAT[k]});
-const mixable=p=>p.kind!=='kode';
+const mixable=p=>p.kind!=='kode'&&p.kind!=='kodebog';
 const BY={};P.forEach(p=>BY[p.id]=p);
 const LEVELS=['Begynder','Øvet','Ekspert'];
 const LEVELDESC=['Enkle prompts med få trin','Mere struktur og metode','Alt, også de avancerede'];
@@ -913,7 +1607,7 @@ let toastT;
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2000)}
 
 /* ---------- navigation ---------- */
-const ROUTES=['velkommen','emner','katalog','swipe','favoritter','vaerktoejer','indstillinger'];
+const ROUTES=['velkommen','emner','katalog','kodebog','swipe','favoritter','vaerktoejer','indstillinger'];
 function route(){const h=location.hash.slice(1);return ROUTES.includes(h)?h:(S.welcomed?'emner':'velkommen')}
 function go(r,then){
   if(location.hash==='#'+r){if(sheet)closeSheet(true);render();if(then)openSheet(then)}
@@ -921,7 +1615,7 @@ function go(r,then){
 }
 const TABS=[['emner','grid','Emner'],['favoritter','heart','Favoritter'],['swipe','cards','Swipe'],['vaerktoejer','toolbox','Værktøj'],['indstillinger','gear','Indstil.']];
 function renderTabs(r){
-  const cur=r==='katalog'?'emner':r;
+  const cur=(r==='katalog'||r==='kodebog')?'emner':r;
   $('#tabs').innerHTML=TABS.map(([k,ic,l])=>{
     const on=k===cur;
     const badge=k==='favoritter'&&S.favs.length?'<span class="badge">'+S.favs.length+'</span>':'';
@@ -934,7 +1628,7 @@ function head(){
   return '<header class="bar"><a class="wm" href="#velkommen" aria-label="PromptSwipe, vis velkomst"><span class="wm-ic">'+icon('cards',17)+'</span><span><span class="wl">Prompt</span><span class="wb">Swipe</span></span></a>'+
     '<a class="round grad avatar" href="#indstillinger" aria-label="Indstillinger">'+(n?esc(n[0].toUpperCase()):icon('user',19))+'</a></header>';
 }
-const VIEWS={velkommen:vWelcome,emner:vEmner,katalog:vKatalog,swipe:vSwipe,favoritter:vFav,vaerktoejer:vTools,indstillinger:vSet};
+const VIEWS={velkommen:vWelcome,emner:vEmner,katalog:vKatalog,kodebog:vKodebog,swipe:vSwipe,favoritter:vFav,vaerktoejer:vTools,indstillinger:vSet};
 function render(){
   const r=route(),v=$('#view');
   const keep=r===lastR?v.scrollTop:0;
@@ -986,7 +1680,7 @@ function promptRow(p,quick){
 }
 function promptTile(p){
   const c=CAT[p.cat],f=isFav(p.id);
-  return '<div class="tile'+(isSup(p.id)?' issup':'')+'" style="--h:'+c.h+'"><button class="tile-main" data-a="open" data-id="'+p.id+'"><span class="tcov">'+coverSVG(p)+(p.kind==='kode'?'<span class="codebadge">'+esc(p.text.split('\n')[0].slice(0,26))+'</span>':'')+'</span><span class="tmeta">'+esc(c.name)+(p.kind==='kode'?' · Kode':'')+' · Niveau '+p.lvl+'</span><b class="ttl2">'+esc(p.title)+'</b><span class="tdesc">'+esc((p.kind==='kode'?p.desc:p.text).replace(/\s+/g,' '))+'</span></button>'+
+  return '<div class="tile'+(isSup(p.id)?' issup':'')+'" style="--h:'+c.h+'"><button class="tile-main" data-a="open" data-id="'+p.id+'"><span class="tcov">'+coverSVG(p)+(p.kind==='kodebog'?'<span class="codebadge">'+kbOf(p).length+' koder</span>':p.kind==='kode'?'<span class="codebadge">'+esc(p.text.split('\n')[0].slice(0,26))+'</span>':'')+'</span><span class="tmeta">'+esc(c.name)+(p.kind==='kode'?' · Kode':'')+' · Niveau '+p.lvl+'</span><b class="ttl2">'+esc(p.title)+'</b><span class="tdesc">'+esc((p.kind==='kode'?p.desc:p.text).replace(/\s+/g,' '))+'</span></button>'+
     (isSup(p.id)?'<span class="supb">'+icon('star',13)+'Super</span>':'')+'<button class="tfav'+(f?' on':'')+'" data-a="fav" data-id="'+p.id+'" aria-pressed="'+f+'" aria-label="'+(f?'Fjern fra favoritter':'Gem som favorit')+'">'+icon('heart',17)+'</button></div>';
 }
 function openLink(src,label,cls){
@@ -1053,13 +1747,14 @@ function vEmner(v){
 /* ---------- katalog ---------- */
 function katRows(){
   const q=query.trim().toLowerCase();
-  const rows=P.filter(p=>visible(p)&&(katCat==='alle'||p.cat===katCat)&&(katCat!=='billeder'||katSub==='alle'||p.sub===katSub)&&(katType==='alle'||(katType==='kode')===(p.kind==='kode'))&&(!q||(p.title+' '+p.text+' '+(p.desc||'')+' '+p.tags.join(' ')+' '+CAT[p.cat].name).toLowerCase().includes(q)));
+  const rows=P.filter(p=>visible(p)&&(katCat==='alle'||p.cat===katCat)&&(katCat!=='billeder'||katSub==='alle'||p.sub===katSub)&&(katType==='alle'||(katType==='kode')===(p.kind==='kode'||p.kind==='kodebog'))&&(!q||(p.title+' '+p.text+' '+(p.desc||'')+' '+p.tags.join(' ')+' '+CAT[p.cat].name).toLowerCase().includes(q)));
   const hidden=P.length-P.filter(visible).length;
   $('#cnt').innerHTML=rows.length+' kort'+(hidden?' · '+hidden+' skjult af dit niveau og tekniske kort. <a href="#indstillinger">Ret</a>':'');
   $('#results').innerHTML=rows.length?rows.map(p=>promptTile(p)).join(''):'<p class="note" style="padding:8px 2px">Ingen kort matcher «'+esc(query)+'».</p>';
 }
 function vKatalog(v){
   v.innerHTML='<div class="stack"><header class="bar"><a class="round" href="#emner" aria-label="Tilbage til emner">'+icon('back',20)+'</a><h1>Katalog</h1><span class="sp"></span></header>'+
+    '<a class="kbbtn" href="#kodebog"><span class="ic">'+icon('code',20)+'</span><span><b>Kodebog · Alle '+KB.length+' koder</b><span class="s">Søg og kopiér med ét tryk, uden at fylde i swipe-bunken</span></span></a>'+
     '<label class="search">'+icon('search',19)+'<input id="q" type="search" placeholder="Søg i alle kort" value="'+esc(query)+'" autocomplete="off" aria-label="Søg i alle kort"></label>'+
     '<div class="chips" role="group" aria-label="Filtrér på type">'+[['alle','Alle typer'],['prompt','Prompts'],['kode','Koder']].map(([k,l])=>'<button class="chip'+(katType===k?' on':'')+'" data-a="kattype" data-k="'+k+'" aria-pressed="'+(katType===k)+'">'+l+'</button>').join('')+'</div>'+
     '<div class="chips" role="group" aria-label="Filtrér på emne">'+['alle'].concat(Object.keys(CAT)).filter(k=>k!=='kodning'||S.tech).map(k=>'<button class="chip'+(katCat===k?' on':'')+'" data-a="katcat" data-k="'+k+'" aria-pressed="'+(katCat===k)+'">'+(k==='alle'?'Alle':CAT[k].name)+'</button>').join('')+'</div>'+
@@ -1218,6 +1913,7 @@ function buildPHV(){
 function photoOf(p){if(!PHV)buildPHV();return PHV[p.id]||null}
 const PHVAR=[[1,50,50,0,0],[1.7,15,20,0,-18],[1.9,85,75,0,20],[2.2,80,15,0,12],[1.6,20,85,0,-25],[2.4,50,50,0,30],[2.0,10,55,0,8],[1.8,90,40,0,-10]];
 function coverSVG(p){
+  if(p.kind==='kodebog')return kbCover(p);
   const ph=photoOf(p);
   if(ph){
     if(!ph.k)return '<img class="cov" alt="" src="'+ph.src+'">';
@@ -1236,11 +1932,11 @@ function coverSVG(p){
 function card(p,i){
   const c=CAT[p.cat];
   return '<article class="card'+(i===0?' top':'')+'" data-i="'+i+'" data-id="'+p.id+'" style="--h:'+c.h+';--z:'+(3-i)+'" aria-label="'+esc(p.title)+'"'+(i?' aria-hidden="true"':'')+'>'+
-    '<div class="art">'+coverSVG(p)+'<span class="orb">'+icon(c.icon,22)+'</span><span class="pill">'+esc(c.name)+(p.kind==='kode'?' · Kode':'')+'</span>'+
-    (p.kind==='kode'?'<span class="codebadge">'+esc(p.text.split('\n')[0].slice(0,34))+'</span>':'')+
+    '<div class="art">'+coverSVG(p)+'<span class="orb">'+icon(c.icon,22)+'</span><span class="pill">'+esc(c.name)+(p.kind==='kode'?' · Kode':p.kind==='kodebog'?' · Kodepakke':'')+'</span>'+
+    (p.kind==='kode'?'<span class="codebadge">'+esc(p.text.split('\n')[0].slice(0,34))+'</span>':p.kind==='kodebog'?'<span class="codebadge">'+kbOf(p).length+' koder</span>':'')+
     '<button class="fav'+(isFav(p.id)?' on':'')+'" data-a="fav" data-id="'+p.id+'" aria-label="Gem som favorit"'+(i?' tabindex="-1"':'')+'>'+icon('heart',20)+'</button>'+
     '<button class="fav sup'+(isSup(p.id)?' on':'')+'" data-a="sup" data-id="'+p.id+'" aria-label="Super-gem"'+(i?' tabindex="-1"':'')+'>'+icon('star',20)+'</button><span class="stamp s-u">SUPER</span><span class="stamp s-r">GEMT</span><span class="stamp s-l">SPRING OVER</span></div>'+
-    '<div class="body"><h2>'+esc(p.title)+'</h2><div class="pbox"><b>'+(p.kind==='kode'?'⌗ Kode':'✦ Prompt')+'</b><span>'+esc((p.kind==='kode'?p.desc:p.text).replace(/\s+/g,' '))+'</span></div></div></article>';
+    '<div class="body"><h2>'+esc(p.title)+'</h2><div class="pbox"><b>'+(p.kind==='kode'?'⌗ Kode':p.kind==='kodebog'?'⌗ Kodepakke':'✦ Prompt')+'</b><span>'+esc((p.kind==='kode'||p.kind==='kodebog'?p.desc:p.text).replace(/\s+/g,' '))+'</span></div></div></article>';
 }
 function vSwipe(v){
   if(!D.order)D={topic:D.topic,order:buildOrder(D.topic),idx:0,hist:[]};
@@ -1429,6 +2125,7 @@ function vSet(v){
 
 /* ---------- bundark ---------- */
 function promptSheet(p){
+  if(p.kind==='kodebog')return kodebogSheet(p);
   const c=CAT[p.cat],ai=AIS[S.ai],f=isFav(p.id),sp=isSup(p.id),key='p:'+p.id,fill=p.kind!=='kode';
   return '<div class="sh-head"><span class="pill2" style="--h:'+c.h+'"><span class="ico">'+icon(c.icon,14)+'</span>'+esc(c.name)+'</span><button class="round sm" data-a="close" aria-label="Luk">'+icon('x',18)+'</button></div>'+
     '<div class="shcov">'+coverSVG(p)+'</div>'+
@@ -1532,7 +2229,7 @@ $('#scrim').addEventListener('click',e=>{if(e.target.id==='scrim')closeSheet()})
 function getText(src){const t=rawText(src);return /^[pt]:/.test(src)?fillText(t,src):t}
 function rawText(src){
   const i=src.indexOf(':'),k=src.slice(0,i),id=src.slice(i+1);
-  if(k==='p')return BY[id]?BY[id].text:'';
+  if(k==='p')return BY[id]?(BY[id].kind==='kodebog'?kbPrompt(BY[id]):BY[id].text):'';
   if(k==='t')return TB[id]?promptFor(TB[id]):'';
   if(k==='mix')return MX.result?MX.result.text:'';
   if(k==='m'){const m=S.mixes.find(x=>x.id===id);return m?m.text:''}
@@ -1587,6 +2284,11 @@ document.addEventListener('click',e=>{
     case 'open':openSheet({kind:'prompt',id});break;
     case 'fav':toggleFav(id);refresh();break;
     case 'close':closeSheet();break;
+    case 'kcode':{const p=BY[id];if(p){kbState(p).code=k;kbUpdate(id)}break}
+    case 'kbcopy':copyText(k,k+' er kopieret');break;
+    case 'kbtype':kbType=k;render();break;
+    case 'kbcat':kbCatF=k;render();break;
+    case 'kbbook':{kbCatF=String(k);kbType='alle';kbQ='';closeSheet(true);go('kodebog');break}
     case 'copy':copyText(getText(b.dataset.src),'Kopieret til udklipsholder');break;
     case 'copyopen':copyText(getText(b.dataset.src),'Kopieret · sæt ind i '+AIS[b.dataset.ai||S.ai].name,'Åbnet. Kopiér teksten, og sæt den ind');break;
     case 'mixopen':MX.result=null;MX.savedId=null;MX.sel=S.favs.filter(x=>BY[x]&&mixable(BY[x])).slice(0,3);openSheet({kind:'mix'});break;
@@ -1632,7 +2334,11 @@ document.addEventListener('click',e=>{
   }
 });
 document.addEventListener('input',e=>{
-  const i=e.target;if(!i||!i.matches||!i.matches('input[data-pf]'))return;
+  const i=e.target;if(i&&i.matches){
+    if(i.matches('input[data-kx]')){const p=BY[i.dataset.kx];if(p){kbState(p).extra=i.value;kbUpdate(p.id)}return}
+    if(i.matches('input[data-kq]')){const p=BY[i.dataset.kq];if(p){kbState(p).q=i.value;kbFilterChips(p.id)}return}
+  }
+  if(!i||!i.matches||!i.matches('input[data-pf]'))return;
   const key=i.dataset.pf;(PF[key]||(PF[key]={}))[i.dataset.t]=i.value;
   const pt=$('#ptext');if(pt)pt.innerHTML=ptextHTML(rawText(key),key);
 });
