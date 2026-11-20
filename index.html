@@ -1867,11 +1867,8 @@ function pfRefresh(key){
 }
 function pfFields(text,key){
   const toks=phTokens(text);if(!toks.length)return '';const v=PF[key]||{};
-  return '<div class="pfields"><h3>Udfyld felterne, så er prompten færdig</h3>'+toks.map(t=>{
-    const ex=phExamples(t),cur=(v[t]||'').trim();
-    return '<div class="pf"><label><span>'+esc(t)+'</span><input type="text" data-pf="'+esc(key)+'" data-t="'+esc(t)+'" value="'+esc(v[t]||'')+'" placeholder="Fx: '+esc(phShort(ex[0],46))+'" autocomplete="off" enterkeyhint="next"></label>'+
-      '<div class="pex" role="group" aria-label="Eksempler til '+esc(t)+'">'+ex.slice(0,3).map((e,i)=>'<button type="button" class="pexc'+(cur===e?' on':'')+'" data-a="pfex" data-k="'+esc(key)+'" data-t="'+esc(t)+'" data-i="'+i+'" title="'+esc(e)+'">Prøv: '+esc(phShort(e,30))+'</button>').join('')+'</div></div>';
-  }).join('')+'<p class="pfstat" id="pfstat">'+pfStat(text,key)+'</p>'+
+  return '<div class="pfields"><h3>Udfyld felterne, så er prompten færdig</h3>'+toks.map(t=>'<label class="pf"><span>'+esc(t)+'</span><input type="text" data-pf="'+esc(key)+'" data-t="'+esc(t)+'" value="'+esc(v[t]||'')+'" placeholder="'+esc(t)+'" autocomplete="off" enterkeyhint="next"></label>').join('')+
+    '<p class="pfstat" id="pfstat">'+pfStat(text,key)+'</p>'+
     '<button class="textlink" data-a="pfclear" data-k="'+esc(key)+'">Ryd felter</button></div>';
 }
 function aiQuick(src){
