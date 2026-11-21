@@ -1,0 +1,2028 @@
+{
+ "dato": "2026-11-21",
+ "kept": [
+  "adcreative",
+  "atstest",
+  "autoprompt",
+  "behavior",
+  "billboard",
+  "br1",
+  "br3",
+  "c02",
+  "c05",
+  "c08",
+  "c11",
+  "c19",
+  "c21",
+  "c23",
+  "c24",
+  "c25",
+  "c26",
+  "c28",
+  "c29",
+  "c30",
+  "c31",
+  "c32",
+  "c33",
+  "c34",
+  "c36",
+  "c37",
+  "c39",
+  "c42",
+  "c51",
+  "c52",
+  "c53",
+  "c54",
+  "c55",
+  "c59",
+  "c61",
+  "c62",
+  "c63",
+  "c66",
+  "c69",
+  "c70",
+  "c82",
+  "c83",
+  "c84",
+  "c85",
+  "c86",
+  "c87",
+  "c89",
+  "c91",
+  "camdisp",
+  "camportra",
+  "carwrap",
+  "checklist",
+  "cover",
+  "cvaudit",
+  "cvrewrite",
+  "diagram",
+  "draftreview",
+  "eli5",
+  "energymap",
+  "exploded",
+  "factcheck",
+  "fe-baggrund",
+  "fe-objekt",
+  "fe-opskal",
+  "fe-retouch",
+  "flowchart",
+  "followup",
+  "g01",
+  "g04",
+  "g06",
+  "g09",
+  "gr2",
+  "hardbuyer",
+  "headline5",
+  "headshot",
+  "hiddenmoney",
+  "honestfriend",
+  "human",
+  "i01",
+  "i02",
+  "i07",
+  "i09",
+  "i11",
+  "i18",
+  "i34",
+  "i46",
+  "id1",
+  "id2",
+  "id3",
+  "id5",
+  "interior",
+  "interviewprep",
+  "k-3dcartoon",
+  "k-anime",
+  "k-blueprint",
+  "k-colorenhance",
+  "k-droneshot",
+  "k-furnish",
+  "k-glasses",
+  "k-haircut",
+  "k-landscape",
+  "k-lego",
+  "k-lifestyleshot",
+  "k-logo",
+  "k-magazinecover",
+  "k-miniature",
+  "k-openeyes",
+  "k-passportphoto",
+  "k-pethuman",
+  "k-plushie",
+  "k-remove",
+  "k-repaint",
+  "k-royalportrait",
+  "k-showcase",
+  "k-statue",
+  "k-tattoo",
+  "k-timemachine",
+  "k-tvsize",
+  "k-ugc",
+  "k-unblur",
+  "k-upscale",
+  "k02",
+  "k05",
+  "k06",
+  "kk1",
+  "ko1",
+  "ko3",
+  "ko4",
+  "leaks",
+  "lifechanger",
+  "linkedin",
+  "matching",
+  "mentor",
+  "mk1",
+  "mk2",
+  "mk3",
+  "mk4",
+  "mk5",
+  "mk6",
+  "mobileguide",
+  "morningpara",
+  "nextstep",
+  "oneday",
+  "pr1",
+  "pressure",
+  "quiztime",
+  "restore",
+  "s07",
+  "salary",
+  "scamcheck",
+  "selllisting",
+  "sellprice",
+  "sk1",
+  "sk2",
+  "sk3",
+  "sk4",
+  "sk5",
+  "sk6",
+  "stickynotes",
+  "studyguide",
+  "thumbnail",
+  "timeline",
+  "truth",
+  "twofutures",
+  "v-appicon",
+  "v-connect-tasks",
+  "v-connect-week",
+  "v-gamma",
+  "v-guide-privacy-connect",
+  "v-guide-privacy-export",
+  "v-guide-privacy-family",
+  "v-guide-privacy-memory",
+  "v-guide-privacy-scam",
+  "v-guide-privacy-start",
+  "v-guide-teachback",
+  "v-hero",
+  "v-idea-actionfigure",
+  "v-idea-colors",
+  "v-idea-movieposter",
+  "v-idea-palette",
+  "v-idea-phone",
+  "v-idea-snowglobe",
+  "v-infographic",
+  "v-logo",
+  "v-mav-carousel",
+  "v-mav-cv",
+  "v-mav-familytree",
+  "v-mav-fridge",
+  "v-mav-healthconnect",
+  "v-mav-weekend",
+  "v-mindmap",
+  "v-mockup",
+  "v-product",
+  "v-quality",
+  "v-quiz",
+  "v-video-beforeafter",
+  "v-video-teaser",
+  "v-workflow",
+  "weight",
+  "w01",
+  "w02",
+  "w03",
+  "w04",
+  "w05",
+  "w06",
+  "w07",
+  "w08",
+  "w09",
+  "w10",
+  "w11",
+  "w12",
+  "w13",
+  "w14",
+  "w15",
+  "w17",
+  "w18",
+  "w19",
+  "w23",
+  "w24",
+  "w25",
+  "wsa",
+  "wsb",
+  "wsc",
+  "wsd"
+ ],
+ "archived": [
+  {
+   "id": "ko2",
+   "cat": "kodning",
+   "title": "Skriv tests først",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "gr1",
+   "cat": "grafik",
+   "title": "Visuel identitet i ord",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "br2",
+   "cat": "brainstorming",
+   "title": "Spørgsmål før svar",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "pr2",
+   "cat": "produkt",
+   "title": "Produktbeskrivelse der sælger",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "kk2",
+   "cat": "koncepter",
+   "title": "Fortæl det som historie",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "ko5",
+   "cat": "kodning",
+   "title": "SQL på dansk",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "ko6",
+   "cat": "kodning",
+   "title": "Gør koden læsbar",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "gr3",
+   "cat": "grafik",
+   "title": "Farvepalette til en stemning",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "gr4",
+   "cat": "grafik",
+   "title": "Opslag til sociale medier",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "gr5",
+   "cat": "grafik",
+   "title": "Designbrief til logo",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "gr6",
+   "cat": "grafik",
+   "title": "Produktfoto i ord",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "id4",
+   "cat": "idegenerering",
+   "title": "Idéer fra en anden branche",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "id6",
+   "cat": "idegenerering",
+   "title": "Gør idéen mindre",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "br4",
+   "cat": "brainstorming",
+   "title": "Fire roller omkring bordet",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "br5",
+   "cat": "brainstorming",
+   "title": "Fra liste til prioritering",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "br6",
+   "cat": "brainstorming",
+   "title": "Mødeagenda der virker",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "pr3",
+   "cat": "produkt",
+   "title": "Guide til kundeinterview",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "pr4",
+   "cat": "produkt",
+   "title": "Prissætning i tre niveauer",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "pr5",
+   "cat": "produkt",
+   "title": "Velkomst til nye brugere",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "pr6",
+   "cat": "produkt",
+   "title": "Feature eller fælde?",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "kk3",
+   "cat": "koncepter",
+   "title": "Navn og slogan",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "kk4",
+   "cat": "koncepter",
+   "title": "Event folk taler om",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "kk5",
+   "cat": "koncepter",
+   "title": "Manifest på ti linjer",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "kk6",
+   "cat": "koncepter",
+   "title": "Gammelt koncept, ny vinkel",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c01",
+   "cat": "skrivning",
+   "title": "Disposition til blogindlæg",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c03",
+   "cat": "skrivning",
+   "title": "Noter til artikel",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c04",
+   "cat": "skrivning",
+   "title": "Skriv det enklere",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c06",
+   "cat": "skrivning",
+   "title": "Gør teksten mere levende",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c07",
+   "cat": "skrivning",
+   "title": "Skift til professionel tone",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c09",
+   "cat": "skrivning",
+   "title": "Metabeskrivelse til søgning",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c10",
+   "cat": "skrivning",
+   "title": "Fra stikord til sammenhængende tekst",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c12",
+   "cat": "research",
+   "title": "Sammenlign synspunkter",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c13",
+   "cat": "research",
+   "title": "Nye data og tendenser",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c14",
+   "cat": "research",
+   "title": "Troværdige kilder",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c15",
+   "cat": "research",
+   "title": "Opsummer en forskningsartikel",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c16",
+   "cat": "research",
+   "title": "Lav en researchplan",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c17",
+   "cat": "research",
+   "title": "Argumenter for og imod",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c18",
+   "cat": "research",
+   "title": "Find huller i researchen",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c20",
+   "cat": "research",
+   "title": "Næste researchspørgsmål",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c22",
+   "cat": "business",
+   "title": "Markedsmulighed",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c27",
+   "cat": "business",
+   "title": "Indtægtsmodeller",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c35",
+   "cat": "laering",
+   "title": "Del det op i enkle trin",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c38",
+   "cat": "laering",
+   "title": "Opsummer nøglebegreberne",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c40",
+   "cat": "laering",
+   "title": "Hjælp mig med at øve",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c41",
+   "cat": "kodning",
+   "title": "Forklar koden",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "c43",
+   "cat": "kodning",
+   "title": "Gør koden hurtigere",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "c44",
+   "cat": "kodning",
+   "title": "Oversæt til et andet sprog",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "c45",
+   "cat": "kodning",
+   "title": "Tilføj kommentarer",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "c46",
+   "cat": "kodning",
+   "title": "Foreslå en bedre tilgang",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "c47",
+   "cat": "kodning",
+   "title": "Skriv en funktion",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "c48",
+   "cat": "kodning",
+   "title": "Forstå fejlbeskeder",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "c49",
+   "cat": "kodning",
+   "title": "Lav testcases",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "c50",
+   "cat": "kodning",
+   "title": "Refaktorér koden",
+   "reason": "Teknisk og uden for fokus (4 bevaret)"
+  },
+  {
+   "id": "c56",
+   "cat": "produktivitet",
+   "title": "Lav en to do-liste",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c57",
+   "cat": "produktivitet",
+   "title": "Fjern forstyrrelser",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c58",
+   "cat": "produktivitet",
+   "title": "Værktøjer og skabeloner",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c60",
+   "cat": "produktivitet",
+   "title": "System der holder",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c64",
+   "cat": "analyse",
+   "title": "Find mønstre og tendenser",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c65",
+   "cat": "analyse",
+   "title": "Hvad betyder det?",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c67",
+   "cat": "analyse",
+   "title": "Fremhæv risici",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c68",
+   "cat": "analyse",
+   "title": "Datadrevne anbefalinger",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c71",
+   "cat": "idegenerering",
+   "title": "Generér idéer",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c72",
+   "cat": "koncepter",
+   "title": "Historiekoncepter",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c73",
+   "cat": "koncepter",
+   "title": "Manuskript eller dialog",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c74",
+   "cat": "koncepter",
+   "title": "Kampagnekoncept",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c75",
+   "cat": "idegenerering",
+   "title": "Unikke vinkler",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c76",
+   "cat": "idegenerering",
+   "title": "Kreative titler",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c77",
+   "cat": "grafik",
+   "title": "Visuelle prompts",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "c78",
+   "cat": "grafik",
+   "title": "Fra idé til storyboard",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "c79",
+   "cat": "idegenerering",
+   "title": "Gør det mere kreativt",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c80",
+   "cat": "idegenerering",
+   "title": "Kombinér flere idéer",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c81",
+   "cat": "strategi",
+   "title": "Analysér den nuværende situation",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c88",
+   "cat": "strategi",
+   "title": "Langsigtet effekt",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c90",
+   "cat": "strategi",
+   "title": "Opsummer strategiske indsigter",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c92",
+   "cat": "automatisering",
+   "title": "Proces til tjekliste",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c93",
+   "cat": "automatisering",
+   "title": "Skabeloner til faste opgaver",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c94",
+   "cat": "automatisering",
+   "title": "Automatisér indholdsproduktion",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c95",
+   "cat": "automatisering",
+   "title": "Find automatiseringsværktøjer",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c96",
+   "cat": "automatisering",
+   "title": "System trin for trin",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c97",
+   "cat": "automatisering",
+   "title": "Forbind forskellige værktøjer",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c98",
+   "cat": "automatisering",
+   "title": "Prompts til serieopgaver",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c99",
+   "cat": "automatisering",
+   "title": "Plan for automatisering",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "c100",
+   "cat": "automatisering",
+   "title": "Fra flere trin til én arbejdsgang",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "s01",
+   "cat": "genveje",
+   "title": "Forklar enkelt med et eksempel",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "s02",
+   "cat": "genveje",
+   "title": "Svar kort",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "s03",
+   "cat": "genveje",
+   "title": "Skriv som et menneske",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "s04",
+   "cat": "genveje",
+   "title": "Noter til professionel mail",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "s05",
+   "cat": "genveje",
+   "title": "Organisér i en tabel",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "s06",
+   "cat": "genveje",
+   "title": "Sammenlign muligheder",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "s08",
+   "cat": "genveje",
+   "title": "Træk hovedpunkter og næste skridt ud",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "s09",
+   "cat": "genveje",
+   "title": "Ti forskellige idéer",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "s10",
+   "cat": "genveje",
+   "title": "Gør teksten klarere og kortere",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "g02",
+   "cat": "genveje",
+   "title": "Video til tekst",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "g03",
+   "cat": "genveje",
+   "title": "Lyd til ren tekst",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "g05",
+   "cat": "genveje",
+   "title": "Podcast ud af dit materiale",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "g07",
+   "cat": "genveje",
+   "title": "Idé til kort AI-video",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "g08",
+   "cat": "genveje",
+   "title": "Realistiske billeder",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "g10",
+   "cat": "genveje",
+   "title": "Din egen specialassistent",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "g11",
+   "cat": "genveje",
+   "title": "Brug flere Google-apps sammen",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "g12",
+   "cat": "genveje",
+   "title": "Læs et dokument og svar på spørgsmål",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "k01",
+   "cat": "genveje",
+   "title": "Dyb og grundig besvarelse",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "k03",
+   "cat": "genveje",
+   "title": "Skarpere tekst",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "k04",
+   "cat": "genveje",
+   "title": "Pitch på 30 sekunder",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "k07",
+   "cat": "genveje",
+   "title": "Svær kodeopgave",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "k08",
+   "cat": "genveje",
+   "title": "Gennemgå mit arbejde",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "k09",
+   "cat": "genveje",
+   "title": "Ærlig kritik",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "k10",
+   "cat": "genveje",
+   "title": "Lærer: dyb forståelse",
+   "reason": "Generisk genvej uden visuelt resultat"
+  },
+  {
+   "id": "i03",
+   "cat": "billeder",
+   "title": "Billedkode: 4K-skarphed",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i04",
+   "cat": "billeder",
+   "title": "Billedkode: 8K-detaljer",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i05",
+   "cat": "billeder",
+   "title": "Billedkode: Ultrarealistisk",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i06",
+   "cat": "billeder",
+   "title": "Billedkode: Almindeligt foto",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i08",
+   "cat": "billeder",
+   "title": "Billedkode: Selfie-stil",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i10",
+   "cat": "billeder",
+   "title": "Billedkode: Anime",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i12",
+   "cat": "billeder",
+   "title": "Billedkode: Oliemaleri",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i13",
+   "cat": "billeder",
+   "title": "Billedkode: Skitse",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i14",
+   "cat": "billeder",
+   "title": "Billedkode: Stregtegning",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i15",
+   "cat": "billeder",
+   "title": "Billedkode: Minimalistisk",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i16",
+   "cat": "billeder",
+   "title": "Billedkode: Levende farver",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i17",
+   "cat": "billeder",
+   "title": "Billedkode: Sort-hvid",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i19",
+   "cat": "billeder",
+   "title": "Billedkode: Studielys",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i20",
+   "cat": "billeder",
+   "title": "Billedkode: Natscene",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i21",
+   "cat": "billeder",
+   "title": "Billedkode: HDR",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i22",
+   "cat": "billeder",
+   "title": "Billedkode: Makro",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i23",
+   "cat": "billeder",
+   "title": "Billedkode: Luftfoto",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i24",
+   "cat": "billeder",
+   "title": "Billedkode: Vidvinkel",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i25",
+   "cat": "billeder",
+   "title": "Billedkode: Sløret baggrund",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i26",
+   "cat": "billeder",
+   "title": "Billedkode: Bokeh",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i27",
+   "cat": "billeder",
+   "title": "Billedkode: Skarpt fokus",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i28",
+   "cat": "billeder",
+   "title": "Billedkode: Blødt fokus",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i29",
+   "cat": "billeder",
+   "title": "Billedkode: Dramatisk lys",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i30",
+   "cat": "billeder",
+   "title": "Billedkode: Modlys",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i31",
+   "cat": "billeder",
+   "title": "Billedkode: Dyster stemning",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i32",
+   "cat": "billeder",
+   "title": "Billedkode: Vintage",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i33",
+   "cat": "billeder",
+   "title": "Billedkode: Retro",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i35",
+   "cat": "billeder",
+   "title": "Billedkode: Fantasy",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i36",
+   "cat": "billeder",
+   "title": "Billedkode: Science fiction",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i37",
+   "cat": "billeder",
+   "title": "Billedkode: Natur",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i38",
+   "cat": "billeder",
+   "title": "Billedkode: Landskab",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i39",
+   "cat": "billeder",
+   "title": "Billedkode: Arkitektur",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i40",
+   "cat": "billeder",
+   "title": "Billedkode: Interiør",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i41",
+   "cat": "billeder",
+   "title": "Billedkode: Produktfoto",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i42",
+   "cat": "billeder",
+   "title": "Billedkode: Madfoto",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i43",
+   "cat": "billeder",
+   "title": "Billedkode: Mode",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i44",
+   "cat": "billeder",
+   "title": "Billedkode: Konceptkunst",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i45",
+   "cat": "billeder",
+   "title": "Billedkode: Illustration",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i47",
+   "cat": "billeder",
+   "title": "Billedkode: Isometrisk",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i48",
+   "cat": "billeder",
+   "title": "Billedkode: Pastel",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i49",
+   "cat": "billeder",
+   "title": "Billedkode: Høj kontrast",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "i50",
+   "cat": "billeder",
+   "title": "Billedkode: Uden tekst",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "k-productexplosion",
+   "cat": "grafik",
+   "title": "Dit produkt i 3D med alle dele skudt udad",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-productspin",
+   "cat": "video",
+   "title": "En dynamisk 360-graders video af dit produkt",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-metaads",
+   "cat": "grafik",
+   "title": "Flot annoncekunst til dine sociale medier",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "comic",
+   "cat": "laering",
+   "title": "Forklar med tegneserie",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "debug",
+   "cat": "job",
+   "title": "Find fejlen i din kode",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "blueprint",
+   "cat": "job",
+   "title": "Planlæg en app før du bygger",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "research",
+   "cat": "skrivning",
+   "title": "Få kilder på påstande",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "prompttemplate",
+   "cat": "idegenerering",
+   "title": "Byg din egen prompt",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "agreeaudit",
+   "cat": "idegenerering",
+   "title": "Hvad har du været for enig med mig om?",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "interpret",
+   "cat": "hverdag",
+   "title": "Tjek din fortolkning af en frustrerende situation",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "doyourhalf",
+   "cat": "hverdag",
+   "title": "Lad AI klare den del, der ikke kræver dig",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-xray",
+   "cat": "billeder",
+   "title": "Viser indersiden af alt, som en lufthavnsscanner",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "weeklyweight",
+   "cat": "hverdag",
+   "title": "Hold listen kort med et ugentligt tjek",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "whynot",
+   "cat": "hverdag",
+   "title": "Hvad er den rigtige grund til, at du ikke har gjort det?",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "storedall",
+   "cat": "hverdag",
+   "title": "Se alt, din AI har gemt om dig",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "reveal",
+   "cat": "hverdag",
+   "title": "Fem ting din AI har regnet ud om dig",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-surreal",
+   "cat": "billeder",
+   "title": "Gør ethvert foto til en drømmeversion af sig selv",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "patterns",
+   "cat": "hverdag",
+   "title": "Dine mønstre og det, du er mest i benægtelse om",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-hologram",
+   "cat": "billeder",
+   "title": "Projicerer alt som et lysende sci-fi-hologram",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "camg7x",
+   "cat": "billeder",
+   "title": "Gør et foto til et blitz-billede fra et lille kompaktkamera",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-guide-privacy-old",
+   "cat": "privat",
+   "title": "Lav en liste over konti, du vil gennemgå",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-idea-floating",
+   "cat": "billeder",
+   "title": "Lav en legende produktpræsentation",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-reel",
+   "cat": "video",
+   "title": "Lav en produktvideo",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-brand",
+   "cat": "grafik",
+   "title": "Skab en visuel brandidentitet",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-guide-numbers",
+   "cat": "idegenerering",
+   "title": "Få tallene forklaret trin for trin",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-idea-macro",
+   "cat": "billeder",
+   "title": "Fremhæv detaljer og overflader",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-video-appdemo",
+   "cat": "video",
+   "title": "Lav en video ud fra skærmbilleder",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-idea-nature",
+   "cat": "billeder",
+   "title": "Sæt dit produkt i nye omgivelser",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-dreamcar",
+   "cat": "billeder",
+   "title": "Se dig selv i en fantasifuld scene",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-handheld",
+   "cat": "billeder",
+   "title": "Vis størrelsen på dit produkt",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-stickers",
+   "cat": "billeder",
+   "title": "Gør dine idéer til små motiver",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-create-house",
+   "cat": "grafik",
+   "title": "Se en bolig som en 3D-model",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-giant",
+   "cat": "billeder",
+   "title": "Dig, 90 meter høj, stående over din egen by",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-holiday",
+   "cat": "billeder",
+   "title": "Lav en hilsen med dine egne billeder",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-video-pause",
+   "cat": "video",
+   "title": "Gør en optagelse mere flydende",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-idea-arcade",
+   "cat": "billeder",
+   "title": "Skab en farverig retrostemning",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-underwater",
+   "cat": "billeder",
+   "title": "Skab en drømmende undervandsscene",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-book",
+   "cat": "billeder",
+   "title": "Giv din bog en visuel forside",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-guide-privacy-public",
+   "cat": "privat",
+   "title": "Lav en plan for at undersøge dit digitale spor",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-mav-create-drone",
+   "cat": "video",
+   "title": "Planlæg en flyvetur fra et kort",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-idea-pattern",
+   "cat": "billeder",
+   "title": "Skab et mønster til dit projekt",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-video-captions",
+   "cat": "video",
+   "title": "Gør din video lettere at følge",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-idea-reflection",
+   "cat": "billeder",
+   "title": "Skab et stilrent produktbillede",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-video-podcast",
+   "cat": "video",
+   "title": "Find øjeblikke fra en samtale",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-idea-stationery",
+   "cat": "billeder",
+   "title": "Se din visuelle identitet på papir",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "k-nightsky",
+   "cat": "billeder",
+   "title": "Stiller dig under en stjernefyldt nattehimmel",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-create-effects",
+   "cat": "video",
+   "title": "Udforsk nye effekter til et klip",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-guide-factcheck",
+   "cat": "idegenerering",
+   "title": "Skil fakta fra antagelser",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-idea-adventure",
+   "cat": "billeder",
+   "title": "Skab et fantasiportræt",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "k-spotify",
+   "cat": "billeder",
+   "title": "Dit foto som en Spotify \"Spiller nu\"-skærm",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-guide-message",
+   "cat": "skrivning",
+   "title": "Find en venlig og tydelig formulering",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-guide-summary",
+   "cat": "skrivning",
+   "title": "Gem det vigtigste fra en lang chat",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-idea-flash90",
+   "cat": "billeder",
+   "title": "Giv dit foto et nostalgisk engangskamera-look",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-guide-options",
+   "cat": "idegenerering",
+   "title": "Vælg en løsning, der passer til dig",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-tiltshift",
+   "cat": "billeder",
+   "title": "Tilt-shift-sløring, der får scenen til at ligne en miniaturemodel",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-gift",
+   "cat": "billeder",
+   "title": "Se en personlig gaveindpakning",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-sell",
+   "cat": "hverdag",
+   "title": "Lav en salgsannonce",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-idea-podcover",
+   "cat": "billeder",
+   "title": "Giv din podcast et visuelt udtryk",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "k-diorama",
+   "cat": "billeder",
+   "title": "Din scene som en bordmodel med dig som en lille figur",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-video-logoanimation",
+   "cat": "video",
+   "title": "Planlæg en enkel logoanimation",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-idea-travel",
+   "cat": "billeder",
+   "title": "Saml minderne i ét billede",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-noir",
+   "cat": "billeder",
+   "title": "Giv dit foto en dramatisk filmstemning",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-productset",
+   "cat": "billeder",
+   "title": "Giv flere billeder samme stil",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-video-steps",
+   "cat": "video",
+   "title": "Gør en vejledning let at følge",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-petpassport",
+   "cat": "billeder",
+   "title": "Et kæledyrspas med dit kæledyrs foto og oplysninger",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-truth",
+   "cat": "idegenerering",
+   "title": "Find svagheder før du går videre",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-idea-pencil",
+   "cat": "billeder",
+   "title": "Forvandl et foto til en skitse",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-lowangle",
+   "cat": "billeder",
+   "title": "Prøv en dramatisk lav kameravinkel",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-create-animation",
+   "cat": "video",
+   "title": "Planlæg en kort animation",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-idea-crowd",
+   "cat": "billeder",
+   "title": "Skab bevægelse omkring motivet",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-video-shortclip",
+   "cat": "video",
+   "title": "Find de bedste øjeblikke",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-studioshot",
+   "cat": "grafik",
+   "title": "Dit produkt som et professionelt studiebillede på en piedestal",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-idea-storefront",
+   "cat": "billeder",
+   "title": "Se din idé på et butiksskilt",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-council",
+   "cat": "idegenerering",
+   "title": "Få flere perspektiver på en beslutning",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-commercial",
+   "cat": "video",
+   "title": "En filmisk reklame for dit produkt",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-guide-practice",
+   "cat": "laering",
+   "title": "Øv dig lidt ad gangen",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-idea-splash",
+   "cat": "billeder",
+   "title": "Giv et produktbillede mere energi",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-poster",
+   "cat": "billeder",
+   "title": "Se dit billede i en ramme",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "k-droneorbit",
+   "cat": "video",
+   "title": "En drone cirkler omkring dig, startende fra dit foto",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-mav-inboxconnect",
+   "cat": "skrivning",
+   "title": "Gmail-overblik: Lav overblik over indbakken",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-dollyzoom",
+   "cat": "video",
+   "title": "Svimmelhedseffekten: du står stille, mens baggrunden strækkes",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-mav-create-website3d",
+   "cat": "grafik",
+   "title": "Planlæg en hjemmeside med bevægelse",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-video-film",
+   "cat": "video",
+   "title": "Giv din video et varmt look",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-idea-paper",
+   "cat": "grafik",
+   "title": "Skab dybde med lag af papir",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-storyboard",
+   "cat": "billeder",
+   "title": "Et 8-billeders storyboard af dig, ét filmisk billede pr. sekund",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-language",
+   "cat": "laering",
+   "title": "Øv et sprog gennem samtale",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-guide-missing",
+   "cat": "idegenerering",
+   "title": "Opdag vigtige detaljer før du går videre",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-connect-outlook",
+   "cat": "skrivning",
+   "title": "Outlook: Få overblik over din mail",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-birthdayalbum",
+   "cat": "billeder",
+   "title": "Fire af dine fotos som et dobbelteksponeret fødselsdagsalbum",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-wedding",
+   "cat": "billeder",
+   "title": "Lav en invitation til en særlig dag",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-shirt",
+   "cat": "billeder",
+   "title": "Se dit motiv på tøj",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-video-reel",
+   "cat": "video",
+   "title": "Fortæl din historie på kort tid",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-ghostwalk",
+   "cat": "billeder",
+   "title": "Spøgelsesagtige spor af dig, mens du går gennem billedet",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-create-video-ad",
+   "cat": "video",
+   "title": "Præsenter et produkt i en kort video",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-video-productvideo",
+   "cat": "video",
+   "title": "Lav en kort præsentation af et produkt",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-mav-master",
+   "cat": "skrivning",
+   "title": "Giv AI relevant kontekst",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-bokeh",
+   "cat": "billeder",
+   "title": "Smelter baggrunden til bløde runde lys",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-decision",
+   "cat": "idegenerering",
+   "title": "Skab overblik før en beslutning",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-mav-canvaconnect",
+   "cat": "grafik",
+   "title": "Canva + Claude: Arbejd med design fra en chat",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-idea-merch",
+   "cat": "billeder",
+   "title": "Se dit design på en kop og en kasket",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-video-sound",
+   "cat": "video",
+   "title": "Få stemmen til at træde frem",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-scrapbookcollage",
+   "cat": "billeder",
+   "title": "Et rejsescrapbog-kollage af dig og din by",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-create-homevideo",
+   "cat": "video",
+   "title": "Lav en præsentation af en bolig",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-mav-create-imageguide",
+   "cat": "billeder",
+   "title": "Find stil og detaljer i et billede",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "k-instagramnewfeed",
+   "cat": "billeder",
+   "title": "Dit foto som et Instagram-opslag med stories-række og det hele",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-create-rental",
+   "cat": "video",
+   "title": "Lav en kort præsentation af din bolig",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-connect-docs",
+   "cat": "skrivning",
+   "title": "Google Docs: Find svar i et dokument",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-idea-menu",
+   "cat": "billeder",
+   "title": "Lav et overskueligt menukort",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-package",
+   "cat": "grafik",
+   "title": "Prøv en idé til indpakning",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-neonsign",
+   "cat": "billeder",
+   "title": "Natlys fra pink og blå neonskilte",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-guide-foundation",
+   "cat": "laering",
+   "title": "Få et godt sted at starte",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-goldenhour",
+   "cat": "billeder",
+   "title": "Lavt, gyldent sollys fra siden",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-video-vertical",
+   "cat": "video",
+   "title": "Tilpas en video til højformat",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-connect-sheets",
+   "cat": "skrivning",
+   "title": "Google Sheets: Få overblik over et regneark",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-candlelight",
+   "cat": "billeder",
+   "title": "Varmt levende lys",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-eventflyer",
+   "cat": "billeder",
+   "title": "Gør dine oplysninger til en flot plakat",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-social",
+   "cat": "grafik",
+   "title": "Planlæg indhold til din målgruppe",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-guide-milestones",
+   "cat": "idegenerering",
+   "title": "Få overblik over vejen frem",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-windowlight",
+   "cat": "billeder",
+   "title": "Blødt vinduslys",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-flatlay",
+   "cat": "billeder",
+   "title": "Lav en flot opstilling med dit produkt",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-superhero",
+   "cat": "billeder",
+   "title": "Find på en original heltefigur",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-metaconnect",
+   "cat": "job",
+   "title": "Meta Ads: Få overblik over annoncer",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-softbox",
+   "cat": "billeder",
+   "title": "Blødt studielys",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-create-promptideas",
+   "cat": "billeder",
+   "title": "Udforsk flere kreative billedstile",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-laptop",
+   "cat": "billeder",
+   "title": "Lav en enkel hjemmeside-mockup",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "k-rainywindow",
+   "cat": "billeder",
+   "title": "Regnvejr bag vinduet",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-float",
+   "cat": "billeder",
+   "title": "Lav et drømmende billede",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-guide-questions",
+   "cat": "idegenerering",
+   "title": "Få et svar, der passer bedre til dig",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-bluehour",
+   "cat": "billeder",
+   "title": "Den blå time efter solnedgang",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-guide-difference",
+   "cat": "laering",
+   "title": "Forstå to ting, der minder om hinanden",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-guide-perspective",
+   "cat": "idegenerering",
+   "title": "Få nye øjne på din idé",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "k-tealorange",
+   "cat": "billeder",
+   "title": "Filmisk turkis og orange",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-create-productphoto",
+   "cat": "billeder",
+   "title": "Giv dit produkt et nyt udtryk",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-guide-notes",
+   "cat": "skrivning",
+   "title": "Få overblik over det næste, der skal ske",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-mav-mavremotion",
+   "cat": "video",
+   "title": "Remotion: Byg video med kode og AI",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-rembrandt",
+   "cat": "billeder",
+   "title": "Rembrandt-lys med en lysende trekant på kinden",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-guide-tenminutes",
+   "cat": "idegenerering",
+   "title": "Kom i gang, når noget føles uoverskueligt",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "v-idea-mascot",
+   "cat": "billeder",
+   "title": "Giv dit projekt en genkendelig figur",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-idea-ad",
+   "cat": "grafik",
+   "title": "Gør dit produkt til en visuel reklame",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "k-godrays",
+   "cat": "billeder",
+   "title": "Lysstråler gennem tåge og støv",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "v-mav-create-voice",
+   "cat": "video",
+   "title": "Udforsk indtaling til video",
+   "reason": "Lavere point: lille wow eller overlapper et bevaret kort"
+  },
+  {
+   "id": "v-guide-edit",
+   "cat": "skrivning",
+   "title": "Behold din stemme og dit budskab",
+   "reason": "Lavere point: ordinær tekstprompt eller overlap med et bevaret kort"
+  },
+  {
+   "id": "fe-hvidbalance",
+   "cat": "billeder",
+   "title": "Ret hvidbalancen",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "fe-hojlys",
+   "cat": "billeder",
+   "title": "Redd højlys og skygger",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "fe-farve",
+   "cat": "billeder",
+   "title": "Farvekorrektion og stemning",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  },
+  {
+   "id": "fe-beskaer",
+   "cat": "billeder",
+   "title": "Beskær og ret op",
+   "reason": "Dublet-/skabelonfamilie; de stærkeste billedkort er bevaret"
+  }
+ ],
+ "nye_udkast": [
+  "w01",
+  "w02",
+  "w03",
+  "w04",
+  "w05",
+  "w06",
+  "w07",
+  "w08",
+  "w09",
+  "w10",
+  "w11",
+  "w12",
+  "w13",
+  "w14",
+  "w15",
+  "w17",
+  "w18",
+  "w19",
+  "w23",
+  "w24",
+  "w25",
+  "wsa",
+  "wsb",
+  "wsc",
+  "wsd"
+ ]
+}

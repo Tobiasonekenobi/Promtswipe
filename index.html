@@ -1002,12 +1002,13 @@ const KEY='promptswipe-v3';
 const dkey=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 function touchDay(){const k=dkey(new Date());if(!S.days.includes(k)){S.days.push(k);S.days=S.days.slice(-120);save()}}
 function streak(){let n=0;const d=new Date();if(!S.days.includes(dkey(d)))d.setDate(d.getDate()-1);while(S.days.includes(dkey(d))){n++;d.setDate(d.getDate()-1)}return n}
-const DEF=()=>({days:[],welcomed:false,name:'',level:2,tech:false,ai:'chatgpt',theme:'auto',favs:['sk1','id1','gr2'],sup:[],mixes:[],kit:['gcal','web'],steps:{}});
+const DEF=()=>({days:[],welcomed:false,name:'',level:2,tech:false,arch:false,ai:'chatgpt',theme:'auto',favs:['sk1','id1','gr2'],sup:[],mixes:[],kit:['gcal','web'],steps:{}});
 function load(){try{const r=JSON.parse(localStorage.getItem(KEY));if(r&&Array.isArray(r.favs))return Object.assign(DEF(),r)}catch(e){}return DEF()}
 let S=load();
 if(!Array.isArray(S.sup))S.sup=[];
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-const visible=p=>p.lvl<=S.level&&(S.tech||!p.tech);
+const ARCH=new Set(DATA.ARCH||[]);
+const visible=p=>p.lvl<=S.level&&(S.tech||!p.tech)&&(S.arch||!ARCH.has(p.id));
 const toolVisible=t=>S.tech||!t.tech;
 const isFav=id=>S.favs.includes(id);
 const isSup=id=>S.sup.includes(id);
@@ -1621,9 +1622,10 @@ function vSet(v){
     '<section class="set"><h2><label for="nm">Dit navn</label></h2><div class="field"><input id="nm" type="text" maxlength="30" placeholder="Skriv dit navn" value="'+esc(S.name)+'" autocomplete="given-name"></div></section>'+
     '<section class="set" aria-labelledby="lvl-h"><h2 id="lvl-h">Dit niveau</h2><div class="lvls" role="radiogroup" aria-labelledby="lvl-h">'+
       LEVELS.map((l,i)=>'<button role="radio" aria-checked="'+(S.level===i+1)+'" class="'+(S.level===i+1?'on':'')+'" data-a="level" data-k="'+(i+1)+'">'+lvHTML(i+1).replace(/<em>.*?<\/em>/,'')+'<b>'+l+'</b><small>'+LEVELDESC[i]+'</small></button>').join('')+
-      '</div><p class="note">Du ser '+visN+' af '+P.length+' kort i Swipe og Katalog.</p></section>'+
+      '</div><p class="note">Du ser '+visN+' af '+(S.arch?P.length:P.filter(p=>!ARCH.has(p.id)).length)+' kort i Swipe og Katalog.</p></section>'+
     '<section class="set"><div class="swrow"><span class="txt"><b id="tech-l">Tekniske kort</b><span class="s">Kode, data og tekniske værktøjer. Skjult som standard, så nye brugere ikke drukner.</span></span>'+
       '<button class="switch" id="tech" role="switch" aria-checked="'+S.tech+'" aria-labelledby="tech-l" data-a="tech"></button></div></section>'+
+    '<section class="set"><div class="swrow"><span class="txt"><b id="arch-l">Vis arkiverede kort</b><span class="s">'+ARCH.size+' ældre kort er lagt væk. Intet er slettet.</span></span><button class="switch" id="arch" role="switch" aria-checked="'+S.arch+'" aria-labelledby="arch-l" data-a="arch"></button></div></section>'+
     '<section class="set" aria-labelledby="ai-h"><h2 id="ai-h">Standard-AI</h2><p class="note" style="margin-top:-6px">Den tjeneste, knappen Kopiér og åbn sender dig til.</p><div class="radios" role="radiogroup" aria-labelledby="ai-h">'+
       Object.keys(AIS).map(k=>'<button class="radio" role="radio" aria-checked="'+(S.ai===k)+'" data-a="ai" data-k="'+k+'"><span class="rd"></span><span><b>'+AIS[k].name+'</b><small>'+AIS[k].host+'</small></span></button>').join('')+'</div></section>'+
     '<section class="set" aria-labelledby="th-h"><h2 id="th-h">Tema</h2><div class="themes" role="radiogroup" aria-labelledby="th-h">'+
@@ -2065,6 +2067,7 @@ document.addEventListener('click',e=>{
       const st=stepsOf(TB[id]);if(st.every((_,i)=>arr[i]))toast(TB[id].name+' er klar til brug');
       save();render();const el=document.querySelector('[data-a="step"][data-id="'+id+'"][data-n="'+b.dataset.n+'"]');if(el)el.focus({preventScroll:true});break}
     case 'level':S.level=+k;D.order=null;save();render();break;
+    case 'arch':S.arch=!S.arch;D.order=null;save();render();toast(S.arch?'Arkiverede kort vises':'Arkiverede kort er skjult');{const t=$('#arch');if(t)t.focus({preventScroll:true})}break;
     case 'tech':S.tech=!S.tech;D.order=null;save();render();toast(S.tech?'Tekniske kort vises':'Tekniske kort er skjult');{const t=$('#tech');if(t)t.focus({preventScroll:true})}break;
     case 'ai':S.ai=k;save();render();toast(AIS[k].name+' er nu standard');break;
     case 'theme':S.theme=k;save();applyTheme();render();break;
