@@ -1,6 +1,6 @@
 /* PromptSwipe service worker: hurtig start og offline-brug */
-const V='ps-v6',F='ps-fonts';
-const CORE=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png','apple-touch-icon.png'];
+const V='ps-v7',F='ps-fonts';
+const CORE=['./','index.html','data.json','manifest.webmanifest','icon-192.png','icon-512.png','apple-touch-icon.png'];
 self.addEventListener('install',e=>{
   e.waitUntil(caches.open(V).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()));
 });
